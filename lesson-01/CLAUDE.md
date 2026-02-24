@@ -1,7 +1,16 @@
-# CLAUDE.md - DrawIO Cloud Architecture Diagram Guidelines
+# CLAUDE.md - DrawIO Architecture Diagram Guidelines
 
 ## Overview
-When creating `.drawio` files for cloud architecture diagrams, always use the correct shape library icons for each cloud provider. DrawIO uses XML format with specific style attributes to reference official cloud service shapes.
+
+Comprehensive guide for creating `.drawio` architecture diagrams covering:
+- **Cloud Platforms**: AWS, Azure, Google Cloud (GCP)
+- **Container Orchestration**: Kubernetes (K8s), Docker
+- **Network & Infrastructure**: Firewalls, Load Balancers, DNS, VPN
+- **Software Architecture**: Microservices, APIs, Databases
+- **Integration Systems**: Message Queues, ESB, API Gateways
+- **IT Development**: CI/CD, DevOps, Monitoring
+
+DrawIO uses XML format with specific style attributes to reference official shape libraries for each domain.
 
 ## File Structure
 DrawIO files are XML-based with this basic structure:
@@ -230,22 +239,436 @@ Use `shape=mxgraph.azure.` prefix for Azure icons.
 
 Use `shape=mxgraph.kubernetes.` prefix for Kubernetes icons.
 
+### Workloads
 | Resource | Shape Style |
 |----------|-------------|
 | Pod | `shape=mxgraph.kubernetes.pod` |
 | Deployment | `shape=mxgraph.kubernetes.deploy` |
+| StatefulSet | `shape=mxgraph.kubernetes.sts` |
+| DaemonSet | `shape=mxgraph.kubernetes.ds` |
+| ReplicaSet | `shape=mxgraph.kubernetes.rs` |
+| Job | `shape=mxgraph.kubernetes.job` |
+| CronJob | `shape=mxgraph.kubernetes.cronjob` |
+
+### Networking
+| Resource | Shape Style |
+|----------|-------------|
 | Service | `shape=mxgraph.kubernetes.svc` |
 | Ingress | `shape=mxgraph.kubernetes.ing` |
+| Endpoint | `shape=mxgraph.kubernetes.ep` |
+| Network Policy | `shape=mxgraph.kubernetes.netpol` |
+
+### Config & Storage
+| Resource | Shape Style |
+|----------|-------------|
 | ConfigMap | `shape=mxgraph.kubernetes.cm` |
 | Secret | `shape=mxgraph.kubernetes.secret` |
 | PersistentVolume | `shape=mxgraph.kubernetes.pv` |
 | PersistentVolumeClaim | `shape=mxgraph.kubernetes.pvc` |
-| StatefulSet | `shape=mxgraph.kubernetes.sts` |
-| DaemonSet | `shape=mxgraph.kubernetes.ds` |
-| ReplicaSet | `shape=mxgraph.kubernetes.rs` |
+| StorageClass | `shape=mxgraph.kubernetes.sc` |
+
+### Cluster
+| Resource | Shape Style |
+|----------|-------------|
 | Namespace | `shape=mxgraph.kubernetes.ns` |
 | Node | `shape=mxgraph.kubernetes.node` |
 | Cluster | `shape=mxgraph.kubernetes.control_plane` |
+| ServiceAccount | `shape=mxgraph.kubernetes.sa` |
+| Role | `shape=mxgraph.kubernetes.role` |
+| ClusterRole | `shape=mxgraph.kubernetes.c_role` |
+
+---
+
+## Google Cloud Platform (GCP) Shape References
+
+Use `shape=mxgraph.gcp2.` prefix for GCP icons.
+
+### Compute
+| Service | Shape Style |
+|---------|-------------|
+| Compute Engine | `shape=mxgraph.gcp2.compute_engine` |
+| App Engine | `shape=mxgraph.gcp2.app_engine` |
+| Cloud Functions | `shape=mxgraph.gcp2.cloud_functions` |
+| Cloud Run | `shape=mxgraph.gcp2.cloud_run` |
+| GKE | `shape=mxgraph.gcp2.google_kubernetes_engine` |
+
+### Storage & Database
+| Service | Shape Style |
+|---------|-------------|
+| Cloud Storage | `shape=mxgraph.gcp2.cloud_storage` |
+| Cloud SQL | `shape=mxgraph.gcp2.cloud_sql` |
+| Cloud Spanner | `shape=mxgraph.gcp2.cloud_spanner` |
+| Firestore | `shape=mxgraph.gcp2.cloud_firestore` |
+| Bigtable | `shape=mxgraph.gcp2.cloud_bigtable` |
+| Memorystore | `shape=mxgraph.gcp2.cloud_memorystore` |
+
+### Networking
+| Service | Shape Style |
+|---------|-------------|
+| VPC | `shape=mxgraph.gcp2.virtual_private_cloud` |
+| Cloud Load Balancing | `shape=mxgraph.gcp2.cloud_load_balancing` |
+| Cloud CDN | `shape=mxgraph.gcp2.cloud_cdn` |
+| Cloud DNS | `shape=mxgraph.gcp2.cloud_dns` |
+| Cloud VPN | `shape=mxgraph.gcp2.cloud_vpn` |
+| Cloud Armor | `shape=mxgraph.gcp2.cloud_armor` |
+
+### Integration & Messaging
+| Service | Shape Style |
+|---------|-------------|
+| Pub/Sub | `shape=mxgraph.gcp2.cloud_pubsub` |
+| Cloud Tasks | `shape=mxgraph.gcp2.cloud_tasks` |
+| Cloud Scheduler | `shape=mxgraph.gcp2.cloud_scheduler` |
+| Workflows | `shape=mxgraph.gcp2.workflows` |
+
+### Security & Identity
+| Service | Shape Style |
+|---------|-------------|
+| IAM | `shape=mxgraph.gcp2.cloud_iam` |
+| Secret Manager | `shape=mxgraph.gcp2.secret_manager` |
+| Cloud KMS | `shape=mxgraph.gcp2.cloud_key_management_service` |
+
+### DevOps & Monitoring
+| Service | Shape Style |
+|---------|-------------|
+| Cloud Build | `shape=mxgraph.gcp2.cloud_build` |
+| Container Registry | `shape=mxgraph.gcp2.container_registry` |
+| Artifact Registry | `shape=mxgraph.gcp2.artifact_registry` |
+| Cloud Monitoring | `shape=mxgraph.gcp2.cloud_monitoring` |
+| Cloud Logging | `shape=mxgraph.gcp2.cloud_logging` |
+
+---
+
+## Network & Infrastructure Shape References
+
+### General Network Shapes
+Use `shape=mxgraph.networks.` or basic shapes for network diagrams.
+
+| Component | Shape Style |
+|-----------|-------------|
+| Router | `shape=mxgraph.networks.router` |
+| Switch | `shape=mxgraph.networks.switch` |
+| Firewall | `shape=mxgraph.networks.firewall` |
+| Load Balancer | `shape=mxgraph.networks.load_balancer` |
+| Server | `shape=mxgraph.networks.server` |
+| Database Server | `shape=mxgraph.networks.server_database` |
+| Web Server | `shape=mxgraph.networks.server_web` |
+| Cloud | `shape=mxgraph.networks.cloud` |
+| User/Client | `shape=mxgraph.networks.user_male` |
+| Laptop | `shape=mxgraph.networks.laptop` |
+| Desktop | `shape=mxgraph.networks.desktop` |
+| Mobile | `shape=mxgraph.networks.mobile` |
+
+### Cisco Network Icons
+Use `shape=mxgraph.cisco.` for Cisco-style network diagrams.
+
+| Component | Shape Style |
+|-----------|-------------|
+| Router | `shape=mxgraph.cisco.routers.router` |
+| Switch | `shape=mxgraph.cisco.switches.layer_3_switch` |
+| Firewall | `shape=mxgraph.cisco.security.firewall` |
+| VPN | `shape=mxgraph.cisco.security.vpn_concentrator` |
+| Wireless | `shape=mxgraph.cisco.wireless.access_point` |
+| Server | `shape=mxgraph.cisco.servers.standard_host` |
+
+### On-Premises / Data Center
+| Component | Shape Style |
+|-----------|-------------|
+| Data Center | `shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_corporate_data_center` |
+| Rack | `shape=mxgraph.rackGeneral.container` |
+| Physical Server | `shape=mxgraph.veeam.physical_server` |
+| Virtual Machine | `shape=mxgraph.veeam.virtual_machine` |
+| Storage Array | `shape=mxgraph.veeam.storage` |
+| Tape Library | `shape=mxgraph.veeam.tape` |
+
+---
+
+## Software Architecture Shape References
+
+### UML Components
+| Element | Shape Style |
+|---------|-------------|
+| Component | `shape=component` |
+| Interface | `shape=lollipop` |
+| Package | `shape=package` |
+| Class | `shape=swimlane;fontStyle=1;align=center;verticalAlign=top` |
+| Actor | `shape=umlActor` |
+| Use Case | `shape=ellipse` |
+| Artifact | `shape=artifact` |
+
+### Microservices & APIs
+| Component | Shape Style |
+|-----------|-------------|
+| API Gateway | `shape=mxgraph.aws4.api_gateway` |
+| REST API | `rounded=1;arcSize=10;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| GraphQL | `rounded=1;arcSize=10;strokeColor=#E535AB;fillColor=#FCE4EC` |
+| gRPC | `rounded=1;arcSize=10;strokeColor=#244c5a;fillColor=#e3f2fd` |
+| Microservice | `rounded=1;arcSize=20;strokeColor=#666666;fillColor=#f5f5f5` |
+| Lambda/Function | `shape=mxgraph.aws4.lambda_function` |
+
+### Database Types
+| Type | Shape Style |
+|------|-------------|
+| SQL Database | `shape=cylinder3;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| NoSQL Database | `shape=cylinder3;strokeColor=#82b366;fillColor=#d5e8d4` |
+| Cache (Redis) | `shape=cylinder3;strokeColor=#d79b00;fillColor=#ffe6cc` |
+| Message Queue | `shape=cylinder3;strokeColor=#b85450;fillColor=#f8cecc` |
+| Data Warehouse | `shape=cylinder3;strokeColor=#9673a6;fillColor=#e1d5e7` |
+| Time Series DB | `shape=cylinder3;strokeColor=#006EAF;fillColor=#1ba1e2` |
+
+### Integration Patterns
+| Pattern | Shape Style |
+|---------|-------------|
+| Message Queue | `shape=mxgraph.aws4.sqs` |
+| Event Bus | `shape=mxgraph.aws4.eventbridge` |
+| ESB | `rounded=0;strokeColor=#d6b656;fillColor=#fff2cc` |
+| Pub/Sub | `shape=mxgraph.gcp2.cloud_pubsub` |
+| Stream Processing | `shape=mxgraph.aws4.kinesis` |
+| Service Mesh | `rounded=1;dashed=1;strokeColor=#666666;fillColor=none` |
+
+---
+
+## DevOps & CI/CD Shape References
+
+### CI/CD Tools
+| Tool | Shape/Style |
+|------|-------------|
+| Jenkins | `shape=mxgraph.sysml.package;strokeColor=#D33833;fillColor=#F4D9D0` |
+| GitHub Actions | `rounded=1;strokeColor=#24292e;fillColor=#f6f8fa` |
+| GitLab CI | `rounded=1;strokeColor=#FC6D26;fillColor=#FFF7F0` |
+| ArgoCD | `rounded=1;strokeColor=#EF7B4D;fillColor=#FFF5F0` |
+| Terraform | `rounded=1;strokeColor=#7B42BC;fillColor=#F5F0FF` |
+| Ansible | `rounded=1;strokeColor=#EE0000;fillColor=#FFF0F0` |
+
+### Monitoring & Observability
+| Tool | Shape/Style |
+|------|-------------|
+| Prometheus | `rounded=1;strokeColor=#E6522C;fillColor=#FFF5F0` |
+| Grafana | `rounded=1;strokeColor=#F46800;fillColor=#FFF8F0` |
+| ELK Stack | `rounded=1;strokeColor=#005571;fillColor=#F0F8FF` |
+| Datadog | `rounded=1;strokeColor=#632CA6;fillColor=#F8F0FF` |
+| New Relic | `rounded=1;strokeColor=#008C99;fillColor=#F0FFFF` |
+| Jaeger | `rounded=1;strokeColor=#66CFE3;fillColor=#F0FFFF` |
+
+---
+
+## Database Shape References
+
+### Relational Databases (SQL)
+| Database | Shape/Style |
+|----------|-------------|
+| Generic SQL DB | `shape=cylinder3;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| PostgreSQL | `shape=cylinder3;strokeColor=#336791;fillColor=#E8F4F8` |
+| MySQL | `shape=cylinder3;strokeColor=#4479A1;fillColor=#E8F4FC` |
+| SQL Server | `shape=cylinder3;strokeColor=#CC2927;fillColor=#FCE8E8` |
+| Oracle | `shape=cylinder3;strokeColor=#F80000;fillColor=#FFF0F0` |
+| MariaDB | `shape=cylinder3;strokeColor=#003545;fillColor=#E8F0F4` |
+
+### NoSQL Databases
+| Database | Shape/Style |
+|----------|-------------|
+| Generic NoSQL | `shape=cylinder3;strokeColor=#82b366;fillColor=#d5e8d4` |
+| MongoDB | `shape=cylinder3;strokeColor=#4DB33D;fillColor=#E8F8E8` |
+| Cassandra | `shape=cylinder3;strokeColor=#1287B1;fillColor=#E8F4FC` |
+| CouchDB | `shape=cylinder3;strokeColor=#E42528;fillColor=#FCE8E8` |
+| Neo4j (Graph) | `shape=cylinder3;strokeColor=#008CC1;fillColor=#E8F8FC` |
+| Redis | `shape=cylinder3;strokeColor=#DC382D;fillColor=#FCE8E8` |
+| Memcached | `shape=cylinder3;strokeColor=#4E9A06;fillColor=#E8F8E8` |
+
+### Cloud-Managed Databases
+| Service | Shape Style |
+|---------|-------------|
+| AWS RDS | `shape=mxgraph.aws4.rds` |
+| AWS DynamoDB | `shape=mxgraph.aws4.dynamodb` |
+| AWS Aurora | `shape=mxgraph.aws4.aurora` |
+| AWS Redshift | `shape=mxgraph.aws4.redshift` |
+| AWS DocumentDB | `shape=mxgraph.aws4.documentdb` |
+| AWS Neptune | `shape=mxgraph.aws4.neptune` |
+| Azure SQL | `shape=mxgraph.azure.databases.sql_databases` |
+| Azure Cosmos DB | `shape=mxgraph.azure.databases.azure_cosmos_db` |
+| GCP Cloud SQL | `shape=mxgraph.gcp2.cloud_sql` |
+| GCP Spanner | `shape=mxgraph.gcp2.cloud_spanner` |
+| GCP Firestore | `shape=mxgraph.gcp2.cloud_firestore` |
+| GCP Bigtable | `shape=mxgraph.gcp2.cloud_bigtable` |
+
+### Data Warehouse & Analytics
+| Service | Shape Style |
+|---------|-------------|
+| Data Warehouse | `shape=cylinder3;strokeColor=#9673a6;fillColor=#e1d5e7` |
+| AWS Redshift | `shape=mxgraph.aws4.redshift` |
+| GCP BigQuery | `shape=mxgraph.gcp2.bigquery` |
+| Azure Synapse | `shape=mxgraph.azure.databases.azure_synapse_analytics` |
+| Snowflake | `shape=cylinder3;strokeColor=#29B5E8;fillColor=#E8F8FC` |
+| Databricks | `shape=cylinder3;strokeColor=#FF3621;fillColor=#FFF0F0` |
+
+---
+
+## Search Engine & Analytics Shape References
+
+### Search Engines
+| Service | Shape/Style |
+|---------|-------------|
+| Elasticsearch | `rounded=1;strokeColor=#005571;fillColor=#F0F8FF` |
+| OpenSearch | `rounded=1;strokeColor=#005EB8;fillColor=#E8F4FC` |
+| Apache Solr | `rounded=1;strokeColor=#D9411E;fillColor=#FCE8E4` |
+| Algolia | `rounded=1;strokeColor=#5468FF;fillColor=#F0F4FF` |
+| Meilisearch | `rounded=1;strokeColor=#FF5CAA;fillColor=#FFF0F8` |
+| Typesense | `rounded=1;strokeColor=#5928ED;fillColor=#F8F0FF` |
+
+### Cloud Search Services
+| Service | Shape Style |
+|---------|-------------|
+| AWS OpenSearch | `shape=mxgraph.aws4.elasticsearch_service` |
+| AWS CloudSearch | `shape=mxgraph.aws4.cloudsearch` |
+| Azure Cognitive Search | `shape=mxgraph.azure.ai_machine_learning.cognitive_services` |
+| GCP Cloud Search | `shape=mxgraph.gcp2.cloud_search` |
+
+### Log & Analytics Platforms
+| Service | Shape/Style |
+|---------|-------------|
+| Kibana | `rounded=1;strokeColor=#E8488B;fillColor=#FFF0F8` |
+| Logstash | `rounded=1;strokeColor=#FEC514;fillColor=#FFFCF0` |
+| Splunk | `rounded=1;strokeColor=#65A637;fillColor=#F0FCF0` |
+| Graylog | `rounded=1;strokeColor=#FF3633;fillColor=#FFF0F0` |
+| Fluentd | `rounded=1;strokeColor=#0E83C8;fillColor=#E8F4FC` |
+| Vector | `rounded=1;strokeColor=#7B42BC;fillColor=#F8F0FF` |
+
+---
+
+## Data Workflow & ETL Shape References
+
+### Data Pipeline & Orchestration
+| Tool | Shape/Style |
+|------|-------------|
+| Apache Airflow | `rounded=1;strokeColor=#017CEE;fillColor=#E8F4FF` |
+| Prefect | `rounded=1;strokeColor=#2E90FA;fillColor=#E8F4FF` |
+| Dagster | `rounded=1;strokeColor=#4F43DD;fillColor=#F0F0FF` |
+| Luigi | `rounded=1;strokeColor=#2BBA00;fillColor=#E8FCE8` |
+| dbt | `rounded=1;strokeColor=#FF694B;fillColor=#FFF0EC` |
+| Mage | `rounded=1;strokeColor=#6B50FF;fillColor=#F0ECFF` |
+
+### Stream Processing
+| Tool | Shape Style |
+|------|-------------|
+| Apache Kafka | `rounded=1;strokeColor=#231F20;fillColor=#F5F5F5` |
+| Apache Spark | `rounded=1;strokeColor=#E25A1C;fillColor=#FFF0EC` |
+| Apache Flink | `rounded=1;strokeColor=#E6526F;fillColor=#FFF0F4` |
+| Apache Storm | `rounded=1;strokeColor=#2379BF;fillColor=#E8F4FF` |
+| Apache Beam | `rounded=1;strokeColor=#FF6F00;fillColor=#FFF8F0` |
+| AWS Kinesis | `shape=mxgraph.aws4.kinesis` |
+| GCP Dataflow | `shape=mxgraph.gcp2.dataflow` |
+| Azure Stream Analytics | `shape=mxgraph.azure.analytics.stream_analytics_jobs` |
+
+### ETL & Data Integration
+| Tool | Shape/Style |
+|------|-------------|
+| Apache NiFi | `rounded=1;strokeColor=#728E9B;fillColor=#F0F4F8` |
+| Talend | `rounded=1;strokeColor=#FF6D70;fillColor=#FFF0F0` |
+| Informatica | `rounded=1;strokeColor=#FF4D00;fillColor=#FFF4F0` |
+| Fivetran | `rounded=1;strokeColor=#0073FF;fillColor=#E8F4FF` |
+| Airbyte | `rounded=1;strokeColor=#615EFF;fillColor=#F0F0FF` |
+| Stitch | `rounded=1;strokeColor=#FFCC00;fillColor=#FFFCF0` |
+
+### Cloud ETL/Data Services
+| Service | Shape Style |
+|---------|-------------|
+| AWS Glue | `shape=mxgraph.aws4.glue` |
+| AWS Data Pipeline | `shape=mxgraph.aws4.data_pipeline` |
+| AWS EMR | `shape=mxgraph.aws4.emr` |
+| GCP Dataproc | `shape=mxgraph.gcp2.cloud_dataproc` |
+| GCP Cloud Data Fusion | `shape=mxgraph.gcp2.cloud_data_fusion` |
+| Azure Data Factory | `shape=mxgraph.azure.analytics.data_factory` |
+| Azure HDInsight | `shape=mxgraph.azure.analytics.hdinsight_clusters` |
+
+### Data Workflow Symbols
+| Symbol | Shape/Style | Use Case |
+|--------|-------------|----------|
+| Source | `shape=parallelogram;strokeColor=#82b366;fillColor=#d5e8d4` | Data source input |
+| Transform | `shape=process;strokeColor=#6c8ebf;fillColor=#dae8fc` | Data transformation step |
+| Sink/Target | `shape=cylinder3;strokeColor=#9673a6;fillColor=#e1d5e7` | Data destination |
+| Decision | `shape=rhombus;strokeColor=#d6b656;fillColor=#fff2cc` | Branch/conditional |
+| Queue/Buffer | `shape=mxgraph.aws4.sqs` | Message queue/buffer |
+
+---
+
+## Workflow & Process Diagram Shape References
+
+### BPMN (Business Process Model and Notation)
+| Element | Shape/Style |
+|---------|-------------|
+| Start Event | `shape=mxgraph.bpmn.shape;perimeter=ellipsePerimeter;symbol=general;strokeColor=#228B22;fillColor=#d5e8d4` |
+| End Event | `shape=mxgraph.bpmn.shape;perimeter=ellipsePerimeter;symbol=terminate;strokeColor=#B22222;fillColor=#f8cecc` |
+| Task | `rounded=1;arcSize=10;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| User Task | `shape=mxgraph.bpmn.shape;perimeter=rectanglePerimeter;symbol=user_task;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Service Task | `shape=mxgraph.bpmn.shape;perimeter=rectanglePerimeter;symbol=service_task;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Script Task | `shape=mxgraph.bpmn.shape;perimeter=rectanglePerimeter;symbol=script_task;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Gateway (Exclusive) | `shape=mxgraph.bpmn.shape;perimeter=rhombusPerimeter;symbol=exclusiveGw;strokeColor=#d6b656;fillColor=#fff2cc` |
+| Gateway (Parallel) | `shape=mxgraph.bpmn.shape;perimeter=rhombusPerimeter;symbol=parallelGw;strokeColor=#d6b656;fillColor=#fff2cc` |
+| Gateway (Inclusive) | `shape=mxgraph.bpmn.shape;perimeter=rhombusPerimeter;symbol=inclusiveGw;strokeColor=#d6b656;fillColor=#fff2cc` |
+| Subprocess | `rounded=1;arcSize=10;strokeColor=#6c8ebf;fillColor=#dae8fc;strokeWidth=2` |
+| Pool/Lane | `swimlane;horizontal=1;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Message Flow | `dashed=1;strokeColor=#666666;endArrow=open;endFill=0` |
+| Sequence Flow | `strokeColor=#232F3E;endArrow=classic;endFill=1` |
+
+### Flowchart Shapes
+| Element | Shape/Style |
+|---------|-------------|
+| Start/End (Oval) | `shape=ellipse;strokeColor=#82b366;fillColor=#d5e8d4` |
+| Process (Rectangle) | `rounded=0;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Decision (Diamond) | `shape=rhombus;strokeColor=#d6b656;fillColor=#fff2cc` |
+| Input/Output | `shape=parallelogram;strokeColor=#82b366;fillColor=#d5e8d4` |
+| Document | `shape=document;strokeColor=#9673a6;fillColor=#e1d5e7` |
+| Database | `shape=cylinder3;strokeColor=#9673a6;fillColor=#e1d5e7` |
+| Manual Operation | `shape=trapezoid;strokeColor=#b85450;fillColor=#f8cecc` |
+| Predefined Process | `shape=process;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Connector | `shape=ellipse;strokeColor=#666666;fillColor=#f5f5f5` |
+| Delay | `shape=mxgraph.flowchart.delay;strokeColor=#d6b656;fillColor=#fff2cc` |
+| Merge | `shape=triangle;direction=south;strokeColor=#d6b656;fillColor=#fff2cc` |
+
+### State Machine / Statechart
+| Element | Shape/Style |
+|---------|-------------|
+| Initial State | `shape=ellipse;fillColor=#000000;strokeColor=#000000` |
+| State | `rounded=1;arcSize=20;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Final State | `shape=doubleEllipse;fillColor=#000000;strokeColor=#000000` |
+| Composite State | `rounded=1;arcSize=10;strokeColor=#6c8ebf;fillColor=#dae8fc;strokeWidth=2` |
+| Fork/Join | `rounded=0;fillColor=#000000;strokeColor=#000000` |
+| Choice | `shape=rhombus;strokeColor=#d6b656;fillColor=#fff2cc` |
+| History | `shape=ellipse;strokeColor=#6c8ebf;fillColor=none` |
+| Transition | `strokeColor=#232F3E;endArrow=classic;endFill=1` |
+
+### Sequence Diagram
+| Element | Shape/Style |
+|---------|-------------|
+| Actor | `shape=umlActor;strokeColor=#232F3E;fillColor=#f5f5f5` |
+| Lifeline | `shape=umlLifeline;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Activation | `rounded=0;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Synchronous Message | `strokeColor=#232F3E;endArrow=block;endFill=1` |
+| Asynchronous Message | `strokeColor=#232F3E;endArrow=open;endFill=0` |
+| Return Message | `dashed=1;strokeColor=#666666;endArrow=open;endFill=0` |
+| Self Message | `edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#232F3E` |
+
+### Activity Diagram
+| Element | Shape/Style |
+|---------|-------------|
+| Initial Node | `shape=ellipse;fillColor=#000000;strokeColor=#000000` |
+| Activity | `rounded=1;arcSize=20;strokeColor=#6c8ebf;fillColor=#dae8fc` |
+| Decision | `shape=rhombus;strokeColor=#d6b656;fillColor=#fff2cc` |
+| Fork Node | `rounded=0;fillColor=#000000;strokeColor=#000000` |
+| Join Node | `rounded=0;fillColor=#000000;strokeColor=#000000` |
+| Final Node | `shape=doubleEllipse;fillColor=#000000;strokeColor=#000000` |
+| Flow Final | `shape=ellipse;strokeColor=#B22222;fillColor=#f8cecc` |
+| Object Node | `rounded=0;strokeColor=#9673a6;fillColor=#e1d5e7` |
+| Swimlane | `swimlane;horizontal=0;strokeColor=#6c8ebf;fillColor=none` |
+
+### General Workflow Colors
+| Purpose | Fill Color | Stroke Color |
+|---------|------------|--------------|
+| Start/Success | `#d5e8d4` | `#82b366` |
+| Process/Task | `#dae8fc` | `#6c8ebf` |
+| Decision/Gateway | `#fff2cc` | `#d6b656` |
+| Error/End | `#f8cecc` | `#b85450` |
+| Data/Storage | `#e1d5e7` | `#9673a6` |
+| External/Manual | `#f5f5f5` | `#666666` |
 
 ---
 
@@ -717,7 +1140,9 @@ Control where edges connect to shapes:
 <mxCell id="edge-1" style="...;strokeWidth=2;" edge="1" parent="1">
 ```
 
-### AWS Color Palette
+### Color Palettes by Provider
+
+**AWS Colors:**
 | Category | Fill Color |
 |----------|------------|
 | Compute (Orange) | `#ED7100` |
@@ -726,6 +1151,42 @@ Control where edges connect to shapes:
 | Networking (Purple) | `#8C4FFF` |
 | Security (Red) | `#DD344C` |
 | Analytics (Blue) | `#006FB7` |
+
+**Azure Colors:**
+| Category | Fill Color |
+|----------|------------|
+| Compute | `#0078D4` |
+| Storage | `#0078D4` |
+| Database | `#0078D4` |
+| Networking | `#0078D4` |
+| Security | `#5C2D91` |
+
+**GCP Colors:**
+| Category | Fill Color |
+|----------|------------|
+| Compute (Blue) | `#4285F4` |
+| Storage (Blue) | `#4285F4` |
+| Database (Blue) | `#4285F4` |
+| Networking (Purple) | `#9C27B0` |
+| Security (Green) | `#34A853` |
+| AI/ML (Orange) | `#EA4335` |
+
+**Kubernetes Colors:**
+| Category | Fill Color |
+|----------|------------|
+| Primary Blue | `#326CE5` |
+| Pod Green | `#4CAF50` |
+| Service Yellow | `#FFC107` |
+
+**General Architecture Colors:**
+| Purpose | Fill Color | Stroke Color |
+|---------|------------|--------------|
+| Public/External | `#d5e8d4` | `#82b366` |
+| Private/Internal | `#dae8fc` | `#6c8ebf` |
+| Security Boundary | `#f8cecc` | `#b85450` |
+| Data/Storage | `#e1d5e7` | `#9673a6` |
+| Integration/Messaging | `#fff2cc` | `#d6b656` |
+| User/Client | `#f5f5f5` | `#666666` |
 
 ### Recommended Icon Size
 - Standard icons: `60x60` or `78x78`
@@ -807,12 +1268,18 @@ Control where edges connect to shapes:
 ## Instructions for Claude
 
 ### Shape and Structure
-1. **Always use official shape references** - Never use generic rectangles for cloud services
-2. **Match provider to request** - If user says "AWS diagram", use `mxgraph.aws4.*` shapes
-3. **Include proper groups** - Use VPC/Subnet/Region groups to show architecture boundaries
+1. **Always use official shape references** - Never use generic rectangles for cloud/infrastructure services
+2. **Match provider/domain to request:**
+    - AWS diagram → `mxgraph.aws4.*` shapes
+    - Azure diagram → `mxgraph.azure.*` shapes
+    - GCP diagram → `mxgraph.gcp2.*` shapes
+    - Kubernetes → `mxgraph.kubernetes.*` shapes
+    - Network diagram → `mxgraph.networks.*` or `mxgraph.cisco.*` shapes
+    - Software architecture → UML or custom component shapes
+3. **Include proper groups** - Use VPC/Subnet/Namespace/Zone groups to show boundaries
 4. **CRITICAL: Set correct parent attributes** - Children must have `parent="<container-id>"` to move with their container
 5. **Use relative coordinates for nested elements** - Child coordinates are relative to parent's top-left
-6. **XML order determines z-order** - Containers first → Children after → Edges last (inner items render on top)
+6. **XML order determines z-order** - Containers first → Children after → Edges last
 7. **REQUIRED: Add shadow to all elements** - Every service icon, text label, and edge must have `shadow=1;textShadow=1`
 
 ### Lines and Arrows
@@ -828,28 +1295,67 @@ Control where edges connect to shapes:
     - `async` - Async messaging, polling, event consumption
     - `block` - Pull/fetch operations (image pull, data fetch)
     - Bidirectional (`startArrow` + `endArrow`) - Read/write (database, cache)
+    - `ERone`/`ERmany` - Database relationships (ER diagrams)
     - `none` - Associations without direction
-13. **Add edge labels for protocols** - Label connections with protocol names (HTTPS, gRPC, etc.)
+13. **Add edge labels for protocols** - Label connections with protocol names (HTTPS, gRPC, TCP:5432, etc.)
 14. **Use dashed lines for management relationships** - Set `dashed=1` for control plane, monitoring, or optional paths
 
 ### Frames and Containers
 15. **Use hierarchical stroke widths for groups:**
-    - Top-level (AWS Cloud): `strokeWidth=4`
-    - Sub-groups (Region, VPC): `strokeWidth=3`
-    - Leaf groups (Subnets): `strokeWidth=2`
+    - Top-level (Cloud/Data Center): `strokeWidth=4`
+    - Sub-groups (Region, VPC, Namespace): `strokeWidth=3`
+    - Leaf groups (Subnets, Pods): `strokeWidth=2`
 16. **Group shapes must have square corners** - Always use `rounded=0` for container/group shapes
-17. **Apply consistent frame colors** - Green for public, blue for private, red for security boundaries
+17. **Apply consistent frame colors by purpose:**
+    - Green (`#d5e8d4`) - Public/External
+    - Blue (`#dae8fc`) - Private/Internal
+    - Red (`#f8cecc`) - Security Boundary
+    - Yellow (`#fff2cc`) - Integration/DMZ
+    - Purple (`#e1d5e7`) - Data/Storage
 18. **Position frame labels consistently** - Use `verticalAlign=top;align=left` for frame titles
 
 ### Edge Routing and Shape Positioning
 19. **CRITICAL: Edges must NEVER cross shapes** - Position shapes so connected items are adjacent
-20. **Position connected shapes adjacently** - Shapes that connect should be neighbors (horizontally or vertically)
+20. **Position connected shapes adjacently** - Shapes that connect should be neighbors
 21. **Use row-based layout** - Organize shapes in rows where each row represents a logical tier
 22. **Stagger non-connected shapes** - Avoid grid alignment that forces diagonal crossings
 23. **Use entry/exit points** - Control connection angles with `exitX`, `exitY`, `entryX`, `entryY`
 24. **Maintain edge spacing** - Keep 20px between parallel edges, 10px from shapes
 
+### Domain-Specific Guidelines
+
+**Cloud Architecture:**
+- Show region/zone boundaries
+- Group resources by VPC/VNet/VPC
+- Indicate public vs private subnets
+- Show internet gateways and NAT gateways
+
+**Kubernetes:**
+- Show namespace boundaries
+- Group pods by deployment/service
+- Indicate ingress paths
+- Show config/secrets relationships
+
+**Network Diagrams:**
+- Use consistent IP addressing labels
+- Show firewall rules as text labels
+- Indicate VPN/tunnel connections with dashed lines
+- Group by network zones (DMZ, Internal, External)
+
+**Software Architecture:**
+- Use layers (Presentation, Business, Data)
+- Show synchronous vs asynchronous communication
+- Indicate databases with cylinder shapes
+- Group microservices by domain
+
+**Integration Architecture:**
+- Show message flow direction
+- Indicate queue/topic names
+- Use different colors for sync vs async
+- Show retry/error paths with dashed lines
+
 ### General Guidelines
 25. **Use correct colors** - Follow the provider's color palette for each service category
 26. **Label all components** - Include service names in the `value` attribute
 27. **Position logically** - Arrange components following left-to-right or top-to-bottom flow
+28. **Be consistent** - Use same icon size, spacing, and style throughout the diagram
