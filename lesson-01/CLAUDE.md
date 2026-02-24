@@ -260,7 +260,36 @@ Edges connect shapes and represent data flow, dependencies, or relationships bet
 | `orthogonalEdgeStyle` | Right-angle turns only | Clean architecture diagrams |
 | `elbowEdgeStyle` | Single elbow bend | Simple L-shaped connections |
 | `entityRelationEdgeStyle` | ER diagram style | Database relationships |
-| `none` | Direct straight line | Point-to-point connections |
+| `none` | Direct straight line | Point-to-point connections, dense layouts |
+
+### Choosing Edge Style for Dense Layouts
+
+**When multiple complex shapes are close together, use straight lines (`edgeStyle=none`) to avoid crossings:**
+
+```
+Orthogonal (may cross):        Straight (direct path):
+    ┌───┐     ┌───┐                ┌───┐     ┌───┐
+    │ A │──┐  │ C │                │ A │╲    │ C │
+    └───┘  │  └───┘                └───┘ ╲   └───┘
+           │                              ╲
+    ┌───┐  │  ┌───┐                ┌───┐  ╲  ┌───┐
+    │ B │──┴──│ D │                │ B │───╲─│ D │
+    └───┘     └───┘                └───┘    ╲└───┘
+```
+
+**When to use straight lines:**
+- Dense shape clusters where orthogonal routing creates crossings
+- Short connections between adjacent shapes
+- Diagonal relationships in grid layouts
+
+**Straight line example:**
+```xml
+<!-- Direct straight line for dense layout -->
+<mxCell style="edgeStyle=none;rounded=0;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;"
+  edge="1" parent="1" source="a" target="b">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+```
 
 ### Line Style Examples
 
@@ -745,7 +774,9 @@ Control where edges connect to shapes:
 
 ### Lines and Arrows
 8. **Keep edges at root level** - Connection edges should have `parent="1"`
-9. **Use orthogonal edge style** - Prefer `edgeStyle=orthogonalEdgeStyle` for clean architecture diagrams
+9. **Choose edge style by layout density:**
+    - `orthogonalEdgeStyle` - Default for clean diagrams with spaced shapes
+    - `none` (straight) - Dense layouts where orthogonal routing causes crossings
 10. **All edges use strokeWidth=2** - Consistent 2pt stroke for all arrows and connections
 11. **Add flow animation to unidirectional arrows** - Set `flowAnimation=1` for single-head arrows showing data flow
 12. **Choose arrow type by connection semantics:**

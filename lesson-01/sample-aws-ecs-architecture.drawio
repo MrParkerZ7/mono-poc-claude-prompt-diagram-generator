@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="AWS-ECS-Architecture" id="aws-ecs-arch-1">
-        <mxGraphModel dx="623" dy="452" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="700" math="0" shadow="0">
+        <mxGraphModel dx="602" dy="437" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="700" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -67,28 +67,28 @@
                 <mxCell id="edge-alb-api" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;" edge="1" parent="1" source="alb" target="ecs-service1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-api-fargate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" edge="1" parent="1" source="ecs-service1" target="fargate">
+                <mxCell id="edge-api-fargate" style="edgeStyle=none;rounded=0;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" edge="1" parent="1" source="ecs-service1" target="fargate">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-fargate-rds" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="fargate" target="rds" edge="1">
+                <mxCell id="edge-fargate-rds" style="edgeStyle=none;rounded=0;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="fargate" target="rds" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-rds-s3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7AA116;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;" edge="1" parent="1" source="rds" target="s3">
+                <mxCell id="edge-rds-s3" style="edgeStyle=none;rounded=0;html=1;strokeColor=#7AA116;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;" edge="1" parent="1" source="rds" target="s3">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-worker-sqs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E7157B;strokeWidth=2;endArrow=async;endFill=1;flowAnimation=1;" edge="1" parent="1" source="ecs-service2" target="sqs">
+                <mxCell id="edge-worker-sqs" style="edgeStyle=none;rounded=0;html=1;strokeColor=#E7157B;strokeWidth=2;endArrow=async;endFill=1;flowAnimation=1;" edge="1" parent="1" source="ecs-service2" target="sqs">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-fargate-redis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="fargate" target="elasticache">
+                <mxCell id="edge-fargate-redis" style="edgeStyle=none;rounded=0;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="fargate" target="elasticache">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-worker-fargate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;exitX=1;exitY=0.25;entryX=0.25;entryY=1;" edge="1" parent="1" source="ecs-service2" target="fargate">
+                <mxCell id="edge-worker-fargate" style="edgeStyle=none;rounded=0;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" edge="1" parent="1" source="ecs-service2" target="fargate">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-cluster-cw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E7157B;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" edge="1" parent="1" source="ecs-cluster" target="cloudwatch">
+                <mxCell id="edge-cluster-cw" style="edgeStyle=none;rounded=0;html=1;strokeColor=#E7157B;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" edge="1" parent="1" source="ecs-cluster" target="cloudwatch">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-ecr-cluster" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=block;endFill=1;flowAnimation=1;" edge="1" parent="1" source="ecr" target="ecs-cluster">
+                <mxCell id="edge-ecr-cluster" style="edgeStyle=none;rounded=0;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=block;endFill=1;flowAnimation=1;" edge="1" parent="1" source="ecr" target="ecs-cluster">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>
