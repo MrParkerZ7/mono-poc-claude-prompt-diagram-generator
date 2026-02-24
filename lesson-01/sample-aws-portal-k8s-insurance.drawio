@@ -1,0 +1,190 @@
+<mxfile host="65bd71144e">
+    <diagram name="AWS-Portal-K8s-Insurance" id="portal-insurance-1">
+        <mxGraphModel dx="953" dy="546" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="aws-cloud" value="AWS Cloud" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;strokeWidth=4;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="700" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="region" value="ap-southeast-1" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_region;strokeColor=#147EBA;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#147EBA;dashed=1;strokeWidth=3;" parent="aws-cloud" vertex="1">
+                    <mxGeometry x="20" y="40" width="660" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="vpc" value="VPC 10.0.0.0/16" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_vpc;strokeColor=#248814;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#248814;dashed=0;strokeWidth=3;" parent="region" vertex="1">
+                    <mxGeometry x="20" y="40" width="620" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="public-subnet" value="Public Subnet 10.0.1.0/24" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=10;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;strokeColor=#7AA116;fillColor=#E9F3E6;verticalAlign=top;align=left;spacingLeft=30;fontColor=#248814;dashed=0;strokeWidth=2;" parent="vpc" vertex="1">
+                    <mxGeometry x="20" y="40" width="180" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="igw" value="IGW" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.internet_gateway;shadow=1;" parent="public-subnet" vertex="1">
+                    <mxGeometry x="60" y="40" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="alb" value="ALB" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.application_load_balancer;shadow=1;" parent="public-subnet" vertex="1">
+                    <mxGeometry x="60" y="130" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="nat" value="NAT GW" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.nat_gateway;shadow=1;" parent="public-subnet" vertex="1">
+                    <mxGeometry x="60" y="230" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="private-app-subnet" value="Private App Subnet 10.0.2.0/24" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=10;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=left;spacingLeft=30;fontColor=#147EBA;dashed=0;strokeWidth=2;" parent="vpc" vertex="1">
+                    <mxGeometry x="220" y="40" width="180" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="portal-api" value="Portal API" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.ecs_service;shadow=1;" parent="private-app-subnet" vertex="1">
+                    <mxGeometry x="60" y="40" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="portal-web" value="Portal Web" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.ecs_service;shadow=1;" parent="private-app-subnet" vertex="1">
+                    <mxGeometry x="60" y="130" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fargate" value="Fargate" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.fargate;shadow=1;" parent="private-app-subnet" vertex="1">
+                    <mxGeometry x="60" y="230" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="private-data-subnet" value="Private Data Subnet 10.0.3.0/24" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=10;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;strokeColor=#C925D1;fillColor=#F9E6F9;verticalAlign=top;align=left;spacingLeft=30;fontColor=#C925D1;dashed=0;strokeWidth=2;" parent="vpc" vertex="1">
+                    <mxGeometry x="420" y="40" width="180" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="portal-db" value="Portal DB&lt;br&gt;(PostgreSQL)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.rds;shadow=1;" parent="private-data-subnet" vertex="1">
+                    <mxGeometry x="60" y="40" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="secrets" value="Secrets&lt;br&gt;Manager" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.secrets_manager;shadow=1;" parent="private-data-subnet" vertex="1">
+                    <mxGeometry x="60" y="150" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="vpn-gw" value="VPN GW" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.vpn_gateway;shadow=1;" parent="private-data-subnet" vertex="1">
+                    <mxGeometry x="60" y="260" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="onprem-dc" value="On-Premises Data Center" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_corporate_data_center;strokeColor=#5A6C86;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#5A6C86;dashed=0;strokeWidth=4;" parent="1" vertex="1">
+                    <mxGeometry x="860" y="40" width="700" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="onprem-network" value="Corporate Network 192.168.0.0/16" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;fontStyle=0;rounded=1;fillColor=none;strokeColor=#5A6C86;verticalAlign=top;align=left;spacingLeft=10;fontColor=#5A6C86;dashed=1;strokeWidth=3;" parent="onprem-dc" vertex="1">
+                    <mxGeometry x="20" y="40" width="660" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="dmz" value="DMZ 192.168.1.0/24" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=10;fontStyle=0;rounded=1;fillColor=#FFF2CC;strokeColor=#D6B656;verticalAlign=top;align=left;spacingLeft=10;fontColor=#5A6C86;dashed=0;strokeWidth=2;" parent="onprem-network" vertex="1">
+                    <mxGeometry x="20" y="40" width="140" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="firewall" value="Firewall" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.firewall;shadow=1;" parent="dmz" vertex="1">
+                    <mxGeometry x="40" y="40" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="k8s-cluster" value="Kubernetes Cluster 192.168.10.0/24" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=10;fontStyle=0;rounded=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;verticalAlign=top;align=left;spacingLeft=10;fontColor=#5A6C86;dashed=0;strokeWidth=2;" parent="onprem-network" vertex="1">
+                    <mxGeometry x="180" y="40" width="280" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="k8s-ingress" value="Ingress&lt;br&gt;Controller" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#326CE5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.kubernetes.ing;shadow=1;" parent="k8s-cluster" vertex="1">
+                    <mxGeometry x="30" y="50" width="50" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="core-insurance-api" value="Core Insurance&lt;br&gt;API" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#326CE5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.kubernetes.svc;shadow=1;" parent="k8s-cluster" vertex="1">
+                    <mxGeometry x="110" y="50" width="50" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="core-policy-svc" value="Policy&lt;br&gt;Service" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#326CE5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.kubernetes.deploy;shadow=1;" parent="k8s-cluster" vertex="1">
+                    <mxGeometry x="30" y="160" width="50" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="core-claims-svc" value="Claims&lt;br&gt;Service" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#326CE5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.kubernetes.deploy;shadow=1;" parent="k8s-cluster" vertex="1">
+                    <mxGeometry x="110" y="160" width="50" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="core-customer-svc" value="Customer&lt;br&gt;Service" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#326CE5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.kubernetes.deploy;shadow=1;" parent="k8s-cluster" vertex="1">
+                    <mxGeometry x="190" y="160" width="50" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="k8s-secrets" value="Secrets" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#326CE5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.kubernetes.secret;shadow=1;" parent="k8s-cluster" vertex="1">
+                    <mxGeometry x="190" y="50" width="50" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="k8s-configmap" value="ConfigMap" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#326CE5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.kubernetes.cm;shadow=1;" parent="k8s-cluster" vertex="1">
+                    <mxGeometry x="30" y="270" width="50" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="k8s-pod-pool" value="Pod Pool" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#326CE5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.kubernetes.pod;shadow=1;" parent="k8s-cluster" vertex="1">
+                    <mxGeometry x="110" y="270" width="50" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="db-zone" value="Database Zone 192.168.20.0/24" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=10;fontStyle=0;rounded=1;fillColor=#F8CECC;strokeColor=#B85450;verticalAlign=top;align=left;spacingLeft=10;fontColor=#5A6C86;dashed=0;strokeWidth=2;" parent="onprem-network" vertex="1">
+                    <mxGeometry x="480" y="40" width="160" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="core-db" value="Core Insurance&lt;br&gt;DB (Oracle)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.database;shadow=1;" parent="db-zone" vertex="1">
+                    <mxGeometry x="50" y="50" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="core-db-replica" value="DB Replica&lt;br&gt;(Standby)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.database;shadow=1;" parent="db-zone" vertex="1">
+                    <mxGeometry x="50" y="160" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="backup-storage" value="Backup&lt;br&gt;Storage" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.storage;shadow=1;" parent="db-zone" vertex="1">
+                    <mxGeometry x="50" y="280" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="vpn-endpoint" value="VPN&lt;br&gt;Endpoint" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#5A6C86;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.vpn_connection;shadow=1;" parent="onprem-network" vertex="1">
+                    <mxGeometry x="40" y="230" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="users" value="End Users" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3E;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.users;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="620" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sg-alb-label" value="SG: ALB&#xa;Inbound: 443 (0.0.0.0/0)&#xa;Outbound: 8080 (10.0.2.0/24)" style="text;html=1;strokeColor=#7AA116;fillColor=#d5e8d4;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=8;fontColor=#333333;spacing=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="350" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="sg-app-label" value="SG: App&#xa;Inbound: 8080 (SG-ALB)&#xa;Outbound: 5432, 443, 8443" style="text;html=1;strokeColor=#147EBA;fillColor=#dae8fc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=8;fontColor=#333333;spacing=4;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="350" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="sg-data-label" value="SG: Data&#xa;Inbound: 5432 (SG-App)&#xa;Outbound: None" style="text;html=1;strokeColor=#C925D1;fillColor=#f8cecc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=8;fontColor=#333333;spacing=4;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="350" width="130" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="fw-rules-label" value="Firewall Rules&#xa;Allow: 8443 (10.0.0.0/16 → 192.168.10.0/24)&#xa;Allow: 1521 (192.168.10.0/24 → 192.168.20.0/24)&#xa;Deny: All other" style="text;html=1;strokeColor=#B85450;fillColor=#f8cecc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=8;fontColor=#333333;spacing=4;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="570" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="vpn-label" value="Site-to-Site VPN&#xa;IPSec IKEv2&#xa;AES-256 Encryption&#xa;BGP Routing" style="text;html=1;strokeColor=#5A6C86;fillColor=#f5f5f5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=8;fontColor=#333333;spacing=4;" parent="1" vertex="1">
+                    <mxGeometry x="760" y="420" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-user-igw" value="HTTPS:443" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;" parent="1" source="users" target="igw" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-igw-alb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8C4FFF;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;" parent="1" source="igw" target="alb" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-alb-api" value="HTTP:8080" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;" parent="1" source="alb" target="portal-api" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-alb-web" value="HTTP:3000" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;" parent="1" source="alb" target="portal-web" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-api-fargate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" parent="1" source="portal-api" target="fargate" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-web-fargate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" parent="1" source="portal-web" target="fargate" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-api-db" value="TCP:5432" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;" parent="1" source="portal-api" target="portal-db" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-api-secrets" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DD344C;strokeWidth=2;endArrow=block;endFill=1;flowAnimation=1;" parent="1" source="portal-api" target="secrets" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-api-vpn" value="HTTPS:8443" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8C4FFF;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;exitX=1;exitY=0.5;" parent="1" source="portal-api" target="vpn-gw" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-vpn-tunnel" value="IPSec VPN" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#5A6C86;strokeWidth=3;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=9;fontColor=#5A6C86;labelBackgroundColor=#ffffff;dashed=1;dashPattern=8 4;" parent="1" source="vpn-gw" target="vpn-endpoint" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-vpn-fw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DD344C;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;" parent="1" source="vpn-endpoint" target="firewall" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-fw-ingress" value="HTTPS:8443" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;" parent="1" source="firewall" target="k8s-ingress" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-ingress-api" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;" parent="1" source="k8s-ingress" target="core-insurance-api" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-api-policy" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" parent="1" source="core-insurance-api" target="core-policy-svc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-api-claims" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" parent="1" source="core-insurance-api" target="core-claims-svc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-api-customer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;" parent="1" source="core-insurance-api" target="core-customer-svc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-policy-db" value="TCP:1521" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;" parent="1" source="core-policy-svc" target="core-db" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-claims-db" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="core-claims-svc" target="core-db" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-customer-db" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="core-customer-svc" target="core-db" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-db-replica" value="Replication" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C925D1;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;dashed=1;dashPattern=4 4;" parent="1" source="core-db" target="core-db-replica" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-db-backup" value="Backup" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7AA116;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;dashed=1;dashPattern=4 4;" parent="1" source="core-db" target="backup-storage" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
