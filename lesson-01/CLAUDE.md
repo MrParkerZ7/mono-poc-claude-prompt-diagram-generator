@@ -60,25 +60,49 @@ AWS Cloud (parent="1")
 
 ### Nesting Rules and Z-Order
 
-**XML Order (defines z-order - later items appear on top):**
-1. **Containers first, then children** - Define parent containers before their children in XML
-2. **Inner items appear AFTER containers** - This ensures children render ON TOP of container backgrounds
-3. **Edges last** - Connection edges should be defined after all shapes
+**XML Order determines visual stacking - elements defined later appear in front.**
 
-**Visual Layering (bottom to top):**
+**XML Definition Order (top to bottom in file):**
 ```
-1. AWS Cloud (bottom - largest container)
-2. Region
-3. VPC
-4. Subnets
-5. Service icons (top - innermost items)
-6. Edges (topmost - always visible)
+1. Groups/Containers (AWS Cloud → Region → VPC → Subnets)
+2. Shapes/Service Icons (inside their parent containers)
+3. Text Labels (standalone text boxes)
+4. Edges/Arrows (connection lines between shapes)
 ```
 
-**Other Rules:**
-- **Edges should have `parent="1"`** - They connect across containers
-- **Use relative coordinates** for children inside containers
-- **Container must have `vertex="1"`** to be a valid parent
+**Visual Z-Order (back to front):**
+| Layer | Element Type | XML Position |
+|-------|--------------|--------------|
+| 1 (Back) | Top-level groups (AWS Cloud, On-Prem DC) | First |
+| 2 | Sub-groups (Region, VPC) | After parent |
+| 3 | Leaf groups (Subnets, Zones) | After parent |
+| 4 | Service icons/shapes | After their container |
+| 5 | Text labels | After shapes |
+| 6 (Front) | Edges/Arrows | Last |
+
+**Example XML Structure:**
+```xml
+<!-- 1. Groups (back) - outermost to innermost -->
+<mxCell id="aws-cloud" value="AWS Cloud" ... />
+  <mxCell id="region" parent="aws-cloud" ... />
+    <mxCell id="vpc" parent="region" ... />
+      <mxCell id="subnet" parent="vpc" ... />
+
+<!-- 2. Shapes (middle) - inside containers -->
+        <mxCell id="ecs" parent="subnet" ... />
+        <mxCell id="rds" parent="subnet" ... />
+
+<!-- 3. Text labels -->
+<mxCell id="label-1" value="Security Rules" ... />
+
+<!-- 4. Edges (front) - always last, always parent="1" -->
+<mxCell id="edge-1" parent="1" source="ecs" target="rds" edge="1" />
+```
+
+**Rules:**
+- **Edges must have `parent="1"`** - They connect across containers and need to be at root level
+- **Shapes use relative coordinates** - Child coordinates are relative to parent's top-left
+- **Container must have `vertex="1"`** - Required to be a valid parent for nesting
 
 ---
 
