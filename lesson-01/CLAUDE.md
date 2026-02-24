@@ -64,37 +64,38 @@ AWS Cloud (parent="1")
 
 **Visual Z-Order (1=front, 4=back):**
 ```
-1. Service Icons  (front)
+1. Standalone shapes (parent="1")  (front)
 2. Text Labels
 3. Edges
-4. Groups         (back)
+4. Groups + nested children       (back)
 ```
 
-**XML Definition Order (to achieve above):**
+**XML Definition Order:**
 ```
-4. GROUPS         ← first in XML  → back
-3. EDGES          ← second        → middle
-2. TEXT LABELS    ← third         → front
-1. SERVICE ICONS  ← last in XML   → front (top)
+1. Groups with children immediately after each group
+2. Edges
+3. Text Labels
+4. Standalone shapes (parent="1") ← last in XML → front
 ```
+
+**Important:** Shapes nested inside groups (`parent="group-id"`) are constrained to that group's z-layer. Only root-level shapes (`parent="1"`) can be reordered freely relative to edges.
 
 **Example XML Structure:**
 ```xml
-<!-- ========== 4. GROUPS (Back) ========== -->
-<mxCell id="aws-cloud" value="AWS Cloud" ... />
-  <mxCell id="region" parent="aws-cloud" ... />
-    <mxCell id="vpc" parent="region" ... />
-      <mxCell id="subnet" parent="vpc" ... />
+<!-- Groups with children defined immediately after -->
+<mxCell id="vpc" value="VPC" ... />
+  <mxCell id="subnet" parent="vpc" ... />
+    <mxCell id="ecs" parent="subnet" ... />  <!-- child of subnet -->
+    <mxCell id="rds" parent="subnet" ... />  <!-- child of subnet -->
 
-<!-- ========== 3. EDGES ========== -->
+<!-- Edges -->
 <mxCell id="edge-1" parent="1" source="ecs" target="rds" edge="1" />
 
-<!-- ========== 2. TEXT LABELS ========== -->
+<!-- Text Labels -->
 <mxCell id="label-1" value="Security Rules" ... />
 
-<!-- ========== 1. SERVICE ICONS (Front) ========== -->
-<mxCell id="ecs" parent="subnet" ... />
-<mxCell id="rds" parent="subnet" ... />
+<!-- Standalone shapes (front) -->
+<mxCell id="users" parent="1" ... />  <!-- root-level, renders on top -->
 ```
 
 **Rules:**
