@@ -25,7 +25,7 @@
                 <mxCell id="subnet-integration" value="subnet-integration (10.0.4.0/24)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#d6b656;fillColor=#fff2cc;verticalAlign=top;align=left;spacingLeft=10;fontColor=#B8860B;dashed=0;strokeWidth=2;fontSize=10;shadow=1;textShadow=1;" parent="vnet" vertex="1">
                     <mxGeometry x="680" y="40" width="200" height="540" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-users-appgw" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="users" target="app-gateway" edge="1">
+                <mxCell id="edge-users-appgw" value="HTTPS" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="users" target="app-gateway" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="edge-appgw-app" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="app-gateway" target="app-service" edge="1">
@@ -37,25 +37,25 @@
                 <mxCell id="edge-app-sql" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="app-service" target="sql-db" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-app-cosmos" value="NoSQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="app-service" target="cosmos-db" edge="1">
+                <mxCell id="edge-app-cosmos" value="NoSQL" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="app-service" target="cosmos-db" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-app-redis" value="Cache" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="app-service" target="redis-cache" edge="1">
+                <mxCell id="edge-app-redis" value="Cache" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="app-service" target="redis-cache" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-func-sb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="functions" target="service-bus" edge="1">
+                <mxCell id="edge-func-sb" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="functions" target="service-bus" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="edge-sb-logic" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="service-bus" target="logic-apps" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-app-blob" value="Files" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="app-service" target="blob-storage" edge="1">
+                <mxCell id="edge-app-blob" value="Files" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="app-service" target="blob-storage" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-app-kv" value="Secrets" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="app-service" target="key-vault" edge="1">
+                <mxCell id="edge-app-kv" value="Secrets" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="app-service" target="key-vault" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-aad-appgw" value="Auth" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;dashed=1;" parent="1" source="azure-ad" target="app-gateway" edge="1">
+                <mxCell id="edge-aad-appgw" value="Auth" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;fontSize=10;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;dashed=1;" parent="1" source="azure-ad" target="app-gateway" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="users" value="Users" style="aspect=fixed;html=1;points=[];align=center;image;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;fontSize=11;imageAspect=0;image=img/lib/azure2/identity/Users.svg;shadow=1;textShadow=1;" parent="1" vertex="1">

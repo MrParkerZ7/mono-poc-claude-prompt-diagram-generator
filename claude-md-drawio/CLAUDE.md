@@ -1307,25 +1307,38 @@ Edges connect shapes and represent data flow, dependencies, or relationships bet
 | `entityRelationEdgeStyle` | ER diagram style | Database relationships |
 | `none` | Direct straight line | Point-to-point connections, dense layouts |
 
-### Choosing Edge Style for Dense Layouts
+### Choosing Edge Style by Layout
 
-**When multiple complex shapes are close together, use straight lines (`edgeStyle=none`) to avoid crossings:**
-
+**Use `orthogonalEdgeStyle` when shapes are aligned (same row or column):**
 ```
-Orthogonal (may cross):        Straight (direct path):
-    ┌───┐     ┌───┐                ┌───┐     ┌───┐
-    │ A │──┐  │ C │                │ A │╲    │ C │
-    └───┘  │  └───┘                └───┘ ╲   └───┘
-           │                              ╲
-    ┌───┐  │  ┌───┐                ┌───┐  ╲  ┌───┐
-    │ B │──┴──│ D │                │ B │───╲─│ D │
-    └───┘     └───┘                └───┘    ╲└───┘
+Same Row (use orthogonal):     Same Column (use orthogonal):
+    ┌───┐ ────► ┌───┐              ┌───┐
+    │ A │       │ B │              │ A │
+    └───┘       └───┘              └───┘
+                                     │
+                                     ▼
+                                   ┌───┐
+                                   │ B │
+                                   └───┘
 ```
 
-**When to use straight lines:**
+**Use `edgeStyle=none` (straight) when shapes are diagonal (not aligned):**
+```
+Diagonal Layout (use straight):
+    ┌───┐           ┌───┐
+    │ A │╲          │ C │
+    └───┘ ╲         └───┘
+           ╲
+            ╲ ┌───┐
+             ╲│ B │
+              └───┘
+```
+
+**When to use straight lines (`edgeStyle=none`):**
+- **Diagonal relationships** - Shapes not aligned on same row or column
+- **Same-size shapes in complex layouts** - When orthogonal routing creates unnecessary bends
 - Dense shape clusters where orthogonal routing creates crossings
 - Short connections between adjacent shapes
-- Diagonal relationships in grid layouts
 
 **Straight line example:**
 ```xml
