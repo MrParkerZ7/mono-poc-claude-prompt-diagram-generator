@@ -1,85 +1,54 @@
 <mxfile host="65bd71144e">
     <diagram name="C4-Context" id="c4-context-banking">
-        <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+        <mxGraphModel dx="903" dy="818" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-
-                <!-- Title -->
                 <mxCell id="title-context" value="System Context Diagram - Core Banking Platform" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#333333;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="500" y="30" width="600" height="40" as="geometry"/>
                 </mxCell>
-
-                <!-- Person: Retail Customer -->
                 <mxCell id="person-retail" value="&lt;b&gt;Retail Customer&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Individual banking customer&lt;br&gt;using mobile/web banking&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#08427B;strokeColor=#052E56;fontColor=#FFFFFF;labelPosition=center;align=center;spacingTop=-60;spacing=0;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="120" y="200" width="80" height="120" as="geometry"/>
                 </mxCell>
-
-                <!-- Person: Corporate Customer -->
                 <mxCell id="person-corporate" value="&lt;b&gt;Corporate Customer&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Business banking customer&lt;br&gt;with treasury operations&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#08427B;strokeColor=#052E56;fontColor=#FFFFFF;labelPosition=center;align=center;spacingTop=-60;spacing=0;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="120" y="420" width="80" height="120" as="geometry"/>
                 </mxCell>
-
-                <!-- Person: Bank Teller -->
                 <mxCell id="person-teller" value="&lt;b&gt;Bank Teller&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Branch staff handling&lt;br&gt;customer transactions&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#08427B;strokeColor=#052E56;fontColor=#FFFFFF;labelPosition=center;align=center;spacingTop=-60;spacing=0;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="120" y="640" width="80" height="120" as="geometry"/>
                 </mxCell>
-
-                <!-- Person: Back Office -->
                 <mxCell id="person-backoffice" value="&lt;b&gt;Back Office Staff&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Operations, compliance,&lt;br&gt;and risk management&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#08427B;strokeColor=#052E56;fontColor=#FFFFFF;labelPosition=center;align=center;spacingTop=-60;spacing=0;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="120" y="860" width="80" height="120" as="geometry"/>
                 </mxCell>
-
-                <!-- System: Core Banking Platform (main) -->
                 <mxCell id="system-corebanking" value="&lt;b&gt;Core Banking Platform&lt;/b&gt;&lt;br&gt;[Software System]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Central banking system managing&lt;br&gt;accounts, transactions, loans,&lt;br&gt;payments, and customer data.&lt;br&gt;Provides real-time processing&lt;br&gt;and regulatory compliance.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=3;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="500" y="400" width="300" height="200" as="geometry"/>
                 </mxCell>
-
-                <!-- Supporting System: Digital Banking -->
                 <mxCell id="system-digital" value="&lt;b&gt;Digital Banking&lt;/b&gt;&lt;br&gt;[Software System]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Mobile &amp; Web Banking&lt;br&gt;Customer-facing channels&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="400" y="150" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Supporting System: Branch System -->
                 <mxCell id="system-branch" value="&lt;b&gt;Branch System&lt;/b&gt;&lt;br&gt;[Software System]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Teller workstation&lt;br&gt;and branch operations&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="400" y="700" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Supporting System: Back Office -->
                 <mxCell id="system-backoffice" value="&lt;b&gt;Back Office System&lt;/b&gt;&lt;br&gt;[Software System]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Operations, reporting,&lt;br&gt;and administration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="400" y="870" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- External System: Payment Network -->
                 <mxCell id="ext-payment" value="&lt;b&gt;Payment Networks&lt;/b&gt;&lt;br&gt;[External System]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;SWIFT, ACH, RTGS,&lt;br&gt;Card Networks (Visa/MC)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="950" y="150" width="200" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- External System: Credit Bureau -->
                 <mxCell id="ext-credit" value="&lt;b&gt;Credit Bureau&lt;/b&gt;&lt;br&gt;[External System]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Credit scoring and&lt;br&gt;credit history checks&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="950" y="310" width="200" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- External System: Regulatory -->
                 <mxCell id="ext-regulatory" value="&lt;b&gt;Regulatory Systems&lt;/b&gt;&lt;br&gt;[External System]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Central Bank reporting,&lt;br&gt;AML/KYC compliance&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="950" y="460" width="200" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- External System: Tax Authority -->
                 <mxCell id="ext-tax" value="&lt;b&gt;Tax Authority&lt;/b&gt;&lt;br&gt;[External System]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Tax reporting and&lt;br&gt;withholding submissions&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="950" y="610" width="200" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- External System: Identity Provider -->
                 <mxCell id="ext-identity" value="&lt;b&gt;Identity Provider&lt;/b&gt;&lt;br&gt;[External System]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;National ID verification,&lt;br&gt;biometric services&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="950" y="760" width="200" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Relationships: Users to Systems -->
                 <mxCell id="rel-retail-digital" value="Uses mobile/web banking" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="person-retail" target="system-digital" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="rel-corporate-digital" value="Uses corporate banking" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.3;entryX=0;entryY=0.7;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="person-corporate" target="system-digital" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -88,24 +57,18 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="rel-teller-branch" value="Processes transactions" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="person-teller" target="system-branch" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="rel-backoffice-system" value="Manages operations" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="person-backoffice" target="system-backoffice" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Relationships: Supporting to Core -->
                 <mxCell id="rel-digital-core" value="API calls [REST/gRPC]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=0.5;exitY=1;entryX=0.3;entryY=0;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="system-digital" target="system-corebanking" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="rel-branch-core" value="Real-time transactions" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=0.5;exitY=0;entryX=0.3;entryY=1;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="system-branch" target="system-corebanking" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="rel-bo-core" value="Batch &amp; reports" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.3;entryX=0;entryY=0.8;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="system-backoffice" target="system-corebanking" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -116,9 +79,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
-                <!-- Relationships: Core to External -->
-                <mxCell id="rel-core-payment" value="Payment messages [ISO 20022]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.2;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="system-corebanking" target="ext-payment" edge="1">
+                <mxCell id="rel-core-payment" value="Payment messages [ISO 20022]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.2;entryX=0;entryY=0.5;shadow=1;textShadow=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="system-corebanking" target="ext-payment" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="880" y="440"/>
@@ -126,15 +87,12 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="rel-core-credit" value="Credit inquiries" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.4;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="system-corebanking" target="ext-credit" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="rel-core-regulatory" value="Regulatory reports" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="system-corebanking" target="ext-regulatory" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="rel-core-tax" value="Tax filings" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.7;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="system-corebanking" target="ext-tax" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -143,7 +101,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="rel-core-identity" value="KYC verification" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.85;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="system-corebanking" target="ext-identity" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -152,8 +109,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
-                <!-- Legend -->
                 <mxCell id="legend-context" value="Legend" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#F5F5F5;strokeColor=#666666;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1200" y="150" width="300" height="156" as="geometry"/>
                 </mxCell>
@@ -176,163 +131,107 @@
         </mxGraphModel>
     </diagram>
     <diagram name="C4-Container" id="c4-container-banking">
-        <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1600" math="0" shadow="0">
+        <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="2200" pageHeight="1600" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-
-                <!-- Title -->
                 <mxCell id="title-container" value="Container Diagram - Core Banking Platform" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#333333;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="700" y="30" width="600" height="40" as="geometry"/>
                 </mxCell>
-
-                <!-- System Boundary -->
                 <mxCell id="boundary-corebanking" value="Core Banking Platform [Software System]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#3C7FC0;strokeWidth=4;dashed=1;dashPattern=8 8;verticalAlign=top;align=left;spacingLeft=20;spacingTop=10;fontSize=16;fontStyle=1;fontColor=#3C7FC0;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="350" y="200" width="1400" height="900" as="geometry"/>
                 </mxCell>
-
-                <!-- External: Digital Banking -->
                 <mxCell id="c-ext-digital" value="&lt;b&gt;Digital Banking&lt;/b&gt;&lt;br&gt;[External System]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="80" y="300" width="160" height="70" as="geometry"/>
                 </mxCell>
-
-                <!-- External: Branch System -->
                 <mxCell id="c-ext-branch" value="&lt;b&gt;Branch System&lt;/b&gt;&lt;br&gt;[External System]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="80" y="500" width="160" height="70" as="geometry"/>
                 </mxCell>
-
-                <!-- External: Back Office -->
                 <mxCell id="c-ext-backoffice" value="&lt;b&gt;Back Office&lt;/b&gt;&lt;br&gt;[External System]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="80" y="700" width="160" height="70" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: API Gateway -->
                 <mxCell id="container-gateway" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;[Container: Kong]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Authentication, routing,&lt;br&gt;rate limiting, API versioning&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="400" y="450" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Account Service -->
                 <mxCell id="container-account" value="&lt;b&gt;Account Service&lt;/b&gt;&lt;br&gt;[Container: Java/Spring]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Account management,&lt;br&gt;balance, interest calc&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="680" y="250" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Transaction Service -->
                 <mxCell id="container-transaction" value="&lt;b&gt;Transaction Service&lt;/b&gt;&lt;br&gt;[Container: Java/Spring]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Real-time transactions,&lt;br&gt;posting, reversals&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="680" y="410" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Payment Service -->
                 <mxCell id="container-payment" value="&lt;b&gt;Payment Service&lt;/b&gt;&lt;br&gt;[Container: Java/Spring]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Domestic &amp; international&lt;br&gt;payments, SWIFT, ACH&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="680" y="570" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Loan Service -->
                 <mxCell id="container-loan" value="&lt;b&gt;Loan Service&lt;/b&gt;&lt;br&gt;[Container: Java/Spring]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Loan origination, &lt;br&gt;disbursement, repayment&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="680" y="730" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Customer Service -->
                 <mxCell id="container-customer" value="&lt;b&gt;Customer Service&lt;/b&gt;&lt;br&gt;[Container: Java/Spring]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Customer master data,&lt;br&gt;KYC, CIF management&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="680" y="890" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: GL Service -->
                 <mxCell id="container-gl" value="&lt;b&gt;General Ledger&lt;/b&gt;&lt;br&gt;[Container: Java/Spring]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Chart of accounts,&lt;br&gt;journal entries, balancing&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="960" y="250" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Compliance Service -->
                 <mxCell id="container-compliance" value="&lt;b&gt;Compliance Service&lt;/b&gt;&lt;br&gt;[Container: Java/Spring]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;AML screening, sanctions,&lt;br&gt;regulatory checks&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="960" y="410" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Notification Service -->
                 <mxCell id="container-notification" value="&lt;b&gt;Notification Service&lt;/b&gt;&lt;br&gt;[Container: Node.js]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Email, SMS, push&lt;br&gt;notifications, alerts&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="960" y="570" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Reporting Service -->
                 <mxCell id="container-reporting" value="&lt;b&gt;Reporting Service&lt;/b&gt;&lt;br&gt;[Container: Python]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Regulatory reports,&lt;br&gt;analytics, dashboards&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="960" y="730" width="180" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Core Database -->
                 <mxCell id="container-coredb" value="&lt;b&gt;Core Database&lt;/b&gt;&lt;br&gt;[Container: Oracle/PostgreSQL]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Accounts, transactions,&lt;br&gt;customers, loans&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1240" y="300" width="170" height="130" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: GL Database -->
                 <mxCell id="container-gldb" value="&lt;b&gt;GL Database&lt;/b&gt;&lt;br&gt;[Container: Oracle]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Ledger entries,&lt;br&gt;chart of accounts&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1240" y="480" width="170" height="120" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Data Warehouse -->
                 <mxCell id="container-dwh" value="&lt;b&gt;Data Warehouse&lt;/b&gt;&lt;br&gt;[Container: Snowflake]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Analytics, reporting,&lt;br&gt;historical data&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1240" y="650" width="170" height="120" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Cache -->
                 <mxCell id="container-cache" value="&lt;b&gt;Cache&lt;/b&gt;&lt;br&gt;[Container: Redis]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Session, rate limits,&lt;br&gt;frequently accessed data&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1240" y="820" width="170" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Message Broker -->
                 <mxCell id="container-mq" value="&lt;b&gt;Message Broker&lt;/b&gt;&lt;br&gt;[Container: Kafka]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Event streaming,&lt;br&gt;async processing&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1450" y="450" width="170" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Container: Audit Log -->
                 <mxCell id="container-audit" value="&lt;b&gt;Audit Log&lt;/b&gt;&lt;br&gt;[Container: Elasticsearch]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Immutable audit trail,&lt;br&gt;compliance logging&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1450" y="620" width="170" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- External Systems -->
                 <mxCell id="c-ext-payment" value="&lt;b&gt;Payment Networks&lt;/b&gt;&lt;br&gt;[External: SWIFT/ACH]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1850" y="280" width="160" height="70" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-ext-credit" value="&lt;b&gt;Credit Bureau&lt;/b&gt;&lt;br&gt;[External]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1850" y="400" width="160" height="60" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-ext-regulatory" value="&lt;b&gt;Regulatory&lt;/b&gt;&lt;br&gt;[External]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1850" y="510" width="160" height="60" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-ext-sms" value="&lt;b&gt;SMS Gateway&lt;/b&gt;&lt;br&gt;[External: Twilio]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1850" y="620" width="160" height="60" as="geometry"/>
                 </mxCell>
-
-                <!-- Relationships -->
                 <mxCell id="c-rel-digital-gw" value="API [HTTPS]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.3;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="c-ext-digital" target="container-gateway" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-rel-branch-gw" value="API [HTTPS]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="c-ext-branch" target="container-gateway" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-rel-bo-gw" value="API [HTTPS]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.7;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="c-ext-backoffice" target="container-gateway" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-rel-gw-account" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;exitX=1;exitY=0.3;entryX=0;entryY=0.5;shadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="container-gateway" target="container-account" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-rel-gw-transaction" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="container-gateway" target="container-transaction" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-rel-gw-payment" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;exitX=1;exitY=0.7;entryX=0;entryY=0.5;shadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="container-gateway" target="container-payment" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <mxCell id="c-rel-services-coredb" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.3;shadow=1;textShadow=1;flowAnimation=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="container-account" target="container-coredb" edge="1">
+                <mxCell id="c-rel-services-coredb" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.3;shadow=1;textShadow=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="container-account" target="container-coredb" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <mxCell id="c-rel-trans-coredb" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="container-transaction" target="container-coredb" edge="1">
+                <mxCell id="c-rel-trans-coredb" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="container-transaction" target="container-coredb" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="1200" y="465"/>
@@ -340,15 +239,12 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
-                <mxCell id="c-rel-gl-gldb" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="container-gl" target="container-gldb" edge="1">
+                <mxCell id="c-rel-gl-gldb" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="container-gl" target="container-gldb" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-rel-reporting-dwh" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="container-reporting" target="container-dwh" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-rel-trans-mq" value="Events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="container-transaction" target="container-mq" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -357,7 +253,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="c-rel-notif-mq" value="Subscribes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.3;entryX=0;entryY=0.7;shadow=1;textShadow=1;endArrow=async;endFill=1;" parent="1" source="container-notification" target="container-mq" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -366,11 +261,9 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="c-rel-compliance-mq" value="Subscribes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.3;shadow=1;textShadow=1;endArrow=async;endFill=1;" parent="1" source="container-compliance" target="container-mq" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="c-rel-all-audit" value="Logs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.7;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="container-compliance" target="container-audit" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -379,8 +272,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
-                <mxCell id="c-rel-payment-ext" value="ISO 20022" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="container-payment" target="c-ext-payment" edge="1">
+                <mxCell id="c-rel-payment-ext" value="ISO 20022" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="container-payment" target="c-ext-payment" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="1800" y="625"/>
@@ -388,7 +280,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="c-rel-loan-credit" value="Credit check" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="container-loan" target="c-ext-credit" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -397,7 +288,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="c-rel-reporting-reg" value="Reports" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.7;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="container-reporting" target="c-ext-regulatory" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -406,12 +296,9 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="c-rel-notif-sms" value="SMS API" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;exitX=1;exitY=0.7;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="container-notification" target="c-ext-sms" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Legend -->
                 <mxCell id="legend-container" value="Legend" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#F5F5F5;strokeColor=#666666;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="80" y="900" width="220" height="180" as="geometry"/>
                 </mxCell>
@@ -437,107 +324,67 @@
         </mxGraphModel>
     </diagram>
     <diagram name="C4-Component" id="c4-component-banking">
-        <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+        <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-
-                <!-- Title -->
                 <mxCell id="title-component" value="Component Diagram - Transaction Service" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#333333;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="550" y="30" width="600" height="40" as="geometry"/>
                 </mxCell>
-
-                <!-- Container Boundary -->
                 <mxCell id="boundary-transaction" value="Transaction Service [Container: Java/Spring Boot]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#3C7FC0;strokeWidth=3;dashed=1;dashPattern=8 8;verticalAlign=top;align=left;spacingLeft=20;spacingTop=10;fontSize=14;fontStyle=1;fontColor=#3C7FC0;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="280" y="120" width="1100" height="700" as="geometry"/>
                 </mxCell>
-
-                <!-- External: API Gateway -->
                 <mxCell id="comp-ext-gateway" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;[Container]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="400" width="140" height="70" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Transaction Controller -->
                 <mxCell id="comp-trans-ctrl" value="&lt;b&gt;Transaction Controller&lt;/b&gt;&lt;br&gt;[Component: REST Controller]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;HTTP endpoints for&lt;br&gt;transaction operations&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="320" y="200" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Batch Controller -->
                 <mxCell id="comp-batch-ctrl" value="&lt;b&gt;Batch Controller&lt;/b&gt;&lt;br&gt;[Component: REST Controller]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Bulk transaction&lt;br&gt;processing endpoints&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="320" y="340" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Event Listener -->
                 <mxCell id="comp-event-listener" value="&lt;b&gt;Event Listener&lt;/b&gt;&lt;br&gt;[Component: Kafka Consumer]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Processes async&lt;br&gt;transaction events&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="320" y="480" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Scheduler -->
                 <mxCell id="comp-scheduler" value="&lt;b&gt;EOD Scheduler&lt;/b&gt;&lt;br&gt;[Component: Spring Scheduler]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;End-of-day processing,&lt;br&gt;interest calculation&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="320" y="620" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Transaction Service -->
                 <mxCell id="comp-trans-svc" value="&lt;b&gt;Transaction Service&lt;/b&gt;&lt;br&gt;[Component: Service]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Core transaction logic,&lt;br&gt;validation, orchestration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="600" y="200" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Posting Engine -->
                 <mxCell id="comp-posting" value="&lt;b&gt;Posting Engine&lt;/b&gt;&lt;br&gt;[Component: Service]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Double-entry posting,&lt;br&gt;balance updates&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="600" y="340" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Validation Service -->
                 <mxCell id="comp-validation" value="&lt;b&gt;Validation Service&lt;/b&gt;&lt;br&gt;[Component: Service]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Business rules, limits,&lt;br&gt;duplicate detection&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="600" y="480" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Reversal Service -->
                 <mxCell id="comp-reversal" value="&lt;b&gt;Reversal Service&lt;/b&gt;&lt;br&gt;[Component: Service]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Transaction reversals,&lt;br&gt;corrections&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="600" y="620" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Transaction Repository -->
                 <mxCell id="comp-trans-repo" value="&lt;b&gt;Transaction Repository&lt;/b&gt;&lt;br&gt;[Component: JPA Repository]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Transaction data access&lt;br&gt;and persistence&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="900" y="270" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Account Client -->
                 <mxCell id="comp-account-client" value="&lt;b&gt;Account Client&lt;/b&gt;&lt;br&gt;[Component: Feign Client]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Account service&lt;br&gt;integration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="900" y="410" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: GL Client -->
                 <mxCell id="comp-gl-client" value="&lt;b&gt;GL Client&lt;/b&gt;&lt;br&gt;[Component: Feign Client]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;General Ledger&lt;br&gt;integration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="900" y="550" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- Component: Event Publisher -->
                 <mxCell id="comp-event-pub" value="&lt;b&gt;Event Publisher&lt;/b&gt;&lt;br&gt;[Component: Kafka Producer]&lt;br&gt;&lt;br&gt;&lt;font style=&#39;font-size:10px&#39;&gt;Publishes transaction&lt;br&gt;events&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="900" y="690" width="180" height="100" as="geometry"/>
                 </mxCell>
-
-                <!-- External: Core Database -->
                 <mxCell id="comp-ext-db" value="&lt;b&gt;Core Database&lt;/b&gt;&lt;br&gt;[PostgreSQL]" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1500" y="280" width="140" height="90" as="geometry"/>
                 </mxCell>
-
-                <!-- External: Account Service -->
                 <mxCell id="comp-ext-account" value="&lt;b&gt;Account Service&lt;/b&gt;&lt;br&gt;[Container]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1500" y="430" width="140" height="60" as="geometry"/>
                 </mxCell>
-
-                <!-- External: GL Service -->
                 <mxCell id="comp-ext-gl" value="&lt;b&gt;GL Service&lt;/b&gt;&lt;br&gt;[Container]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1500" y="540" width="140" height="60" as="geometry"/>
                 </mxCell>
-
-                <!-- External: Kafka -->
                 <mxCell id="comp-ext-kafka" value="&lt;b&gt;Kafka&lt;/b&gt;&lt;br&gt;[Message Broker]" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1500" y="650" width="140" height="90" as="geometry"/>
                 </mxCell>
-
-                <!-- Relationships -->
                 <mxCell id="comp-rel-gw-trans" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-ext-gateway" target="comp-trans-ctrl" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -546,15 +393,12 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="comp-rel-gw-batch" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-ext-gateway" target="comp-batch-ctrl" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="comp-rel-transctrl-svc" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-trans-ctrl" target="comp-trans-svc" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="comp-rel-batchctrl-svc" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.7;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-batch-ctrl" target="comp-trans-svc" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -563,11 +407,9 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="comp-rel-eventlst-svc" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.3;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-event-listener" target="comp-validation" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="comp-rel-sched-posting" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.7;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-scheduler" target="comp-posting" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -576,7 +418,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="comp-rel-svc-validation" value="Validates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=0.5;exitY=1;entryX=0.5;entryY=0;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-trans-svc" target="comp-validation" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -585,11 +426,9 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="comp-rel-svc-posting" value="Posts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=0.5;exitY=1;entryX=0.5;entryY=0;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-trans-svc" target="comp-posting" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="comp-rel-svc-repo" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-trans-svc" target="comp-trans-repo" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -598,11 +437,9 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="comp-rel-posting-account" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-posting" target="comp-account-client" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="comp-rel-posting-gl" value="Uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.7;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-posting" target="comp-gl-client" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -611,7 +448,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
                 <mxCell id="comp-rel-svc-eventpub" value="Publishes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.7;entryX=0;entryY=0.3;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-trans-svc" target="comp-event-pub" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -620,23 +456,18 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
-                <mxCell id="comp-rel-repo-db" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="comp-trans-repo" target="comp-ext-db" edge="1">
+                <mxCell id="comp-rel-repo-db" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="comp-trans-repo" target="comp-ext-db" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="comp-rel-accclient-svc" value="gRPC" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-account-client" target="comp-ext-account" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="comp-rel-glclient-svc" value="gRPC" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-gl-client" target="comp-ext-gl" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="comp-rel-eventpub-kafka" value="Events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=1;exitY=0.5;entryX=0;entryY=0.5;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;" parent="1" source="comp-event-pub" target="comp-ext-kafka" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="comp-rel-kafka-listener" value="Subscribes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontSize=9;fontColor=#707070;exitX=0;exitY=0.3;entryX=1;entryY=0.7;shadow=1;textShadow=1;endArrow=async;endFill=1;" parent="1" source="comp-ext-kafka" target="comp-event-listener" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
@@ -647,8 +478,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-
-                <!-- Legend -->
                 <mxCell id="legend-component" value="Legend" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#F5F5F5;strokeColor=#666666;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="600" width="200" height="180" as="geometry"/>
                 </mxCell>

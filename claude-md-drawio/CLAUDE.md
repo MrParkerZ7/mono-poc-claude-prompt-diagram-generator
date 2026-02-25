@@ -7,6 +7,7 @@ Comprehensive guide for creating `.drawio` architecture diagrams covering:
 - **Container Orchestration**: Kubernetes (K8s), Docker
 - **Network & Infrastructure**: Firewalls, Load Balancers, DNS, VPN
 - **Software Architecture**: Microservices, APIs, Databases
+- **C4 Model**: Context, Container, Component diagrams for software architecture
 - **Integration Systems**: Message Queues, ESB, API Gateways
 - **IT Development**: CI/CD, DevOps, Monitoring
 - **Database ERD**: Entity-Relationship Diagrams with multi-database support (SQL, NoSQL, Cache, Search)
@@ -380,6 +381,217 @@ Use `shape=mxgraph.cisco.` for Cisco-style network diagrams.
 | Virtual Machine | `shape=mxgraph.veeam.virtual_machine` |
 | Storage Array | `shape=mxgraph.veeam.storage` |
 | Tape Library | `shape=mxgraph.veeam.tape` |
+
+---
+
+## C4 Model Architecture Diagrams
+
+C4 Model provides a hierarchical approach to software architecture visualization with four levels: Context, Container, Component, and Code.
+
+### C4 Diagram Levels
+
+| Level | Purpose | Scope |
+|-------|---------|-------|
+| **Context** | System landscape, users, external systems | Highest level - who uses the system |
+| **Container** | Applications, databases, services within the system | Technology choices, deployment units |
+| **Component** | Internal structure of a container | Classes, modules, services |
+| **Code** | Implementation details (rarely used in DrawIO) | UML class diagrams |
+
+### C4 Color Scheme
+
+| Element Type | Fill Color | Stroke Color | Font Color |
+|--------------|------------|--------------|------------|
+| Person (Actor) | `#08427B` | `#052E56` | `#FFFFFF` |
+| Software System (Internal) | `#438DD5` | `#3C7FC0` | `#FFFFFF` |
+| External System | `#999999` | `#8A8A8A` | `#FFFFFF` |
+| Container | `#438DD5` | `#3C7FC0` | `#FFFFFF` |
+| Component | `#85BBF0` | `#5A9BD5` | `#000000` |
+| Database/Data Store | `#438DD5` | `#3C7FC0` | `#FFFFFF` |
+
+### C4 Shape Styles
+
+```xml
+<!-- Person (Actor) -->
+<mxCell id="person-1" value="&lt;b&gt;User Name&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Description of the user&lt;/font&gt;"
+  style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#08427B;strokeColor=#052E56;fontColor=#FFFFFF;labelPosition=center;align=center;spacingTop=-60;spacing=0;fontSize=11;shadow=1;textShadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="100" y="200" width="80" height="120" as="geometry"/>
+</mxCell>
+
+<!-- Software System (Internal) - Main -->
+<mxCell id="system-main" value="&lt;b&gt;System Name&lt;/b&gt;&lt;br&gt;[Software System]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Description of the system&lt;/font&gt;"
+  style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=3;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="400" y="300" width="300" height="200" as="geometry"/>
+</mxCell>
+
+<!-- Software System (Internal) - Supporting -->
+<mxCell id="system-support" value="&lt;b&gt;Supporting System&lt;/b&gt;&lt;br&gt;[Software System]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Description&lt;/font&gt;"
+  style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="100" y="300" width="180" height="100" as="geometry"/>
+</mxCell>
+
+<!-- External System -->
+<mxCell id="system-external" value="&lt;b&gt;External System&lt;/b&gt;&lt;br&gt;[External System]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Description&lt;/font&gt;"
+  style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="800" y="300" width="200" height="100" as="geometry"/>
+</mxCell>
+
+<!-- Container -->
+<mxCell id="container-1" value="&lt;b&gt;Container Name&lt;/b&gt;&lt;br&gt;[Container: Technology]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Description&lt;/font&gt;"
+  style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="400" y="300" width="180" height="110" as="geometry"/>
+</mxCell>
+
+<!-- Database Container -->
+<mxCell id="container-db" value="&lt;b&gt;Database Name&lt;/b&gt;&lt;br&gt;[Container: PostgreSQL]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Description&lt;/font&gt;"
+  style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="700" y="300" width="170" height="130" as="geometry"/>
+</mxCell>
+
+<!-- Component -->
+<mxCell id="component-1" value="&lt;b&gt;Component Name&lt;/b&gt;&lt;br&gt;[Component: Type]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Description&lt;/font&gt;"
+  style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85BBF0;strokeColor=#5A9BD5;strokeWidth=2;fontColor=#000000;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="400" y="300" width="180" height="100" as="geometry"/>
+</mxCell>
+```
+
+### C4 Boundary Containers
+
+```xml
+<!-- System Boundary (for Container diagrams) -->
+<mxCell id="boundary-system" value="System Name [Software System]"
+  style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#3C7FC0;strokeWidth=4;dashed=1;dashPattern=8 8;verticalAlign=top;align=left;spacingLeft=20;spacingTop=10;fontSize=16;fontStyle=1;fontColor=#3C7FC0;shadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="300" y="150" width="1400" height="900" as="geometry"/>
+</mxCell>
+
+<!-- Container Boundary (for Component diagrams) -->
+<mxCell id="boundary-container" value="Container Name [Container: Technology]"
+  style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#3C7FC0;strokeWidth=3;dashed=1;dashPattern=8 8;verticalAlign=top;align=left;spacingLeft=20;spacingTop=10;fontSize=14;fontStyle=1;fontColor=#3C7FC0;shadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="280" y="120" width="1100" height="700" as="geometry"/>
+</mxCell>
+```
+
+### C4 Stroke Width Hierarchy
+
+| Element | Stroke Width | Use Case |
+|---------|--------------|----------|
+| System Boundary | `strokeWidth=4` | Top-level boundary in Container diagram |
+| Container Boundary | `strokeWidth=3` | Container boundary in Component diagram |
+| Main System | `strokeWidth=3` | The central system being documented |
+| Supporting Elements | `strokeWidth=2` | Other systems, containers, components |
+| All Edges | `strokeWidth=2` | Consistent for all connections |
+
+### C4 Arrow Styles
+
+**CRITICAL: Flow Animation Rules**
+
+| Arrow Type | Flow Animation | Style |
+|------------|----------------|-------|
+| Unidirectional (single arrow) | `flowAnimation=1` | Data flows one direction |
+| Bidirectional (two arrows) | **NO flowAnimation** | Read/write, request/response |
+| Async/Subscribe | **NO flowAnimation** | Polling, event consumption |
+
+```xml
+<!-- Unidirectional Arrow (WITH flowAnimation) -->
+<mxCell id="rel-1" value="API calls [REST]"
+  style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;"
+  parent="1" source="source-id" target="target-id" edge="1">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+
+<!-- Bidirectional Arrow (NO flowAnimation) -->
+<mxCell id="rel-db" value="SQL"
+  style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;shadow=1;textShadow=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;"
+  parent="1" source="service-id" target="database-id" edge="1">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+
+<!-- Async/Subscribe Arrow (NO flowAnimation) -->
+<mxCell id="rel-async" value="Subscribes"
+  style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;shadow=1;textShadow=1;endArrow=async;endFill=1;"
+  parent="1" source="consumer-id" target="broker-id" edge="1">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+```
+
+### C4 Arrow Type Quick Reference
+
+| Connection Type | Arrow Style | flowAnimation |
+|-----------------|-------------|---------------|
+| HTTP/API Request | `endArrow=classic;endFill=1` | Yes |
+| Data Flow | `endArrow=classic;endFill=1` | Yes |
+| Publish Events | `endArrow=classic;endFill=1` | Yes |
+| Database Read/Write | `startArrow=classic;endArrow=classic` | **No** |
+| Cache Read/Write | `startArrow=classic;endArrow=classic` | **No** |
+| External API Bidirectional | `startArrow=classic;endArrow=classic` | **No** |
+| Subscribe/Poll | `endArrow=async;endFill=1` | **No** |
+| Event Consumption | `endArrow=async;endFill=1` | **No** |
+
+### C4 Edge Labels
+
+Always label edges with the technology/protocol:
+
+| Label Type | Examples |
+|------------|----------|
+| API Protocol | `REST`, `gRPC`, `GraphQL`, `HTTPS` |
+| Database | `SQL`, `Reads/Writes` |
+| Messaging | `Events`, `Subscribes`, `Publishes` |
+| Integration | `ISO 20022`, `SWIFT`, `FTP` |
+
+### C4 Legend Example
+
+```xml
+<!-- Legend for Context Diagram -->
+<mxCell id="legend-context" value="Legend"
+  style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#F5F5F5;strokeColor=#666666;strokeWidth=2;fontSize=12;shadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="1200" y="150" width="300" height="156" as="geometry"/>
+</mxCell>
+<mxCell id="legend-person" value="&lt;table&gt;&lt;tr&gt;&lt;td style='background:#08427B;width:20px;'&gt;&lt;/td&gt;&lt;td&gt; Person (User/Actor)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;"
+  parent="legend-context" vertex="1">
+  <mxGeometry y="26" width="300" height="26" as="geometry"/>
+</mxCell>
+<mxCell id="legend-system" value="&lt;table&gt;&lt;tr&gt;&lt;td style='background:#438DD5;width:20px;'&gt;&lt;/td&gt;&lt;td&gt; Software System (Internal)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;"
+  parent="legend-context" vertex="1">
+  <mxGeometry y="52" width="300" height="26" as="geometry"/>
+</mxCell>
+<mxCell id="legend-external" value="&lt;table&gt;&lt;tr&gt;&lt;td style='background:#999999;width:20px;'&gt;&lt;/td&gt;&lt;td&gt; External System&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;"
+  parent="legend-context" vertex="1">
+  <mxGeometry y="78" width="300" height="26" as="geometry"/>
+</mxCell>
+<mxCell id="legend-rel" value="&lt;table&gt;&lt;tr&gt;&lt;td&gt;───▶&lt;/td&gt;&lt;td&gt; Uses / Depends On&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;"
+  parent="legend-context" vertex="1">
+  <mxGeometry y="104" width="300" height="26" as="geometry"/>
+</mxCell>
+<mxCell id="legend-bidir" value="&lt;table&gt;&lt;tr&gt;&lt;td&gt;◀──▶&lt;/td&gt;&lt;td&gt; Bidirectional (Read/Write)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;"
+  parent="legend-context" vertex="1">
+  <mxGeometry y="130" width="300" height="26" as="geometry"/>
+</mxCell>
+```
+
+### C4 Best Practices
+
+1. **Each diagram level should have its own page** - Use multiple `<diagram>` elements
+2. **Title every diagram** - Include diagram level and system name
+3. **Use consistent positioning** - Left-to-right flow, users on left, external systems on right
+4. **Include legends** - Explain colors and arrow types
+5. **Label all relationships** - Protocol, technology, or action
+6. **Main system uses thicker stroke** - `strokeWidth=3` vs `strokeWidth=2`
+7. **Always add shadow** - `shadow=1;textShadow=1` on all elements
+8. **HTML formatting for labels** - Use `<b>`, `<br>`, `<font>` for structured text
 
 ---
 
@@ -1683,6 +1895,19 @@ Control where edges connect to shapes:
 - Place NoSQL/Cache/Search databases in separate column
 - Route cross-database sync arrows around perimeter (dashed lines)
 - Include legend showing database types and relationship notations
+
+**C4 Model:**
+- Create separate diagram pages for each level (Context, Container, Component)
+- Use correct colors: Person (`#08427B`), System (`#438DD5`), External (`#999999`), Component (`#85BBF0`)
+- Main system uses `strokeWidth=3`, supporting elements use `strokeWidth=2`
+- System/Container boundaries use dashed lines with `strokeWidth=4` or `strokeWidth=3`
+- **CRITICAL: flowAnimation only on unidirectional arrows**
+  - Single arrow (→): Add `flowAnimation=1`
+  - Bidirectional (↔): NO flowAnimation
+  - Async/Subscribe (▷): NO flowAnimation
+- Label all edges with protocol/technology (REST, gRPC, SQL, etc.)
+- Include legend explaining colors and arrow types
+- Use HTML formatting in labels: `<b>Name</b><br>[Type]<br><br><font style='font-size:10px'>Description</font>`
 
 ### General Guidelines
 25. **Use correct colors** - Follow the provider's color palette for each service category
