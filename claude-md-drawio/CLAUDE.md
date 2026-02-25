@@ -195,45 +195,113 @@ Use `shape=mxgraph.aws4.` prefix for AWS Architecture 2024 icons.
 
 ## Azure Shape References
 
-Use `shape=mxgraph.azure.` prefix for Azure icons.
+Azure uses **image-based SVG icons** from the `azure2` library. Use the `image=img/lib/azure2/category/Icon_Name.svg` format.
+
+### Azure Icon Style Format
+
+```xml
+<mxCell id="app-service" value="App Service"
+  style="aspect=fixed;html=1;points=[];align=center;image;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;fontSize=10;imageAspect=0;image=img/lib/azure2/app_services/App_Services.svg;shadow=1;textShadow=1;"
+  vertex="1" parent="1">
+  <mxGeometry x="100" y="100" width="60" height="60" as="geometry"/>
+</mxCell>
+```
 
 ### Compute
-| Service | Shape Style |
-|---------|-------------|
-| Virtual Machine | `shape=mxgraph.azure.compute.virtual_machine` |
-| App Service | `shape=mxgraph.azure.compute.app_services` |
-| Functions | `shape=mxgraph.azure.compute.function_apps` |
-| AKS | `shape=mxgraph.azure.compute.kubernetes_services` |
-| Container Instances | `shape=mxgraph.azure.compute.container_instances` |
+| Service | Image Path |
+|---------|------------|
+| Virtual Machine | `image=img/lib/azure2/compute/Virtual_Machine.svg` |
+| App Service | `image=img/lib/azure2/app_services/App_Services.svg` |
+| Functions | `image=img/lib/azure2/compute/Function_Apps.svg` |
+| AKS | `image=img/lib/azure2/containers/Kubernetes_Services.svg` |
+| Container Instances | `image=img/lib/azure2/compute/Container_Instances.svg` |
+| Container Registry | `image=img/lib/azure2/containers/Container_Registries.svg` |
 
 ### Storage
-| Service | Shape Style |
-|---------|-------------|
-| Blob Storage | `shape=mxgraph.azure.storage.blob_block` |
-| Storage Account | `shape=mxgraph.azure.storage.storage_accounts` |
-| Disk | `shape=mxgraph.azure.storage.disks` |
+| Service | Image Path |
+|---------|------------|
+| Storage Account | `image=img/lib/azure2/storage/Storage_Accounts.svg` |
+| Blob Storage | `image=img/lib/azure2/general/Blob_Block.svg` |
+| Data Lake | `image=img/lib/azure2/storage/Data_Lake_Storage_Gen1.svg` |
+| Azure Files | `image=img/lib/azure2/storage/Azure_Fileshare.svg` |
 
 ### Database
-| Service | Shape Style |
-|---------|-------------|
-| SQL Database | `shape=mxgraph.azure.databases.sql_databases` |
-| Cosmos DB | `shape=mxgraph.azure.databases.azure_cosmos_db` |
-| Redis Cache | `shape=mxgraph.azure.databases.cache_redis` |
+| Service | Image Path |
+|---------|------------|
+| SQL Database | `image=img/lib/azure2/databases/Azure_SQL.svg` |
+| Cosmos DB | `image=img/lib/azure2/databases/Azure_Cosmos_DB.svg` |
+| Redis Cache | `image=img/lib/azure2/databases/Cache_Redis.svg` |
+| MySQL | `image=img/lib/azure2/databases/Azure_Database_MySQL_Server.svg` |
+| PostgreSQL | `image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg` |
 
 ### Networking
-| Service | Shape Style |
-|---------|-------------|
-| Virtual Network | `shape=mxgraph.azure.networking.virtual_networks` |
-| Load Balancer | `shape=mxgraph.azure.networking.load_balancers` |
-| Application Gateway | `shape=mxgraph.azure.networking.application_gateways` |
-| CDN | `shape=mxgraph.azure.networking.cdn_profiles` |
-| DNS Zone | `shape=mxgraph.azure.networking.dns_zones` |
+| Service | Image Path |
+|---------|------------|
+| Virtual Network | Use rectangle container with `strokeColor=#0078D4` |
+| Load Balancer | `image=img/lib/azure2/networking/Load_Balancers.svg` |
+| Application Gateway | `image=img/lib/azure2/networking/Application_Gateways.svg` |
+| CDN | `image=img/lib/azure2/networking/CDN_Profiles.svg` |
+| DNS Zone | `image=img/lib/azure2/networking/DNS_Zones.svg` |
+| Firewall | `image=img/lib/azure2/networking/Firewalls.svg` |
+| Front Door | `image=img/lib/azure2/networking/Front_Doors.svg` |
 
-### Security
-| Service | Shape Style |
-|---------|-------------|
-| Key Vault | `shape=mxgraph.azure.security.key_vaults` |
-| Azure AD | `shape=mxgraph.azure.identity.azure_active_directory` |
+### Security & Identity
+| Service | Image Path |
+|---------|------------|
+| Key Vault | `image=img/lib/azure2/security/Key_Vaults.svg` |
+| Azure AD | `image=img/lib/azure2/identity/Azure_Active_Directory.svg` |
+| Users | `image=img/lib/azure2/identity/Users.svg` |
+| Managed Identity | `image=img/lib/azure2/identity/Managed_Identities.svg` |
+
+### Integration
+| Service | Image Path |
+|---------|------------|
+| Service Bus | `image=img/lib/azure2/integration/Service_Bus.svg` |
+| Logic Apps | `image=img/lib/azure2/integration/Logic_Apps.svg` |
+| Event Grid | `image=img/lib/azure2/integration/Event_Grid_Topics.svg` |
+| API Management | `image=img/lib/azure2/integration/API_Management_Services.svg` |
+
+### Monitoring
+| Service | Image Path |
+|---------|------------|
+| Application Insights | `image=img/lib/azure2/devops/Application_Insights.svg` |
+| Log Analytics | `image=img/lib/azure2/management_governance/Log_Analytics_Workspaces.svg` |
+
+### Azure Container Groups (Subscription, Resource Group, VNet)
+
+Azure containers use simple rectangle shapes with Azure blue color (`#0078D4`):
+
+```xml
+<!-- Azure Subscription (Top Level - strokeWidth=4) -->
+<mxCell id="azure-sub" value="Azure Subscription"
+  style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#0078D4;fillColor=none;verticalAlign=top;align=left;spacingLeft=10;fontColor=#0078D4;dashed=0;strokeWidth=4;fontSize=14;fontStyle=1;shadow=1;textShadow=1;"
+  vertex="1" parent="1">
+  <mxGeometry x="120" y="40" width="1160" height="720" as="geometry"/>
+</mxCell>
+
+<!-- Resource Group (Level 2 - strokeWidth=3, dashed) -->
+<mxCell id="rg-webapp" value="rg-webapp-prod"
+  style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#0078D4;fillColor=none;verticalAlign=top;align=left;spacingLeft=10;fontColor=#0078D4;dashed=1;strokeWidth=3;fontSize=12;shadow=1;textShadow=1;"
+  vertex="1" parent="azure-sub">
+  <mxGeometry x="20" y="40" width="1120" height="660" as="geometry"/>
+</mxCell>
+
+<!-- Virtual Network (Level 3 - strokeWidth=3, light blue fill) -->
+<mxCell id="vnet" value="vnet-webapp (10.0.0.0/16)"
+  style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#0078D4;fillColor=#E6F2FF;verticalAlign=top;align=left;spacingLeft=10;fontColor=#0078D4;dashed=0;strokeWidth=3;fontSize=11;shadow=1;textShadow=1;"
+  vertex="1" parent="rg-webapp">
+  <mxGeometry x="200" y="40" width="900" height="600" as="geometry"/>
+</mxCell>
+```
+
+### Azure Subnet Colors
+
+| Subnet Type | Fill Color | Stroke Color |
+|-------------|------------|--------------|
+| Public | `#d5e8d4` | `#82b366` |
+| App/Private | `#dae8fc` | `#6c8ebf` |
+| Data | `#e1d5e7` | `#9673a6` |
+| Integration | `#fff2cc` | `#d6b656` |
 
 ---
 
