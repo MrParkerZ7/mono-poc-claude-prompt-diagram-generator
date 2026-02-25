@@ -106,19 +106,19 @@
                 <mxCell id="edge-user-igw" value="HTTPS:443" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="users" target="igw" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-igw-alb" style="edgeStyle=none;rounded=0;html=1;strokeColor=#8C4FFF;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="igw" target="alb" edge="1">
+                <mxCell id="edge-igw-alb" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="igw" target="alb" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-alb-api" value="HTTP:8080" style="edgeStyle=none;rounded=0;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="alb" target="portal-api" edge="1">
+                <mxCell id="edge-alb-api" value="HTTP:8080" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="alb" target="portal-api" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-alb-web" value="HTTP:3000" style="edgeStyle=none;rounded=0;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="alb" target="portal-web" edge="1">
+                <mxCell id="edge-alb-web" value="HTTP:3000" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="alb" target="portal-web" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-api-fargate" style="edgeStyle=none;rounded=0;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="portal-api" target="fargate" edge="1">
+                <mxCell id="edge-api-fargate" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="portal-api" target="fargate" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-web-fargate" style="edgeStyle=none;rounded=0;html=1;strokeColor=#ED7100;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="portal-web" target="fargate" edge="1">
+                <mxCell id="edge-web-fargate" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="portal-web" target="fargate" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="edge-api-db" value="TCP:5432" style="edgeStyle=none;rounded=0;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="portal-api" target="portal-db" edge="1">
@@ -127,7 +127,7 @@
                 <mxCell id="edge-api-secrets" style="edgeStyle=none;rounded=0;html=1;strokeColor=#DD344C;strokeWidth=2;endArrow=block;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="portal-api" target="secrets" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-api-vpn" value="HTTPS:8443" style="edgeStyle=none;rounded=0;html=1;strokeColor=#8C4FFF;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="portal-api" target="vpn-gw" edge="1">
+                <mxCell id="edge-api-vpn" value="HTTPS:8443" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="portal-api" target="vpn-gw" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="edge-vpn-tunnel" value="IPSec VPN" style="edgeStyle=none;rounded=0;html=1;strokeColor=#5A6C86;strokeWidth=3;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=9;fontColor=#5A6C86;labelBackgroundColor=#ffffff;dashed=1;dashPattern=8 4;shadow=1;textShadow=1;" parent="1" source="vpn-gw" target="vpn-endpoint" edge="1">
@@ -136,19 +136,19 @@
                 <mxCell id="edge-vpn-fw" style="edgeStyle=none;rounded=0;html=1;strokeColor=#DD344C;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="vpn-endpoint" target="firewall" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-fw-ingress" value="HTTPS:8443" style="edgeStyle=none;rounded=0;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="firewall" target="k8s-ingress" edge="1">
+                <mxCell id="edge-fw-ingress" value="HTTPS:8443" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="firewall" target="k8s-ingress" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-ingress-api" style="edgeStyle=none;rounded=0;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="k8s-ingress" target="core-insurance-api" edge="1">
+                <mxCell id="edge-ingress-api" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="k8s-ingress" target="core-insurance-api" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-api-policy" style="edgeStyle=none;rounded=0;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="core-insurance-api" target="core-policy-svc" edge="1">
+                <mxCell id="edge-api-policy" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="core-insurance-api" target="core-policy-svc" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-api-claims" style="edgeStyle=none;rounded=0;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="core-insurance-api" target="core-claims-svc" edge="1">
+                <mxCell id="edge-api-claims" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="core-insurance-api" target="core-claims-svc" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-api-customer" style="edgeStyle=none;rounded=0;html=1;strokeColor=#326CE5;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="core-insurance-api" target="core-customer-svc" edge="1">
+                <mxCell id="edge-api-customer" style="edgeStyle=none;rounded=0;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=open;endFill=0;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="core-insurance-api" target="core-customer-svc" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="edge-policy-db" value="TCP:1521" style="edgeStyle=none;rounded=0;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=9;fontColor=#666666;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="core-policy-svc" target="core-db" edge="1">

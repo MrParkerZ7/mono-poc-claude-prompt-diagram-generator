@@ -478,20 +478,20 @@
                 <mxCell id="legend-nodes" value="Node Specifications:&#xa;• Masters: 3x (4C/16GB)&#xa;• Workers: 16x total&#xa;• Storage: 3x (4x1TB NVMe)&#xa;• Total: 22 nodes" style="text;html=1;fontSize=9;align=left;shadow=1;textShadow=1;" parent="legend" vertex="1">
                     <mxGeometry x="250" y="110" width="120" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-users-network" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="users-group" target="network-layer" edge="1">
+                <mxCell id="edge-users-network" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="users-group" target="network-layer" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="580" y="140"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="edge-network-k8s" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="network-layer" target="k8s-cluster" edge="1">
+                <mxCell id="edge-network-k8s" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;flowAnimation=1;shadow=1;textShadow=1;" parent="1" source="network-layer" target="k8s-cluster" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-k8s-data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#b85450;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;shadow=1;textShadow=1;" parent="1" source="k8s-cluster" target="data-layer" edge="1">
+                <mxCell id="edge-k8s-data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#C925D1;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;shadow=1;textShadow=1;" parent="1" source="k8s-cluster" target="data-layer" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-k8s-external" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#d6b656;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;shadow=1;textShadow=1;" parent="1" source="k8s-cluster" target="external-group" edge="1">
+                <mxCell id="edge-k8s-external" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#232F3E;strokeWidth=2;startArrow=classic;startFill=1;endArrow=classic;endFill=1;shadow=1;textShadow=1;" parent="1" source="k8s-cluster" target="external-group" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="390" y="1100"/>
@@ -499,7 +499,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="edge-cicd-k8s" value="GitOps" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#EF7B4D;strokeWidth=2;endArrow=classic;endFill=1;dashed=1;fontSize=9;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;" parent="1" source="cicd-layer" target="k8s-cluster" edge="1">
+                <mxCell id="edge-cicd-k8s" value="GitOps" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=classic;endFill=1;dashed=1;fontSize=9;labelBackgroundColor=#ffffff;shadow=1;textShadow=1;flowAnimation=1;" parent="1" source="cicd-layer" target="k8s-cluster" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="1940" y="1230"/>

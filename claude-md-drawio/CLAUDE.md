@@ -14,6 +14,50 @@ Comprehensive guide for creating `.drawio` architecture diagrams covering:
 
 DrawIO uses XML format with specific style attributes to reference official shape libraries for each domain.
 
+---
+
+## Table of Contents
+
+### Fundamentals
+- [File Structure](#file-structure)
+- [CRITICAL: Parent-Child Relationships for Grouping](#critical-parent-child-relationships-for-grouping)
+
+### Cloud Provider Shape References
+- [AWS Shape References](#aws-shape-references) - Compute, Storage, Database, Networking, Security, Messaging
+- [Azure Shape References](#azure-shape-references) - Compute, Storage, Database, Networking, Integration
+- [Google Cloud Platform (GCP) Shape References](#google-cloud-platform-gcp-shape-references)
+- [Kubernetes Shape References](#kubernetes-shape-references) - Workloads, Networking, Config, Cluster
+
+### Infrastructure & Architecture
+- [Network & Infrastructure Shape References](#network--infrastructure-shape-references) - General, Cisco, On-Premises
+- [C4 Model Architecture Diagrams](#c4-model-architecture-diagrams) - Context, Container, Component levels
+- [Software Architecture Shape References](#software-architecture-shape-references) - UML, Microservices, APIs
+- [DevOps & CI/CD Shape References](#devops--cicd-shape-references)
+
+### Database & Data
+- [Database Shape References](#database-shape-references) - SQL, NoSQL, Cloud-Managed, Data Warehouse
+- [Search Engine & Analytics Shape References](#search-engine--analytics-shape-references)
+- [Data Workflow & ETL Shape References](#data-workflow--etl-shape-references) - Pipeline, Stream Processing
+- [Workflow & Process Diagram Shape References](#workflow--process-diagram-shape-references) - BPMN, Flowchart, State Machine
+- [Database ERD (Entity-Relationship Diagrams)](#database-erd-entity-relationship-diagrams) - Table structure, Relationships
+
+### Lines, Arrows & Styling
+- [Lines and Edges (Connections)](#lines-and-edges-connections) - Edge styles, routing
+- [Arrow Color Standards (Protocol-Based)](#arrow-color-standards-protocol-based) - HTTP, Database, Cache, Queue colors
+- [Arrows (Edge Endpoints)](#arrows-edge-endpoints) - Arrow types, selection guide
+- [Frames and Containers](#frames-and-containers) - Grouping, styling
+- [Waypoints and Edge Control Points](#waypoints-and-edge-control-points)
+
+### Examples & Guidelines
+- [Example: AWS ECS Architecture Cell](#example-aws-ecs-architecture-cell)
+- [Example: Complete AWS Architecture Snippet](#example-complete-aws-architecture-snippet-with-proper-nesting)
+- [Style Guidelines](#style-guidelines) - Shadows, stroke widths, colors
+- [Flow Animation](#flow-animation)
+- [Edge Routing Best Practices](#edge-routing-best-practices)
+- [Instructions for Claude](#instructions-for-claude) - Shape, Lines, Frames, Domain-specific
+
+---
+
 ## File Structure
 DrawIO files are XML-based with this basic structure:
 ```xml
