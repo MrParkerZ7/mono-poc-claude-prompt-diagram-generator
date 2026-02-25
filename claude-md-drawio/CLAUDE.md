@@ -118,68 +118,87 @@ AWS Cloud (parent="1")
 
 ## AWS Shape References
 
-Use `shape=mxgraph.aws4.` prefix for AWS Architecture 2024 icons.
+AWS service icons use the `resourceIcon` shape with `resIcon` parameter for AWS Architecture 2024 icons.
+
+### AWS Icon Style Format
+
+```xml
+<mxCell id="sqs" value="SQS"
+  style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;shadow=1;textShadow=1;"
+  vertex="1" parent="1">
+  <mxGeometry x="100" y="100" width="60" height="60" as="geometry"/>
+</mxCell>
+```
 
 ### Compute
-| Service | Shape Style |
-|---------|-------------|
-| EC2 | `shape=mxgraph.aws4.ec2` |
-| Lambda | `shape=mxgraph.aws4.lambda_function` |
-| ECS | `shape=mxgraph.aws4.ecs` |
-| EKS | `shape=mxgraph.aws4.eks` |
-| Fargate | `shape=mxgraph.aws4.fargate` |
-| Elastic Beanstalk | `shape=mxgraph.aws4.elastic_beanstalk` |
+| Service | resIcon Value | Fill Color |
+|---------|---------------|------------|
+| EC2 | `resIcon=mxgraph.aws4.ec2` | `#ED7100` |
+| Lambda | `resIcon=mxgraph.aws4.lambda_function` | `#ED7100` |
+| ECS | `resIcon=mxgraph.aws4.ecs` | `#ED7100` |
+| ECS Service | `resIcon=mxgraph.aws4.ecs_service` | `#ED7100` |
+| EKS | `resIcon=mxgraph.aws4.eks` | `#ED7100` |
+| Fargate | `resIcon=mxgraph.aws4.fargate` | `#ED7100` |
+| ECR | `resIcon=mxgraph.aws4.ecr` | `#ED7100` |
+| Elastic Beanstalk | `resIcon=mxgraph.aws4.elastic_beanstalk` | `#ED7100` |
 
 ### Storage
-| Service | Shape Style |
-|---------|-------------|
-| S3 | `shape=mxgraph.aws4.s3` |
-| EBS | `shape=mxgraph.aws4.elastic_block_store` |
-| EFS | `shape=mxgraph.aws4.elastic_file_system` |
-| Glacier | `shape=mxgraph.aws4.glacier` |
+| Service | resIcon Value | Fill Color |
+|---------|---------------|------------|
+| S3 | `resIcon=mxgraph.aws4.s3` | `#7AA116` |
+| EBS | `resIcon=mxgraph.aws4.elastic_block_store` | `#7AA116` |
+| EFS | `resIcon=mxgraph.aws4.elastic_file_system` | `#7AA116` |
+| Glacier | `resIcon=mxgraph.aws4.glacier` | `#7AA116` |
 
 ### Database
-| Service | Shape Style |
-|---------|-------------|
-| RDS | `shape=mxgraph.aws4.rds` |
-| DynamoDB | `shape=mxgraph.aws4.dynamodb` |
-| Aurora | `shape=mxgraph.aws4.aurora` |
-| ElastiCache | `shape=mxgraph.aws4.elasticache` |
-| Redshift | `shape=mxgraph.aws4.redshift` |
+| Service | resIcon Value | Fill Color |
+|---------|---------------|------------|
+| RDS | `resIcon=mxgraph.aws4.rds` | `#C925D1` |
+| DynamoDB | `resIcon=mxgraph.aws4.dynamodb` | `#C925D1` |
+| Aurora | `resIcon=mxgraph.aws4.aurora` | `#C925D1` |
+| ElastiCache | `resIcon=mxgraph.aws4.elasticache` | `#C925D1` |
+| Redshift | `resIcon=mxgraph.aws4.redshift` | `#C925D1` |
 
 ### Networking
-| Service | Shape Style |
-|---------|-------------|
-| VPC | `shape=mxgraph.aws4.vpc` |
-| CloudFront | `shape=mxgraph.aws4.cloudfront` |
-| Route 53 | `shape=mxgraph.aws4.route_53` |
-| API Gateway | `shape=mxgraph.aws4.api_gateway` |
-| ELB/ALB | `shape=mxgraph.aws4.elastic_load_balancing` |
-| NAT Gateway | `shape=mxgraph.aws4.nat_gateway` |
-| Internet Gateway | `shape=mxgraph.aws4.internet_gateway` |
+| Service | resIcon Value | Fill Color |
+|---------|---------------|------------|
+| VPC | `resIcon=mxgraph.aws4.vpc` | `#8C4FFF` |
+| CloudFront | `resIcon=mxgraph.aws4.cloudfront` | `#8C4FFF` |
+| Route 53 | `resIcon=mxgraph.aws4.route_53` | `#8C4FFF` |
+| API Gateway | `resIcon=mxgraph.aws4.api_gateway` | `#8C4FFF` |
+| ALB | `resIcon=mxgraph.aws4.application_load_balancer` | `#8C4FFF` |
+| NLB | `resIcon=mxgraph.aws4.network_load_balancer` | `#8C4FFF` |
+| NAT Gateway | `resIcon=mxgraph.aws4.nat_gateway` | `#8C4FFF` |
+| Internet Gateway | `resIcon=mxgraph.aws4.internet_gateway` | `#8C4FFF` |
 
 ### Security
-| Service | Shape Style |
-|---------|-------------|
-| IAM | `shape=mxgraph.aws4.iam` |
-| Cognito | `shape=mxgraph.aws4.cognito` |
-| KMS | `shape=mxgraph.aws4.key_management_service` |
-| WAF | `shape=mxgraph.aws4.waf` |
-| Secrets Manager | `shape=mxgraph.aws4.secrets_manager` |
+| Service | resIcon Value | Fill Color |
+|---------|---------------|------------|
+| IAM | `resIcon=mxgraph.aws4.iam` | `#DD344C` |
+| Cognito | `resIcon=mxgraph.aws4.cognito` | `#DD344C` |
+| KMS | `resIcon=mxgraph.aws4.key_management_service` | `#DD344C` |
+| WAF | `resIcon=mxgraph.aws4.waf` | `#DD344C` |
+| Secrets Manager | `resIcon=mxgraph.aws4.secrets_manager` | `#DD344C` |
 
 ### Messaging & Integration
-| Service | Shape Style |
-|---------|-------------|
-| SQS | `shape=mxgraph.aws4.sqs` |
-| SNS | `shape=mxgraph.aws4.sns` |
-| EventBridge | `shape=mxgraph.aws4.eventbridge` |
-| Step Functions | `shape=mxgraph.aws4.step_functions` |
+| Service | resIcon Value | Fill Color |
+|---------|---------------|------------|
+| SQS | `resIcon=mxgraph.aws4.sqs` | `#E7157B` |
+| SNS | `resIcon=mxgraph.aws4.sns` | `#E7157B` |
+| EventBridge | `resIcon=mxgraph.aws4.eventbridge` | `#E7157B` |
+| Step Functions | `resIcon=mxgraph.aws4.step_functions` | `#E7157B` |
 
 ### Monitoring
-| Service | Shape Style |
-|---------|-------------|
-| CloudWatch | `shape=mxgraph.aws4.cloudwatch` |
-| X-Ray | `shape=mxgraph.aws4.xray` |
+| Service | resIcon Value | Fill Color |
+|---------|---------------|------------|
+| CloudWatch | `resIcon=mxgraph.aws4.cloudwatch` | `#E7157B` |
+| X-Ray | `resIcon=mxgraph.aws4.xray` | `#E7157B` |
+
+### General/Users
+| Service | resIcon Value | Fill Color |
+|---------|---------------|------------|
+| Users | `resIcon=mxgraph.aws4.users` | `#232F3E` |
+| Client | `resIcon=mxgraph.aws4.client` | `#232F3E` |
 
 ### AWS Groups (for VPC, Subnets, etc.)
 | Group Type | Shape Style |
