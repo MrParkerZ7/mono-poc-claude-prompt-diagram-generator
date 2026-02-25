@@ -850,25 +850,34 @@ ER relationship arrows should ONLY connect horizontally (left ↔ right), NEVER 
 - Enter from left side: `entryX=0;entryY=0.5`
 - Enter from right side: `entryX=1;entryY=0.5`
 
+**CRITICAL: Same-Column Routing - Route to OUTER Edge**
+
+When tables are in the same column (vertically stacked), same-side connections (left-left or right-right) must route to the OUTER edge of the diagram, NOT through the inner area where they might cross other tables.
+
+| Table Column Position | Route Direction | Exit/Entry Points |
+|----------------------|-----------------|-------------------|
+| Left column (x=40) | Route LEFT (outer edge) | `exitX=0;entryX=0` |
+| Center/Right columns | Route RIGHT (outer edge) | `exitX=1;entryX=1` |
+
 ```xml
-<!-- Left-to-Right connection (exitX=1, entryX=0) -->
+<!-- Left-to-Right connection (different columns) -->
 <mxCell id="rel-users-orders"
   style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;"
   edge="1" parent="1" source="tbl-users-id" target="tbl-orders-user_id">
   <mxGeometry relative="1" as="geometry"/>
 </mxCell>
 
-<!-- Right-to-Right connection (exitX=1, entryX=1) - for tables on same side -->
-<mxCell id="rel-properties-favorites"
+<!-- Same-column connection - route via RIGHT (outer) edge -->
+<mxCell id="rel-properties-listings"
   style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;"
-  edge="1" parent="1" source="tbl-properties-id" target="tbl-favorites-property_id">
+  edge="1" parent="1" source="tbl-properties-id" target="tbl-listings-property_id">
   <mxGeometry relative="1" as="geometry"/>
 </mxCell>
 
-<!-- Left-to-Left connection (exitX=0, entryX=0) - for tables on same side -->
-<mxCell id="rel-properties-listings"
-  style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;"
-  edge="1" parent="1" source="tbl-properties-id" target="tbl-listings-property_id">
+<!-- Same-column connection - route via RIGHT (outer) edge -->
+<mxCell id="rel-users-listings"
+  style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;"
+  edge="1" parent="1" source="tbl-users-id" target="tbl-listings-agent_id">
   <mxGeometry relative="1" as="geometry"/>
 </mxCell>
 ```

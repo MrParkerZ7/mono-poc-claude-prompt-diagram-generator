@@ -226,10 +226,10 @@
                 <mxCell id="rel-users-properties" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="tbl-users-id" target="tbl-properties-owner_id" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="rel-properties-listings" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="tbl-properties-id" target="tbl-listings-property_id" edge="1">
+                <mxCell id="rel-properties-listings" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="tbl-properties-id" target="tbl-listings-property_id" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="rel-users-listings" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="tbl-users-id" target="tbl-listings-agent_id" edge="1">
+                <mxCell id="rel-users-listings" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="tbl-users-id" target="tbl-listings-agent_id" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="legend" value="Legend" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;swimlaneFillColor=#212121;fillColor=#424242;strokeColor=#666666;strokeWidth=3;shadow=1;fontSize=12;fontColor=#FFFFFF;" parent="1" vertex="1">
