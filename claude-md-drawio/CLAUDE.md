@@ -903,10 +903,10 @@ For data synchronization between different database types:
 
 | Spacing Type | Minimum Distance | Recommended |
 |--------------|------------------|-------------|
-| Horizontal gap between tables | 150px | **200px** |
-| Vertical gap between rows | 60px | **80-100px** |
-| Table width | 180px | 200-230px |
-| Table height | Based on columns | ~180px for 10 columns |
+| Horizontal gap between tables | 100px | **120px** |
+| Vertical gap between table rows | 80px | **100px** |
+| Table width | 250px | 260-280px |
+| Table height | Based on columns | ~270px for 10 columns |
 
 **Row-Based Organization:**
 ```
