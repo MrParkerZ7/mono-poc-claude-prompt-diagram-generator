@@ -677,96 +677,115 @@ Use `shape=mxgraph.cisco.` for Cisco-style network diagrams.
 
 Guidelines for creating database schema diagrams with table relationships, including multi-database architectures (SQL + NoSQL + Cache + Search).
 
-### Table Shape Structure (HTML Table Format)
+### Table Shape Structure (Swimlane with Separate Row Cells)
 
-Use HTML tables embedded in mxCell value for proper column separation:
+Use swimlane container with separate child mxCell elements for each row. This enables arrows to connect directly to specific columns (FK → PK mappings).
 
 ```xml
-<mxCell id="tbl-users" value="&lt;table cellpadding='4' cellspacing='0' style='font-size:10px;border-collapse:collapse;width:100%'&gt;&lt;tr&gt;&lt;td colspan='4' style='padding:8px;text-align:center;background:#336791;color:#FFFFFF;font-weight:bold;font-size:12px'&gt;users&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#E8F4F8'&gt;&lt;td style='width:25px;color:#D4AF37;font-weight:bold'&gt;PK&lt;/td&gt;&lt;td style='width:100px'&gt;id&lt;/td&gt;&lt;td style='width:90px;color:#666'&gt;UUID&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#fff'&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;email&lt;/td&gt;&lt;td style='color:#666'&gt;VARCHAR(255)&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#E3F2FD'&gt;&lt;td style='color:#1976D2;font-weight:bold'&gt;FK&lt;/td&gt;&lt;td&gt;agency_id&lt;/td&gt;&lt;td style='color:#666'&gt;UUID&lt;/td&gt;&lt;td style='color:#1976D2;font-size:9px'&gt;agencies&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#E8F4F8'&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;created_at&lt;/td&gt;&lt;td style='color:#666'&gt;TIMESTAMP&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
-  style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;fillColor=#E8F4F8;strokeColor=#336791;strokeWidth=2;shadow=1;verticalAlign=top;"
-  vertex="1" parent="db-group">
+<!-- Table container (swimlane) -->
+<mxCell id="tbl-users" value="users"
+  style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;swimlaneFillColor=[darkest tone];fillColor=[darker tone];strokeColor=[medium tone];strokeWidth=3;shadow=1;fontSize=12;fontColor=#FFFFFF;"
+  parent="pg-group" vertex="1">
   <mxGeometry x="40" y="60" width="250" height="130" as="geometry"/>
+</mxCell>
+
+<!-- Row with HTML table for column separation -->
+<mxCell id="tbl-users-id" value="&lt;table style='width:100%;border-collapse:collapse'&gt;&lt;tr&gt;&lt;td style='width:30px;color:#D4AF37;font-weight:bold'&gt;PK&lt;/td&gt;&lt;td style='width:110px'&gt;id&lt;/td&gt;&lt;td style='color:#666'&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;strokeColor=[lighter tone];strokeWidth=3;fillColor=[light tone];align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;html=1;fontSize=10;"
+  parent="tbl-users" vertex="1">
+  <mxGeometry y="30" width="250" height="24" as="geometry"/>
 </mxCell>
 ```
 
-### HTML Table Column Structure
+### Key Benefits of Swimlane Format
 
-The table has 4 columns for clear separation:
+1. **Column-specific arrows**: Edges can connect directly from PK row to FK row
+2. **Separate columns**: HTML table in each row provides visual column separation (PK/FK | Column Name | Data Type)
+3. **Styled header**: Dark header background with white text for table name
+4. **Row separators**: Each row has stroke for visual line separation
+5. **Connection points**: `points=[[0,0.5],[1,0.5]]` enables left/right edge connections
 
-| Column | Width | Purpose | Style |
-|--------|-------|---------|-------|
-| 1 | 25px | Key type (PK/FK) | Bold, colored text |
-| 2 | 100px | Column name | Normal text |
-| 3 | 90px | Data type | Gray text (`color:#666`) |
-| 4 | auto | FK reference table | Blue text, smaller font |
+### Swimlane Container Style
 
-### Table Header Styling
+Key attributes:
+- `swimlane` - Container shape type
+- `childLayout=stackLayout` - Stack children vertically
+- `startSize=30` - Header height (30px)
+- `swimlaneFillColor` - Header background (use darkest tone)
+- `fillColor` - Table body fill (use darker tone)
+- `strokeColor` - Border color (use medium tone)
+- `strokeWidth=3` - Border thickness
+- `fontColor=#FFFFFF` - White header text
+- `collapsible=0` - Prevent collapse
+- `fontStyle=1` - Bold header text
 
-**CRITICAL: Headers must have white text on dark background for readability.**
+### Row Cell Style
 
-| Database Type | Header Background | Text Style |
-|---------------|-------------------|------------|
-| PostgreSQL | `#336791` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
-| MongoDB | `#2E7D32` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
-| Redis | `#B71C1C` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
-| Elasticsearch | `#8B0000` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
-| Central Table | `#B8860B` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
+Key attributes:
+- `text` - Text cell shape
+- `html=1` - Enable HTML content for column separation
+- `strokeColor` - Row separator line (use lighter tone)
+- `strokeWidth=3` - Row line thickness
+- `fillColor` - Row background (light tone, alternating)
+- `points=[[0,0.5],[1,0.5]]` - Connection points on left and right
+- `portConstraint=eastwest` - Edges connect horizontally
 
-```html
-<!-- Header row example -->
-<tr>
-  <td colspan='4' style='padding:8px;text-align:center;background:#336791;color:#FFFFFF;font-weight:bold;font-size:12px'>
-    table_name
-  </td>
-</tr>
-```
+### Color Tone Hierarchy
+
+| Element | Tone | Purpose |
+|---------|------|---------|
+| Header background (`swimlaneFillColor`) | Darkest | Table title background |
+| Table body (`fillColor`) | Darker | Swimlane body area |
+| Border (`strokeColor`) | Medium | Table outline |
+| Row lines (`strokeColor` on rows) | Lighter | Row separators |
+| Row fill (`fillColor` on rows) | Lightest | Row backgrounds |
 
 ### Row Styling by Type
 
-| Row Type | Background Color | Key Column Style |
-|----------|------------------|------------------|
-| Primary Key (PK) | `#E8F4F8` (or table color) | `color:#D4AF37;font-weight:bold` |
-| Foreign Key (FK) | `#E3F2FD` (light blue) | `color:#1976D2;font-weight:bold` |
-| Normal (odd) | `#E8F4F8` (table color) | Empty |
-| Normal (even) | `#fff` (white) | Empty |
+| Row Type | Background | Text Style |
+|----------|------------|------------|
+| Primary Key (PK) | Light tone (alternating) | Gold text, bold (`color:#D4AF37;font-weight:bold`) |
+| Foreign Key (FK) | Light blue tone | Blue text, bold (`color:#1976D2;font-weight:bold`) |
+| Normal (odd) | Light tone | Default |
+| Normal (even) | White | Default |
+
+### HTML Table Column Structure
+
+Each row uses an HTML table for column separation:
 
 ```html
-<!-- PK row -->
-<tr style='background:#E8F4F8'>
-  <td style='color:#D4AF37;font-weight:bold'>PK</td>
-  <td>id</td>
-  <td style='color:#666'>UUID</td>
-  <td></td>
-</tr>
-
-<!-- FK row - light blue background -->
-<tr style='background:#E3F2FD'>
-  <td style='color:#1976D2;font-weight:bold'>FK</td>
-  <td>agency_id</td>
-  <td style='color:#666'>UUID</td>
-  <td style='color:#1976D2;font-size:9px'>agencies</td>
-</tr>
-
-<!-- Normal row -->
-<tr style='background:#fff'>
-  <td></td>
-  <td>email</td>
-  <td style='color:#666'>VARCHAR(255)</td>
-  <td></td>
-</tr>
+<table style='width:100%;border-collapse:collapse'>
+  <tr>
+    <td style='width:30px;color:#D4AF37;font-weight:bold'>PK</td>
+    <td style='width:110px'>column_name</td>
+    <td style='color:#666'>DATA_TYPE</td>
+  </tr>
+</table>
 ```
 
-### mxCell Style for HTML Tables
+Column widths:
+- Column 1 (30px): Key type (PK/FK or empty)
+- Column 2 (110px): Column name
+- Column 3 (auto): Data type (gray text)
 
-```
-style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;fillColor=#E8F4F8;strokeColor=#336791;strokeWidth=2;shadow=1;verticalAlign=top;"
+### Connecting Arrows to Specific Columns
+
+Arrows connect directly from PK cell to FK cell:
+
+```xml
+<!-- agencies.id → users.agency_id (1:N) -->
+<mxCell id="rel-agencies-users"
+  style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;"
+  edge="1" parent="1" source="tbl-agencies-id" target="tbl-users-agency_id">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
 ```
 
-Key attributes:
-- `html=1` - Enable HTML rendering
-- `overflow=fill` - Allow HTML content to fill the shape
-- `whiteSpace=wrap` - Enable text wrapping
-- `verticalAlign=top` - Align content to top
+Key points:
+- `source="tbl-agencies-id"` - Points to the PK row cell (not the table)
+- `target="tbl-users-agency_id"` - Points to the FK row cell (not the table)
+- `exitX=1;exitY=0.5` - Exit from right side of source row
+- `entryX=0;entryY=0.5` - Enter from left side of target row
 
 ### Database Type Colors
 
