@@ -214,8 +214,13 @@
                 <mxCell id="rel-users-favorites" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="tbl-users-id" target="tbl-favorites-user_id" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="rel-properties-favorites" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="tbl-properties-id" target="tbl-favorites-property_id" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="rel-properties-favorites" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="tbl-properties-id" target="tbl-favorites-property_id" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1160" y="512"/>
+                            <mxPoint x="1160" y="178"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="rel-types-properties" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="tbl-property-types-id" target="tbl-properties-type_id" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -223,14 +228,29 @@
                 <mxCell id="rel-locations-properties" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="tbl-locations-id" target="tbl-properties-location_id" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="rel-users-properties" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="tbl-users-id" target="tbl-properties-owner_id" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="rel-users-properties" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="tbl-users-id" target="tbl-properties-owner_id" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="420" y="142"/>
+                            <mxPoint x="420" y="620"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
-                <mxCell id="rel-properties-listings" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="tbl-properties-id" target="tbl-listings-property_id" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="rel-properties-listings" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="tbl-properties-id" target="tbl-listings-property_id" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="760" y="512"/>
+                            <mxPoint x="760" y="1014"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
-                <mxCell id="rel-users-listings" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="tbl-users-id" target="tbl-listings-agent_id" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="rel-users-listings" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#336791;strokeWidth=2;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;shadow=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="tbl-users-id" target="tbl-listings-agent_id" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="790" y="142"/>
+                            <mxPoint x="790" y="1038"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="legend" value="Legend" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;swimlaneFillColor=#212121;fillColor=#424242;strokeColor=#666666;strokeWidth=3;shadow=1;fontSize=12;fontColor=#FFFFFF;" parent="1" vertex="1">
                     <mxGeometry x="80" y="1320" width="500" height="102" as="geometry"/>
