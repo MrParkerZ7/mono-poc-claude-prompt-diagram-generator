@@ -677,34 +677,96 @@ Use `shape=mxgraph.cisco.` for Cisco-style network diagrams.
 
 Guidelines for creating database schema diagrams with table relationships, including multi-database architectures (SQL + NoSQL + Cache + Search).
 
-### Table Shape Structure
+### Table Shape Structure (HTML Table Format)
 
-Use `swimlane` shape for database tables:
+Use HTML tables embedded in mxCell value for proper column separation:
 
 ```xml
-<mxCell id="tbl-users" value="users&#xa;─────────────────&#xa;PK id: UUID&#xa;email: VARCHAR(255)&#xa;FK agency_id: UUID → agencies&#xa;status: ENUM&#xa;created_at: TIMESTAMP"
-  style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#E8F4F8;strokeColor=#336791;strokeWidth=2;shadow=1;fontSize=10;"
+<mxCell id="tbl-users" value="&lt;table cellpadding='4' cellspacing='0' style='font-size:10px;border-collapse:collapse;width:100%'&gt;&lt;tr&gt;&lt;td colspan='4' style='padding:8px;text-align:center;background:#336791;color:#FFFFFF;font-weight:bold;font-size:12px'&gt;users&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#E8F4F8'&gt;&lt;td style='width:25px;color:#D4AF37;font-weight:bold'&gt;PK&lt;/td&gt;&lt;td style='width:100px'&gt;id&lt;/td&gt;&lt;td style='width:90px;color:#666'&gt;UUID&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#fff'&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;email&lt;/td&gt;&lt;td style='color:#666'&gt;VARCHAR(255)&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#E3F2FD'&gt;&lt;td style='color:#1976D2;font-weight:bold'&gt;FK&lt;/td&gt;&lt;td&gt;agency_id&lt;/td&gt;&lt;td style='color:#666'&gt;UUID&lt;/td&gt;&lt;td style='color:#1976D2;font-size:9px'&gt;agencies&lt;/td&gt;&lt;/tr&gt;&lt;tr style='background:#E8F4F8'&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;created_at&lt;/td&gt;&lt;td style='color:#666'&gt;TIMESTAMP&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;fillColor=#E8F4F8;strokeColor=#336791;strokeWidth=2;shadow=1;verticalAlign=top;"
   vertex="1" parent="db-group">
-  <mxGeometry x="40" y="60" width="200" height="180" as="geometry"/>
+  <mxGeometry x="40" y="60" width="250" height="130" as="geometry"/>
 </mxCell>
 ```
 
-### Table Content Format
+### HTML Table Column Structure
+
+The table has 4 columns for clear separation:
+
+| Column | Width | Purpose | Style |
+|--------|-------|---------|-------|
+| 1 | 25px | Key type (PK/FK) | Bold, colored text |
+| 2 | 100px | Column name | Normal text |
+| 3 | 90px | Data type | Gray text (`color:#666`) |
+| 4 | auto | FK reference table | Blue text, smaller font |
+
+### Table Header Styling
+
+**CRITICAL: Headers must have white text on dark background for readability.**
+
+| Database Type | Header Background | Text Style |
+|---------------|-------------------|------------|
+| PostgreSQL | `#336791` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
+| MongoDB | `#2E7D32` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
+| Redis | `#B71C1C` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
+| Elasticsearch | `#8B0000` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
+| Central Table | `#B8860B` | `color:#FFFFFF;font-weight:bold;font-size:12px` |
+
+```html
+<!-- Header row example -->
+<tr>
+  <td colspan='4' style='padding:8px;text-align:center;background:#336791;color:#FFFFFF;font-weight:bold;font-size:12px'>
+    table_name
+  </td>
+</tr>
+```
+
+### Row Styling by Type
+
+| Row Type | Background Color | Key Column Style |
+|----------|------------------|------------------|
+| Primary Key (PK) | `#E8F4F8` (or table color) | `color:#D4AF37;font-weight:bold` |
+| Foreign Key (FK) | `#E3F2FD` (light blue) | `color:#1976D2;font-weight:bold` |
+| Normal (odd) | `#E8F4F8` (table color) | Empty |
+| Normal (even) | `#fff` (white) | Empty |
+
+```html
+<!-- PK row -->
+<tr style='background:#E8F4F8'>
+  <td style='color:#D4AF37;font-weight:bold'>PK</td>
+  <td>id</td>
+  <td style='color:#666'>UUID</td>
+  <td></td>
+</tr>
+
+<!-- FK row - light blue background -->
+<tr style='background:#E3F2FD'>
+  <td style='color:#1976D2;font-weight:bold'>FK</td>
+  <td>agency_id</td>
+  <td style='color:#666'>UUID</td>
+  <td style='color:#1976D2;font-size:9px'>agencies</td>
+</tr>
+
+<!-- Normal row -->
+<tr style='background:#fff'>
+  <td></td>
+  <td>email</td>
+  <td style='color:#666'>VARCHAR(255)</td>
+  <td></td>
+</tr>
+```
+
+### mxCell Style for HTML Tables
 
 ```
-table_name
-─────────────────
-PK column_name: DATA_TYPE
-column_name: DATA_TYPE
-FK column_name: DATA_TYPE → ref_table
-column_name: ENUM
-created_at: TIMESTAMP
+style="rounded=0;whiteSpace=wrap;html=1;overflow=fill;fillColor=#E8F4F8;strokeColor=#336791;strokeWidth=2;shadow=1;verticalAlign=top;"
 ```
 
-- Use `PK` prefix for primary keys
-- Use `FK` prefix for foreign keys with `→ table_name` reference
-- Use `&#xa;` for line breaks in XML
-- Use `─` (box drawing character) for separator line
+Key attributes:
+- `html=1` - Enable HTML rendering
+- `overflow=fill` - Allow HTML content to fill the shape
+- `whiteSpace=wrap` - Enable text wrapping
+- `verticalAlign=top` - Align content to top
 
 ### Database Type Colors
 
