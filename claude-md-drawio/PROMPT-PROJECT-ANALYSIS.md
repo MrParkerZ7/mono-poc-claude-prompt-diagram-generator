@@ -17,6 +17,20 @@ This document provides **two-step workflow templates** for generating accurate D
 | **Documentation** | The `.md` files serve as valuable documentation artifacts |
 | **Multi-diagram** | One analysis can generate multiple diagram types |
 
+### Important: Skip Irrelevant Analysis Types
+
+> **Note:** Not all analysis types apply to every project. If the target project does not have sufficient information for a specific analysis type, **skip creating that `.md` file entirely**.
+>
+> **Examples:**
+> - No database/ORM → Skip Data Models / ERD Analysis
+> - No cloud infrastructure / IaC files → Skip Infrastructure Analysis
+> - No message queues or events → Skip event-related sections in Data Flow
+> - Simple CRUD app → Skip DDD Analysis
+> - No external APIs → Skip API Contract Analysis
+> - Single-module project → Skip Dependency Analysis (internal modules)
+>
+> **Do not create empty or placeholder analysis files.** Only generate analysis for aspects that exist in the codebase.
+
 ---
 
 ## Table of Contents
@@ -25,9 +39,16 @@ This document provides **two-step workflow templates** for generating accurate D
 - [Architecture Analysis](#1-architecture-analysis-prompt)
 - [Data Models / ERD Analysis](#2-data-models--erd-analysis-prompt)
 - [Data Flow Analysis](#3-data-flow-analysis-prompt)
-- [Infrastructure Analysis](#4-infrastructure-analysis-prompt)
-- [C4 Model Analysis](#5-c4-model-analysis-prompt)
-- [Domain-Driven Design Analysis](#6-domain-driven-design-analysis-prompt)
+- [Flowchart / Process Analysis](#4-flowchart--process-analysis-prompt)
+- [Sequence Diagram Analysis](#5-sequence-diagram-analysis-prompt)
+- [Use Case Analysis](#6-use-case-analysis-prompt)
+- [State Machine Analysis](#7-state-machine-analysis-prompt)
+- [Infrastructure Analysis](#8-infrastructure-analysis-prompt)
+- [C4 Model Analysis](#9-c4-model-analysis-prompt)
+- [Domain-Driven Design Analysis](#10-domain-driven-design-analysis-prompt)
+- [Security Analysis](#11-security-analysis-prompt)
+- [API Contract Analysis](#12-api-contract-analysis-prompt)
+- [Dependency Analysis](#13-dependency-analysis-prompt)
 
 ### Diagram Generation Prompts (Step 2)
 - [Generate Diagrams from Analysis](#step-2-generate-diagrams-from-analysis)
@@ -36,9 +57,16 @@ This document provides **two-step workflow templates** for generating accurate D
 - [Architecture Analysis Output Template](#architecture-analysis-output-template)
 - [Data Models Output Template](#data-models-output-template)
 - [Data Flow Output Template](#data-flow-output-template)
+- [Flowchart Output Template](#flowchart-output-template)
+- [Sequence Diagram Output Template](#sequence-diagram-output-template)
+- [Use Case Output Template](#use-case-output-template)
+- [State Machine Output Template](#state-machine-output-template)
 - [Infrastructure Output Template](#infrastructure-output-template)
 - [C4 Model Output Template](#c4-model-output-template)
 - [DDD Output Template](#ddd-output-template)
+- [Security Analysis Output Template](#security-analysis-output-template)
+- [API Contract Output Template](#api-contract-output-template)
+- [Dependency Analysis Output Template](#dependency-analysis-output-template)
 
 ---
 
@@ -246,7 +274,316 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/data-flow-analysis.md
 
 ---
 
-## 4. Infrastructure Analysis Prompt
+## 4. Flowchart / Process Analysis Prompt
+
+Use this to analyze business processes, workflows, and decision logic.
+
+```
+## Task: Flowchart / Process Analysis
+
+Analyze the project and document all business processes and workflows.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Identify and document all process flows in the system:
+
+#### 1. Business Processes
+For each business process:
+- **Process Name**: Descriptive name (e.g., "Order Checkout Process")
+- **Description**: What this process accomplishes
+- **Trigger**: What initiates the process
+- **Actors**: Who/what participates
+- **Steps**:
+  1. Step name
+  2. Step name
+  3. ...
+- **End States**: Possible outcomes
+
+#### 2. Decision Points
+For each decision in a process:
+- **Decision**: Question being asked (e.g., "Is payment valid?")
+- **Condition**: Logic evaluated
+- **Yes Path**: What happens if true
+- **No Path**: What happens if false
+- **Location**: Which process contains this decision
+
+#### 3. Workflow Types
+Categorize workflows:
+- **User Workflows**: User-initiated actions (registration, checkout, profile update)
+- **System Workflows**: Automated processes (scheduled jobs, triggers)
+- **Approval Workflows**: Multi-step approvals (refund request, content moderation)
+- **Error Handling Workflows**: Exception handling paths
+
+#### 4. Process Details
+For each major process, document:
+- **Swimlanes**: Actors/systems involved
+- **Parallel Paths**: Concurrent activities
+- **Loops**: Iterative steps
+- **Subprocesses**: Nested workflows
+- **Timeouts**: Time-based transitions
+- **Error Paths**: Exception handling
+
+#### 5. User Journeys
+For key user flows:
+- **Journey Name**: (e.g., "First-time Buyer Journey")
+- **Persona**: Target user type
+- **Goal**: What user wants to achieve
+- **Steps**: Sequential actions with decision points
+- **Success Criteria**: How success is measured
+- **Alternative Paths**: Variations and edge cases
+
+#### 6. State Transitions (Simple)
+For entities with clear states:
+- **Entity**: What has states (Order, User, Document)
+- **States**: Possible states
+- **Transitions**: State changes with triggers
+
+### Output Format
+Follow the [Flowchart Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/flowchart-analysis.md
+```
+
+---
+
+## 5. Sequence Diagram Analysis Prompt
+
+Use this to analyze method call sequences, API interactions, and component communications.
+
+```
+## Task: Sequence Diagram Analysis
+
+Analyze the project and document interaction sequences between components.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Document all significant interaction sequences:
+
+#### 1. API Interaction Sequences
+For each major API operation:
+- **Sequence Name**: Descriptive name (e.g., "User Login Sequence")
+- **Trigger**: What initiates the sequence
+- **Participants**: All components/services involved
+- **Messages**: Ordered list of calls
+  | # | From | To | Message | Return |
+  |---|------|-----|---------|--------|
+  | 1 | Client | API Gateway | POST /login | - |
+  | 2 | API Gateway | AuthService | validateCredentials() | token |
+  | ... | ... | ... | ... | ... |
+
+#### 2. Service-to-Service Sequences
+For each internal service interaction:
+- **Sequence Name**: Identifier
+- **Participants**: Services involved
+- **Synchronous Calls**: Request-response messages
+- **Asynchronous Calls**: Fire-and-forget, events
+- **Return Values**: What each call returns
+
+#### 3. Database Interaction Sequences
+For complex data operations:
+- **Operation**: What is being done
+- **Participants**: Service, Repository, Database
+- **Queries**: SQL/NoSQL operations in order
+- **Transactions**: Transaction boundaries
+
+#### 4. External System Sequences
+For third-party integrations:
+- **Integration**: External system name
+- **Sequence**: Full call flow
+- **Request/Response**: Payloads exchanged
+- **Error Handling**: Failure scenarios
+
+#### 5. Asynchronous Sequences
+For message-based flows:
+- **Flow Name**: Identifier
+- **Producer**: Message sender
+- **Queue/Topic**: Message channel
+- **Consumer(s)**: Message handlers
+- **Acknowledgment**: ACK/NACK behavior
+
+#### 6. Activation/Lifeline Notes
+- **Long-running Operations**: Mark with activation bars
+- **Parallel Processing**: Note concurrent executions
+- **Optional Flows**: Conditional sequences
+- **Loop Sequences**: Repeated interactions
+
+### Output Format
+Follow the [Sequence Diagram Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/sequence-analysis.md
+```
+
+---
+
+## 6. Use Case Analysis Prompt
+
+Use this to analyze user stories, actor interactions, and system requirements.
+
+```
+## Task: Use Case Analysis
+
+Analyze the project and document all use cases and actor interactions.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Identify and document all use cases:
+
+#### 1. Actors
+For each actor:
+- **Actor Name**: Identifier (e.g., "Customer", "Admin", "System")
+- **Type**: Person, External System, Time-based
+- **Description**: Role description
+- **Goals**: What the actor wants to achieve
+- **Permissions**: Access level / capabilities
+
+#### 2. Use Cases
+For each use case:
+- **Use Case ID**: UC-001
+- **Name**: Action phrase (e.g., "Place Order")
+- **Actor(s)**: Primary and secondary actors
+- **Description**: Brief summary
+- **Preconditions**: Required state before execution
+- **Postconditions**: State after successful execution
+- **Main Flow**:
+  1. Actor action
+  2. System response
+  3. ...
+- **Alternative Flows**: Variations
+- **Exception Flows**: Error scenarios
+- **Business Rules**: Applicable rules
+- **Frequency**: How often this occurs
+
+#### 3. Use Case Relationships
+Document relationships:
+- **Includes**: UC-001 includes UC-002
+- **Extends**: UC-003 extends UC-001
+- **Generalizations**: Actor hierarchies
+
+#### 4. Use Case Groups
+Categorize by domain area:
+- **Authentication**: Login, Register, Password Reset
+- **Order Management**: Place Order, Cancel Order, Track Order
+- **Admin Functions**: Manage Users, View Reports
+
+#### 5. Actor-Use Case Matrix
+| Use Case | Customer | Admin | System |
+|----------|----------|-------|--------|
+| Place Order | Primary | - | - |
+| Manage Users | - | Primary | - |
+| Send Notifications | - | - | Primary |
+
+#### 6. Non-Functional Requirements
+Per use case where applicable:
+- **Performance**: Response time requirements
+- **Security**: Authentication/authorization needs
+- **Availability**: Uptime requirements
+
+### Output Format
+Follow the [Use Case Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/use-case-analysis.md
+```
+
+---
+
+## 7. State Machine Analysis Prompt
+
+Use this to analyze entity states, transitions, and lifecycle management.
+
+```
+## Task: State Machine Analysis
+
+Analyze the project and document all state machines and entity lifecycles.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Document all stateful entities and their transitions:
+
+#### 1. Stateful Entities
+Identify entities with states:
+- **Entity Name**: (e.g., Order, User, Document)
+- **State Field**: Code location of state
+- **State Type**: Enum, String, Integer
+- **Initial State**: Starting state
+
+#### 2. States
+For each entity, document all states:
+| State | Description | Entry Action | Exit Action |
+|-------|-------------|--------------|-------------|
+| Draft | Initial creation | Initialize fields | Validate |
+| Pending | Awaiting action | Notify user | - |
+| Active | In use | Start processing | Stop processing |
+| Completed | Finished | Archive | - |
+
+#### 3. Transitions
+For each transition:
+- **From State**: Source state
+- **To State**: Target state
+- **Trigger**: What causes transition (event, action, time)
+- **Guard Condition**: Boolean condition required
+- **Action**: What happens during transition
+- **Code Location**: Where transition is implemented
+
+#### 4. State Machine Diagram Data
+```
+[Initial] ──create──▶ [Draft]
+                         │
+                         │ submit
+                         ▼
+                      [Pending]
+                         │
+            ┌────────────┼────────────┐
+            │ approve    │ reject     │ timeout
+            ▼            ▼            ▼
+        [Active]    [Rejected]   [Expired]
+            │
+            │ complete
+            ▼
+       [Completed]
+```
+
+#### 5. Composite States
+For nested states:
+- **Parent State**: Container state
+- **Child States**: Nested states
+- **Entry/Exit**: How nesting works
+
+#### 6. Parallel States
+For concurrent state regions:
+- **Entity**: What has parallel states
+- **Regions**: Independent state areas
+- **Synchronization**: How regions interact
+
+#### 7. State History
+- **Entry Point**: Where state is loaded
+- **Persistence**: How state is stored
+- **Audit Trail**: State change logging
+
+### Output Format
+Follow the [State Machine Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/state-machine-analysis.md
+```
+
+---
+
+## 8. Infrastructure Analysis Prompt
 
 Use this to analyze cloud resources, networking, and deployment.
 
@@ -319,7 +656,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/infrastructure-analysis.md
 
 ---
 
-## 5. C4 Model Analysis Prompt
+## 9. C4 Model Analysis Prompt
 
 Use this for C4 Model (Context, Container, Component) analysis.
 
@@ -395,7 +732,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/c4-model-analysis.md
 
 ---
 
-## 6. Domain-Driven Design Analysis Prompt
+## 10. Domain-Driven Design Analysis Prompt
 
 Use this for DDD analysis including bounded contexts, aggregates, and domain events.
 
@@ -469,6 +806,285 @@ Follow the [DDD Output Template] structure.
 
 ### Output Path
 Save to: [YOUR_PROJECT_PATH]/docs/analysis/ddd-analysis.md
+```
+
+---
+
+## 11. Security Analysis Prompt
+
+Use this to analyze security architecture, threat models, and access controls.
+
+```
+## Task: Security Analysis
+
+Analyze the project's security architecture and identify security boundaries.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Document all security-related aspects:
+
+#### 1. Authentication
+- **Method(s)**: JWT, Session, OAuth2, API Keys
+- **Provider**: Custom, Auth0, Cognito, etc.
+- **Token Storage**: Where tokens are stored
+- **Token Lifetime**: Expiration policies
+- **Refresh Mechanism**: How tokens are refreshed
+- **MFA**: Multi-factor authentication support
+
+#### 2. Authorization
+- **Model**: RBAC, ABAC, ACL, Custom
+- **Roles**: Defined roles and permissions
+  | Role | Permissions | Description |
+  |------|-------------|-------------|
+  | Admin | * | Full access |
+  | User | read, write own | Standard user |
+  | Guest | read public | Unauthenticated |
+- **Permission Checks**: Where authorization is enforced
+- **Resource Ownership**: How ownership is determined
+
+#### 3. Security Boundaries
+- **Trust Zones**: Network/logical boundaries
+- **Entry Points**: All system entry points
+- **Sensitive Data Flows**: Where sensitive data travels
+- **Encryption Boundaries**: In-transit, at-rest
+
+#### 4. Data Protection
+- **Sensitive Data Types**: PII, PHI, PCI, etc.
+- **Encryption**: Algorithms, key management
+- **Data Masking**: Where and how applied
+- **Data Retention**: Policies and implementation
+- **Data Sanitization**: Input validation locations
+
+#### 5. Threat Model
+For each identified threat:
+| Threat | Category | Asset | Mitigation | Status |
+|--------|----------|-------|------------|--------|
+| SQL Injection | Injection | Database | Parameterized queries | Implemented |
+| XSS | Injection | User sessions | Output encoding | Implemented |
+| CSRF | Session | User actions | CSRF tokens | Implemented |
+
+#### 6. Security Controls
+- **Input Validation**: Where and how
+- **Output Encoding**: Implementation
+- **CORS Policy**: Configuration
+- **CSP Headers**: Content Security Policy
+- **Rate Limiting**: Limits and scope
+- **Audit Logging**: What is logged
+
+#### 7. Secrets Management
+- **Secret Types**: API keys, passwords, certificates
+- **Storage**: Vault, Secrets Manager, env vars
+- **Rotation**: Rotation policies
+- **Access**: Who/what can access secrets
+
+#### 8. Compliance
+- **Frameworks**: GDPR, HIPAA, PCI-DSS, SOC2
+- **Requirements**: Applicable requirements
+- **Implementation**: How requirements are met
+
+### Output Format
+Follow the [Security Analysis Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/security-analysis.md
+```
+
+---
+
+## 12. API Contract Analysis Prompt
+
+Use this to analyze API specifications, versioning, and endpoint documentation.
+
+```
+## Task: API Contract Analysis
+
+Analyze the project's API contracts and specifications.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Document all API contracts:
+
+#### 1. API Overview
+- **API Type**: REST, GraphQL, gRPC, WebSocket
+- **Base URL(s)**: API base paths
+- **Version Strategy**: URL, header, query param
+- **Current Version**: Active version(s)
+- **Deprecated Versions**: Versions being phased out
+
+#### 2. Authentication & Authorization
+- **Auth Methods**: Bearer token, API key, OAuth
+- **Auth Header**: Header format
+- **Scopes/Permissions**: Required per endpoint
+
+#### 3. Endpoints
+For each endpoint:
+| Method | Path | Summary | Auth | Request | Response |
+|--------|------|---------|------|---------|----------|
+| GET | /api/v1/users | List users | Bearer | Query params | User[] |
+| POST | /api/v1/users | Create user | Bearer + admin | UserDTO | User |
+| GET | /api/v1/users/{id} | Get user | Bearer | - | User |
+
+#### 4. Request/Response Schemas
+For each DTO/Schema:
+```json
+{
+  "name": "UserDTO",
+  "type": "object",
+  "properties": {
+    "email": { "type": "string", "format": "email", "required": true },
+    "name": { "type": "string", "required": true },
+    "role": { "type": "string", "enum": ["user", "admin"] }
+  }
+}
+```
+
+#### 5. Error Responses
+Standard error format:
+```json
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed",
+    "details": []
+  }
+}
+```
+
+Error codes:
+| Code | HTTP Status | Description |
+|------|-------------|-------------|
+| VALIDATION_ERROR | 400 | Input validation failed |
+| UNAUTHORIZED | 401 | Authentication required |
+| FORBIDDEN | 403 | Insufficient permissions |
+| NOT_FOUND | 404 | Resource not found |
+
+#### 6. Pagination
+- **Strategy**: Offset, cursor, page-based
+- **Parameters**: page, limit, cursor, etc.
+- **Response Format**: Links, metadata
+
+#### 7. Rate Limiting
+- **Limits**: Requests per window
+- **Headers**: Rate limit headers returned
+- **Behavior**: What happens when exceeded
+
+#### 8. Webhooks (if applicable)
+| Event | Payload | Retry Policy |
+|-------|---------|--------------|
+| order.created | Order object | 3 retries, exponential backoff |
+| payment.received | Payment object | 3 retries, exponential backoff |
+
+#### 9. SDK/Client Generation
+- **OpenAPI Spec**: Location of spec file
+- **Generated Clients**: Available SDKs
+- **Code Generation**: Tools used
+
+### Output Format
+Follow the [API Contract Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/api-contract-analysis.md
+```
+
+---
+
+## 13. Dependency Analysis Prompt
+
+Use this to analyze package dependencies, module coupling, and dependency health.
+
+```
+## Task: Dependency Analysis
+
+Analyze the project's dependencies and module relationships.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Document all dependencies and their relationships:
+
+#### 1. Package Dependencies
+For each dependency:
+| Package | Version | Type | Purpose | License |
+|---------|---------|------|---------|---------|
+| express | ^4.18.0 | Production | Web framework | MIT |
+| typescript | ^5.0.0 | Dev | Type checking | Apache-2.0 |
+| jest | ^29.0.0 | Dev | Testing | MIT |
+
+#### 2. Dependency Categories
+Group by purpose:
+- **Framework**: Core framework dependencies
+- **Database**: ORM, drivers, migrations
+- **Authentication**: Auth libraries
+- **Validation**: Schema validation
+- **Testing**: Test frameworks, mocks
+- **Build Tools**: Bundlers, compilers
+- **Utilities**: Helper libraries
+
+#### 3. Dependency Tree
+Key dependency chains:
+```
+app
+├── express@4.18.0
+│   ├── body-parser@1.20.0
+│   └── cookie-parser@1.4.6
+├── prisma@5.0.0
+│   └── @prisma/client@5.0.0
+└── ...
+```
+
+#### 4. Module Dependencies (Internal)
+For each internal module:
+| Module | Depends On | Depended By | Coupling |
+|--------|------------|-------------|----------|
+| UserService | UserRepository, AuthService | OrderService | Medium |
+| OrderService | UserService, ProductService | - | High |
+
+#### 5. Circular Dependencies
+Identify circular references:
+| Cycle | Modules Involved | Severity |
+|-------|------------------|----------|
+| 1 | A → B → C → A | High |
+| 2 | X → Y → X | Medium |
+
+#### 6. Outdated Dependencies
+| Package | Current | Latest | Breaking Changes |
+|---------|---------|--------|------------------|
+| lodash | 4.17.0 | 4.17.21 | No |
+| webpack | 4.46.0 | 5.88.0 | Yes |
+
+#### 7. Security Vulnerabilities
+| Package | Vulnerability | Severity | Fix Version |
+|---------|---------------|----------|-------------|
+| example-pkg | CVE-2023-XXXX | High | 1.2.3 |
+
+#### 8. Dependency Metrics
+- **Total Dependencies**: Count
+- **Direct Dependencies**: Count
+- **Transitive Dependencies**: Count
+- **Dev Dependencies**: Count
+- **Average Dependency Depth**: Number
+- **Duplicate Packages**: List
+
+#### 9. License Compliance
+| License | Packages | Compatible |
+|---------|----------|------------|
+| MIT | 45 | Yes |
+| Apache-2.0 | 12 | Yes |
+| GPL-3.0 | 2 | Check |
+
+### Output Format
+Follow the [Dependency Analysis Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/dependency-analysis.md
 ```
 
 ---
@@ -553,6 +1169,122 @@ Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/data-flow.drawio
 
 ---
 
+## Generate Flowchart Diagram
+
+```
+## Task: Generate Flowchart Diagram
+
+Use diagram standards from: [CLAUDE_DIAGRAMS_STANDARD_FORMAT_PATH]
+
+### Input Analysis
+Read and use: [YOUR_PROJECT_PATH]/docs/analysis/flowchart-analysis.md
+
+### Requirements
+1. Create flowchart diagrams based on the analysis
+2. Use standard flowchart shapes:
+   - Rounded rectangle: Start/End
+   - Rectangle: Process/Action
+   - Diamond: Decision
+   - Parallelogram: Input/Output
+3. Show decision branches clearly (Yes/No paths)
+4. Use swimlanes for multi-actor processes
+5. Include loop indicators where applicable
+6. Show error/exception paths with distinct color
+7. Include arrow legend for flow types
+
+### Output
+Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/flowchart-[process-name].drawio
+```
+
+---
+
+## Generate Sequence Diagram
+
+```
+## Task: Generate Sequence Diagram
+
+Use diagram standards from: [CLAUDE_DIAGRAMS_STANDARD_FORMAT_PATH]
+
+### Input Analysis
+Read and use: [YOUR_PROJECT_PATH]/docs/analysis/sequence-analysis.md
+
+### Requirements
+1. Create sequence diagrams based on the analysis
+2. Use standard UML sequence diagram notation:
+   - Rectangles: Participants/Objects
+   - Vertical dashed lines: Lifelines
+   - Solid arrows: Synchronous calls
+   - Dashed arrows: Return messages
+   - Half arrowheads: Asynchronous calls
+3. Show activation bars for processing time
+4. Include opt/alt/loop fragments where applicable
+5. Use self-calls for internal processing
+6. Include arrow legend for message types
+
+### Output
+Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/sequence-[flow-name].drawio
+```
+
+---
+
+## Generate Use Case Diagram
+
+```
+## Task: Generate Use Case Diagram
+
+Use diagram standards from: [CLAUDE_DIAGRAMS_STANDARD_FORMAT_PATH]
+
+### Input Analysis
+Read and use: [YOUR_PROJECT_PATH]/docs/analysis/use-case-analysis.md
+
+### Requirements
+1. Create use case diagram based on the analysis
+2. Use standard UML use case notation:
+   - Stick figures: Actors
+   - Ovals: Use cases
+   - System boundary: Rectangle
+3. Show relationships:
+   - Association: Solid line (actor to use case)
+   - Include: Dashed arrow with <<include>>
+   - Extend: Dashed arrow with <<extend>>
+   - Generalization: Solid arrow with triangle
+4. Group use cases by subsystem/package
+5. Include arrow legend for relationship types
+
+### Output
+Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/use-case-[domain].drawio
+```
+
+---
+
+## Generate State Machine Diagram
+
+```
+## Task: Generate State Machine Diagram
+
+Use diagram standards from: [CLAUDE_DIAGRAMS_STANDARD_FORMAT_PATH]
+
+### Input Analysis
+Read and use: [YOUR_PROJECT_PATH]/docs/analysis/state-machine-analysis.md
+
+### Requirements
+1. Create state machine diagrams based on the analysis
+2. Use standard UML state machine notation:
+   - Rounded rectangles: States
+   - Filled circle: Initial state
+   - Circle with border: Final state
+   - Arrows: Transitions
+3. Label transitions with: trigger [guard] / action
+4. Show composite states with nested regions
+5. Use distinct colors for different state categories
+6. Include arrow legend for transition types
+
+### Output
+Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/state-machine-[entity].drawio
+```
+
+---
+
 ## Generate Infrastructure Diagram
 
 ```
@@ -615,6 +1347,68 @@ Generate THREE diagrams:
 - Follow C4 Model color conventions
 - Include relationship descriptions on arrows
 - Add arrow legend for relationship types
+```
+
+---
+
+## Generate Security Diagram
+
+```
+## Task: Generate Security Architecture Diagram
+
+Use diagram standards from: [CLAUDE_DIAGRAMS_STANDARD_FORMAT_PATH]
+
+### Input Analysis
+Read and use: [YOUR_PROJECT_PATH]/docs/analysis/security-analysis.md
+
+### Requirements
+1. Create security architecture diagram based on the analysis
+2. Show trust zones/boundaries with colored regions
+3. Mark entry points and attack surfaces
+4. Indicate security controls at each boundary:
+   - Authentication points
+   - Authorization checks
+   - Encryption zones
+5. Show data flow with sensitivity levels
+6. Use distinct colors for:
+   - Public zone (red/orange)
+   - DMZ (yellow)
+   - Private zone (green)
+   - Sensitive data zone (blue)
+7. Include arrow legend for data flow types
+8. Mark compliance-relevant boundaries
+
+### Output
+Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/security-architecture.drawio
+```
+
+---
+
+## Generate Dependency Diagram
+
+```
+## Task: Generate Dependency Diagram
+
+Use diagram standards from: [CLAUDE_DIAGRAMS_STANDARD_FORMAT_PATH]
+
+### Input Analysis
+Read and use: [YOUR_PROJECT_PATH]/docs/analysis/dependency-analysis.md
+
+### Requirements
+1. Create module dependency diagram based on the analysis
+2. Show internal modules as rectangles
+3. Use arrows to show dependency direction (depends on)
+4. Highlight circular dependencies in red
+5. Group modules by layer/domain
+6. Use line thickness to indicate coupling strength
+7. Color code by module type:
+   - Core: Blue
+   - Infrastructure: Gray
+   - External: Orange
+8. Include arrow legend for dependency types
+
+### Output
+Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/module-dependencies.drawio
 ```
 
 ---
@@ -858,6 +1652,393 @@ These templates show the expected structure for analysis output files.
 
 ---
 
+## Flowchart Output Template
+
+```markdown
+# Flowchart Analysis: [Project Name]
+
+## Overview
+- **Project**: [Name]
+- **Analyzed**: [Date]
+- **Total Processes**: [Count]
+
+## Business Processes
+
+### [Process Name]: Order Checkout
+**Description**: Customer completes purchase from cart to confirmation
+**Trigger**: User clicks "Checkout" button
+**Actors**: Customer, Payment System, Inventory System
+
+#### Process Flow
+```
+[Start: Cart Page]
+    │
+    ▼
+[Display Order Summary]
+    │
+    ▼
+[Enter Shipping Address]
+    │
+    ▼
+◇─── Is address valid? ───◇
+│                          │
+│ No                       │ Yes
+▼                          ▼
+[Show Error]          [Select Shipping Method]
+    │                      │
+    └──────────────────────┘
+                           │
+                           ▼
+                    [Enter Payment Info]
+                           │
+                           ▼
+                    ◇─── Process Payment ───◇
+                    │                        │
+                    │ Failed                 │ Success
+                    ▼                        ▼
+              [Show Error]            [Create Order]
+                    │                        │
+                    └────────────────────────┤
+                                             ▼
+                                    [Send Confirmation]
+                                             │
+                                             ▼
+                                    [End: Order Complete]
+```
+
+#### Decision Points
+| Decision | Condition | Yes Path | No Path |
+|----------|-----------|----------|---------|
+| Is address valid? | Address passes validation | Continue to shipping | Show validation errors |
+| Process Payment | Payment gateway returns success | Create order | Show payment error |
+
+#### Error Paths
+| Error | Trigger | Recovery Action |
+|-------|---------|-----------------|
+| Invalid address | Validation fails | Return to address form |
+| Payment failed | Gateway rejection | Return to payment form |
+| Inventory unavailable | Stock check fails | Remove item, notify user |
+
+---
+
+### [Next Process]
+...
+
+## User Journeys
+
+### Journey: First-Time Buyer
+**Persona**: New customer discovering the platform
+**Goal**: Complete first purchase successfully
+
+| Step | Action | Decision Point | Success | Failure |
+|------|--------|----------------|---------|---------|
+| 1 | Browse products | - | View product | Exit |
+| 2 | Add to cart | - | Cart updated | Show error |
+| 3 | Create account | Has account? | Login | Register |
+| 4 | Checkout | - | Payment page | Cart issues |
+| 5 | Payment | Valid payment? | Confirmation | Retry |
+
+## State Transitions
+
+### Order States
+```
+[Draft] ──create──▶ [Pending]
+                        │
+            ┌───────────┴───────────┐
+            │ payment_received      │ cancelled
+            ▼                       ▼
+       [Confirmed]            [Cancelled]
+            │
+            │ shipped
+            ▼
+       [Shipped]
+            │
+            │ delivered
+            ▼
+       [Delivered]
+```
+
+| From State | To State | Trigger | Actions |
+|------------|----------|---------|---------|
+| Draft | Pending | User submits order | Validate items, reserve stock |
+| Pending | Confirmed | Payment received | Update inventory, notify user |
+| Pending | Cancelled | User cancels / timeout | Release stock, refund if paid |
+| Confirmed | Shipped | Fulfillment complete | Generate tracking, notify user |
+| Shipped | Delivered | Carrier confirms | Close order, request review |
+
+## Approval Workflows
+
+### Refund Request Workflow
+**Actors**: Customer, Support Agent, Finance Team
+
+| Step | Actor | Action | Next Step |
+|------|-------|--------|-----------|
+| 1 | Customer | Submit refund request | 2 |
+| 2 | Support Agent | Review request | 3 (approve) or 4 (reject) |
+| 3 | Finance Team | Process refund | 5 |
+| 4 | Support Agent | Notify rejection | End |
+| 5 | System | Send confirmation | End |
+```
+
+---
+
+## Sequence Diagram Output Template
+
+```markdown
+# Sequence Diagram Analysis: [Project Name]
+
+## Overview
+- **Project**: [Name]
+- **Analyzed**: [Date]
+- **Total Sequences**: [Count]
+
+## API Sequences
+
+### Sequence: User Login
+**Trigger**: User submits login form
+**Participants**: Client, API Gateway, AuthService, UserRepository, Database, TokenService
+
+| # | From | To | Message | Return | Notes |
+|---|------|-----|---------|--------|-------|
+| 1 | Client | API Gateway | POST /api/auth/login | - | {email, password} |
+| 2 | API Gateway | AuthService | authenticate(email, password) | - | |
+| 3 | AuthService | UserRepository | findByEmail(email) | User | |
+| 4 | UserRepository | Database | SELECT * FROM users WHERE email = ? | Row | |
+| 5 | AuthService | AuthService | verifyPassword(password, hash) | boolean | Self-call |
+| 6 | AuthService | TokenService | generateToken(userId) | JWT | |
+| 7 | AuthService | API Gateway | - | AuthResponse | {token, user} |
+| 8 | API Gateway | Client | - | 200 OK | {token, user} |
+
+**Alternative Flow - Invalid Credentials**:
+| # | From | To | Message | Return |
+|---|------|-----|---------|--------|
+| 5a | AuthService | API Gateway | - | AuthError | Invalid credentials |
+| 6a | API Gateway | Client | - | 401 | Error response |
+
+---
+
+### Sequence: [Next Sequence]
+...
+
+## Service Sequences
+
+### Sequence: Order Processing
+**Trigger**: Order placed event
+**Participants**: OrderService, InventoryService, PaymentService, NotificationService
+
+| # | From | To | Message | Async | Notes |
+|---|------|-----|---------|-------|-------|
+| 1 | OrderService | InventoryService | reserveStock(items) | No | Sync call |
+| 2 | OrderService | PaymentService | processPayment(amount) | No | Sync call |
+| 3 | OrderService | NotificationService | sendConfirmation(order) | Yes | Fire & forget |
+
+## Message Patterns
+
+### Synchronous Calls
+- Request-response pattern
+- Caller waits for response
+- Used for: Data queries, validations
+
+### Asynchronous Calls
+- Fire-and-forget pattern
+- Caller continues immediately
+- Used for: Notifications, logging, analytics
+```
+
+---
+
+## Use Case Output Template
+
+```markdown
+# Use Case Analysis: [Project Name]
+
+## Overview
+- **Project**: [Name]
+- **Domain**: [Business domain]
+- **Analyzed**: [Date]
+- **Total Use Cases**: [Count]
+
+## Actors
+
+| Actor | Type | Description | Primary Use Cases |
+|-------|------|-------------|-------------------|
+| Customer | Person | End user purchasing products | Browse, Purchase, Review |
+| Admin | Person | System administrator | Manage Users, View Reports |
+| Payment System | External System | Payment gateway | Process Payments |
+| Scheduler | System | Cron/timer service | Run Scheduled Jobs |
+
+## Use Cases
+
+### UC-001: Place Order
+**Actor(s)**: Customer (Primary), Payment System (Secondary)
+**Description**: Customer completes purchase of items in cart
+
+**Preconditions**:
+- Customer is authenticated
+- Cart contains at least one item
+- Items are in stock
+
+**Postconditions**:
+- Order is created with status "Pending"
+- Inventory is reserved
+- Confirmation email is sent
+
+**Main Flow**:
+| Step | Actor | Action | System Response |
+|------|-------|--------|-----------------|
+| 1 | Customer | Clicks "Checkout" | Display order summary |
+| 2 | Customer | Confirms shipping address | Validate address |
+| 3 | Customer | Selects shipping method | Calculate total |
+| 4 | Customer | Enters payment details | - |
+| 5 | System | Validates payment with Payment System | - |
+| 6 | Payment System | Returns authorization | - |
+| 7 | System | Creates order | Display confirmation |
+
+**Alternative Flows**:
+- **3a**: Invalid address → Show error, return to step 2
+- **5a**: Payment declined → Show error, return to step 4
+
+**Exception Flows**:
+- **E1**: Item out of stock during checkout → Remove item, notify user
+- **E2**: System timeout → Save cart, show retry option
+
+---
+
+### UC-002: [Next Use Case]
+...
+
+## Use Case Relationships
+
+### Include Relationships
+| Base Use Case | Included Use Case | Description |
+|---------------|-------------------|-------------|
+| Place Order | Validate Payment | Always validates payment |
+| Place Order | Send Notification | Always sends confirmation |
+
+### Extend Relationships
+| Base Use Case | Extending Use Case | Condition |
+|---------------|---------------------|-----------|
+| Place Order | Apply Coupon | User has coupon code |
+| View Product | Add to Wishlist | User is authenticated |
+
+## Actor-Use Case Matrix
+
+| Use Case | Customer | Admin | Guest | System |
+|----------|----------|-------|-------|--------|
+| Browse Products | ✓ | ✓ | ✓ | - |
+| Place Order | ✓ | - | - | - |
+| Manage Users | - | ✓ | - | - |
+| Send Notifications | - | - | - | ✓ |
+```
+
+---
+
+## State Machine Output Template
+
+```markdown
+# State Machine Analysis: [Project Name]
+
+## Overview
+- **Project**: [Name]
+- **Analyzed**: [Date]
+- **Stateful Entities**: [Count]
+
+## State Machines
+
+### Order State Machine
+**Entity**: Order
+**State Field**: `order.status` (Enum)
+**Initial State**: Draft
+
+#### States
+| State | Description | Entry Action | Exit Action |
+|-------|-------------|--------------|-------------|
+| Draft | Order being created | Initialize order | Validate items |
+| Pending | Awaiting payment | Reserve inventory | - |
+| Confirmed | Payment received | Update inventory | - |
+| Processing | Being prepared | Assign to fulfillment | - |
+| Shipped | In transit | Generate tracking | - |
+| Delivered | Completed | Close order | - |
+| Cancelled | Cancelled by user/system | Release inventory | - |
+| Refunded | Payment returned | Process refund | - |
+
+#### Transitions
+| From | To | Trigger | Guard | Action |
+|------|-----|---------|-------|--------|
+| Draft | Pending | submit() | items.length > 0 | createOrder() |
+| Pending | Confirmed | paymentReceived | payment.valid | confirmOrder() |
+| Pending | Cancelled | cancel() | - | releaseInventory() |
+| Pending | Cancelled | timeout | time > 30min | autoCancel() |
+| Confirmed | Processing | startProcessing() | - | notifyWarehouse() |
+| Processing | Shipped | ship() | trackingNumber set | sendShipmentEmail() |
+| Shipped | Delivered | confirmDelivery() | - | requestReview() |
+| Confirmed | Refunded | requestRefund() | within 30 days | processRefund() |
+
+#### State Diagram
+```
+    ┌─────────────────────────────────────────────────────┐
+    │                                                     │
+    ▼                                                     │
+[Draft] ──submit──▶ [Pending] ──payment──▶ [Confirmed]    │
+                        │                      │          │
+                        │ cancel/timeout       │ start    │
+                        ▼                      ▼          │
+                   [Cancelled]          [Processing]      │
+                                              │           │
+                                              │ ship      │
+                                              ▼           │
+                        ┌──────────────── [Shipped]       │
+                        │                     │           │
+                        │ refund              │ deliver   │
+                        ▼                     ▼           │
+                   [Refunded] ◀─refund── [Delivered] ─────┘
+```
+
+---
+
+### User Account State Machine
+**Entity**: User
+**State Field**: `user.status` (Enum)
+**Initial State**: Pending
+
+#### States
+| State | Description |
+|-------|-------------|
+| Pending | Email not verified |
+| Active | Normal active account |
+| Suspended | Temporarily disabled |
+| Banned | Permanently disabled |
+| Deleted | Soft deleted |
+
+#### Transitions
+| From | To | Trigger | Guard |
+|------|-----|---------|-------|
+| Pending | Active | verifyEmail() | token.valid |
+| Active | Suspended | suspend() | isAdmin |
+| Suspended | Active | reactivate() | isAdmin |
+| Active | Banned | ban() | isAdmin |
+| Active | Deleted | deleteAccount() | isOwner |
+
+---
+
+## Composite States
+
+### Order.Processing (Composite)
+**Parent State**: Processing
+**Child States**:
+- Picking: Items being collected
+- Packing: Items being packaged
+- QualityCheck: Verifying order accuracy
+
+| From | To | Trigger |
+|------|-----|---------|
+| Picking | Packing | itemsCollected() |
+| Packing | QualityCheck | packed() |
+| QualityCheck | [Exit] | approved() |
+```
+
+---
+
 ## Infrastructure Output Template
 
 ```markdown
@@ -1093,19 +2274,456 @@ These templates show the expected structure for analysis output files.
 
 ---
 
+## Security Analysis Output Template
+
+```markdown
+# Security Analysis: [Project Name]
+
+## Overview
+- **Project**: [Name]
+- **Analyzed**: [Date]
+- **Risk Level**: [Low/Medium/High]
+
+## Authentication
+
+### Method: JWT + OAuth2
+- **Provider**: Auth0 / Custom
+- **Token Type**: Bearer token (JWT)
+- **Token Storage**: HttpOnly cookie (web), Secure storage (mobile)
+- **Token Lifetime**: Access: 15min, Refresh: 7 days
+- **Refresh Mechanism**: Silent refresh via refresh token
+- **MFA**: Optional TOTP, required for admin
+
+### Implementation
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| AuthMiddleware | `src/middleware/auth.ts` | Validate JWT tokens |
+| TokenService | `src/services/token.ts` | Generate/verify tokens |
+| RefreshController | `src/controllers/auth.ts` | Handle token refresh |
+
+## Authorization
+
+### Model: Role-Based Access Control (RBAC)
+
+### Roles & Permissions
+| Role | Permissions | Description |
+|------|-------------|-------------|
+| super_admin | * | Full system access |
+| admin | users.*, orders.*, products.* | Administrative access |
+| manager | orders.read, orders.update, reports.read | Order management |
+| user | own.*, products.read | Standard user |
+| guest | products.read, public.* | Unauthenticated |
+
+### Permission Enforcement
+| Layer | Location | Method |
+|-------|----------|--------|
+| API Gateway | `src/middleware/authorize.ts` | @RequirePermission decorator |
+| Service | `src/services/*.ts` | Manual permission checks |
+| Database | Row-level security | Postgres RLS policies |
+
+## Security Boundaries
+
+### Trust Zones
+| Zone | Components | Trust Level |
+|------|------------|-------------|
+| Public Internet | CDN, Public APIs | Untrusted |
+| DMZ | Load Balancer, WAF | Semi-trusted |
+| Application Zone | API Servers, Workers | Trusted |
+| Data Zone | Database, Cache | Highly Trusted |
+| Management Zone | Admin tools, CI/CD | Restricted |
+
+### Entry Points
+| Entry Point | Zone Boundary | Controls |
+|-------------|---------------|----------|
+| HTTPS :443 | Public → DMZ | WAF, Rate limiting |
+| API Gateway | DMZ → App | Auth, CORS, Validation |
+| Database :5432 | App → Data | VPC, Security group |
+| Admin :8443 | Public → Mgmt | VPN, MFA, IP whitelist |
+
+## Data Protection
+
+### Sensitive Data Classification
+| Data Type | Classification | Protection |
+|-----------|----------------|------------|
+| Passwords | Secret | bcrypt hash, never stored plain |
+| PII (name, email) | Confidential | Encrypted at rest, masked in logs |
+| Payment card | PCI | Tokenized via Stripe, not stored |
+| Session tokens | Secret | HttpOnly, Secure, SameSite |
+
+### Encryption
+| Layer | Algorithm | Key Management |
+|-------|-----------|----------------|
+| At Rest | AES-256 | AWS KMS |
+| In Transit | TLS 1.3 | ACM certificates |
+| Application | AES-256-GCM | Vault |
+
+## Threat Model
+
+### Identified Threats (STRIDE)
+| Threat | Category | Asset | Likelihood | Impact | Mitigation | Status |
+|--------|----------|-------|------------|--------|------------|--------|
+| SQL Injection | Tampering | Database | Medium | High | Parameterized queries | ✅ |
+| XSS | Information Disclosure | User session | Medium | Medium | Output encoding, CSP | ✅ |
+| CSRF | Elevation of Privilege | User actions | Low | Medium | CSRF tokens, SameSite | ✅ |
+| Brute Force | Spoofing | User accounts | High | Medium | Rate limiting, lockout | ✅ |
+| Session Hijacking | Spoofing | Sessions | Low | High | Secure cookies, rotation | ✅ |
+
+## Security Controls
+
+### Input Validation
+| Control | Implementation | Location |
+|---------|----------------|----------|
+| Schema validation | Zod/Joi | API controllers |
+| SQL injection | Parameterized queries | All repositories |
+| Path traversal | Path sanitization | File upload service |
+
+### Headers
+```
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+```
+
+### Rate Limiting
+| Endpoint | Limit | Window | Action |
+|----------|-------|--------|--------|
+| /api/auth/login | 5 | 15 min | Block IP |
+| /api/* | 100 | 1 min | 429 response |
+| /api/public/* | 1000 | 1 min | 429 response |
+
+## Secrets Management
+
+### Secret Types
+| Secret | Storage | Rotation |
+|--------|---------|----------|
+| Database password | AWS Secrets Manager | 90 days |
+| API keys | Environment variables | Manual |
+| JWT signing key | AWS Secrets Manager | 30 days |
+| Encryption keys | AWS KMS | Annual |
+
+## Compliance
+
+### GDPR
+| Requirement | Implementation |
+|-------------|----------------|
+| Right to access | GET /api/users/me/data |
+| Right to deletion | DELETE /api/users/me |
+| Data portability | GET /api/users/me/export |
+| Consent management | Consent service + audit log |
+```
+
+---
+
+## API Contract Output Template
+
+```markdown
+# API Contract Analysis: [Project Name]
+
+## Overview
+- **API Type**: REST
+- **Base URL**: `https://api.example.com`
+- **Version**: v1 (current), v0 (deprecated)
+- **Version Strategy**: URL path (`/api/v1/...`)
+- **Spec Location**: `docs/openapi.yaml`
+
+## Authentication
+
+### Bearer Token (JWT)
+```
+Authorization: Bearer <token>
+```
+
+### API Key (for service-to-service)
+```
+X-API-Key: <api-key>
+```
+
+## Endpoints
+
+### Authentication
+| Method | Path | Summary | Auth | Rate Limit |
+|--------|------|---------|------|------------|
+| POST | /api/v1/auth/register | Register new user | None | 5/15min |
+| POST | /api/v1/auth/login | User login | None | 5/15min |
+| POST | /api/v1/auth/refresh | Refresh token | Refresh Token | 10/min |
+| POST | /api/v1/auth/logout | User logout | Bearer | 10/min |
+
+### Users
+| Method | Path | Summary | Auth | Permissions |
+|--------|------|---------|------|-------------|
+| GET | /api/v1/users | List users | Bearer | users.read |
+| POST | /api/v1/users | Create user | Bearer | users.create |
+| GET | /api/v1/users/:id | Get user | Bearer | users.read |
+| PUT | /api/v1/users/:id | Update user | Bearer | users.update |
+| DELETE | /api/v1/users/:id | Delete user | Bearer | users.delete |
+
+### Orders
+| Method | Path | Summary | Auth | Permissions |
+|--------|------|---------|------|-------------|
+| GET | /api/v1/orders | List orders | Bearer | orders.read |
+| POST | /api/v1/orders | Create order | Bearer | orders.create |
+| GET | /api/v1/orders/:id | Get order | Bearer | orders.read |
+| PATCH | /api/v1/orders/:id | Update order | Bearer | orders.update |
+| POST | /api/v1/orders/:id/cancel | Cancel order | Bearer | orders.update |
+
+## Schemas
+
+### User
+```json
+{
+  "id": "uuid",
+  "email": "string (email)",
+  "name": "string",
+  "role": "user | admin",
+  "status": "active | suspended",
+  "createdAt": "datetime",
+  "updatedAt": "datetime"
+}
+```
+
+### CreateUserRequest
+```json
+{
+  "email": "string (required, email)",
+  "password": "string (required, min 8)",
+  "name": "string (required)"
+}
+```
+
+### Order
+```json
+{
+  "id": "uuid",
+  "userId": "uuid",
+  "status": "draft | pending | confirmed | shipped | delivered | cancelled",
+  "items": "OrderItem[]",
+  "total": "number",
+  "shippingAddress": "Address",
+  "createdAt": "datetime",
+  "updatedAt": "datetime"
+}
+```
+
+## Error Responses
+
+### Standard Error Format
+```json
+{
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human readable message",
+    "details": [
+      {
+        "field": "email",
+        "message": "Invalid email format"
+      }
+    ],
+    "requestId": "uuid"
+  }
+}
+```
+
+### Error Codes
+| Code | HTTP | Description |
+|------|------|-------------|
+| VALIDATION_ERROR | 400 | Request validation failed |
+| INVALID_CREDENTIALS | 401 | Login failed |
+| UNAUTHORIZED | 401 | Token invalid or expired |
+| FORBIDDEN | 403 | Insufficient permissions |
+| NOT_FOUND | 404 | Resource not found |
+| CONFLICT | 409 | Resource already exists |
+| RATE_LIMITED | 429 | Too many requests |
+| INTERNAL_ERROR | 500 | Server error |
+
+## Pagination
+
+### Request Parameters
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| page | integer | 1 | Page number |
+| limit | integer | 20 | Items per page (max 100) |
+| sort | string | createdAt | Sort field |
+| order | string | desc | Sort order (asc/desc) |
+
+### Response Format
+```json
+{
+  "data": [...],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 150,
+    "totalPages": 8
+  }
+}
+```
+
+## Webhooks
+
+### Events
+| Event | Trigger | Payload |
+|-------|---------|---------|
+| order.created | New order placed | Order object |
+| order.updated | Order status changed | Order object |
+| payment.received | Payment confirmed | Payment object |
+| user.created | New user registered | User object (sanitized) |
+
+### Delivery
+- **Method**: POST
+- **Content-Type**: application/json
+- **Signature**: HMAC-SHA256 in `X-Webhook-Signature`
+- **Retry Policy**: 3 attempts, exponential backoff
+```
+
+---
+
+## Dependency Analysis Output Template
+
+```markdown
+# Dependency Analysis: [Project Name]
+
+## Overview
+- **Project**: [Name]
+- **Package Manager**: npm / yarn / pnpm
+- **Analyzed**: [Date]
+- **Total Dependencies**: 156
+
+## Summary
+
+| Category | Count |
+|----------|-------|
+| Direct (Production) | 32 |
+| Direct (Dev) | 24 |
+| Transitive | 100 |
+| Outdated | 8 |
+| Vulnerabilities | 2 |
+
+## Production Dependencies
+
+### Framework & Core
+| Package | Version | Latest | Purpose | License |
+|---------|---------|--------|---------|---------|
+| express | ^4.18.2 | 4.18.2 | Web framework | MIT |
+| typescript | ^5.2.0 | 5.3.2 | Type checking | Apache-2.0 |
+| prisma | ^5.6.0 | 5.7.0 | ORM | Apache-2.0 |
+
+### Database
+| Package | Version | Latest | Purpose | License |
+|---------|---------|--------|---------|---------|
+| @prisma/client | ^5.6.0 | 5.7.0 | Database client | Apache-2.0 |
+| redis | ^4.6.0 | 4.6.10 | Cache client | MIT |
+
+### Authentication
+| Package | Version | Latest | Purpose | License |
+|---------|---------|--------|---------|---------|
+| jsonwebtoken | ^9.0.0 | 9.0.2 | JWT handling | MIT |
+| bcryptjs | ^2.4.3 | 2.4.3 | Password hashing | MIT |
+| passport | ^0.6.0 | 0.7.0 | Auth middleware | MIT |
+
+### Validation
+| Package | Version | Latest | Purpose | License |
+|---------|---------|--------|---------|---------|
+| zod | ^3.22.0 | 3.22.4 | Schema validation | MIT |
+| class-validator | ^0.14.0 | 0.14.0 | Decorator validation | MIT |
+
+## Dev Dependencies
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| jest | ^29.7.0 | Testing framework |
+| @types/node | ^20.9.0 | Node.js types |
+| eslint | ^8.54.0 | Linting |
+| prettier | ^3.1.0 | Code formatting |
+
+## Module Dependencies (Internal)
+
+### Core Modules
+| Module | Path | Depends On | Used By |
+|--------|------|------------|---------|
+| UserService | src/services/user | UserRepository, AuthService | OrderService, AdminController |
+| OrderService | src/services/order | UserService, ProductService, PaymentService | OrderController, WebhookHandler |
+| AuthService | src/services/auth | UserRepository, TokenService | AuthController, UserService |
+
+### Dependency Graph
+```
+                    ┌─────────────────┐
+                    │  AuthController │
+                    └────────┬────────┘
+                             │
+                             ▼
+┌──────────────┐    ┌─────────────────┐    ┌──────────────┐
+│ UserService  │◀───│   AuthService   │───▶│ TokenService │
+└──────┬───────┘    └─────────────────┘    └──────────────┘
+       │
+       ▼
+┌──────────────┐
+│UserRepository│
+└──────────────┘
+```
+
+## Circular Dependencies
+
+| Cycle | Modules | Severity | Resolution |
+|-------|---------|----------|------------|
+| 1 | UserService ↔ OrderService | Medium | Extract shared logic to CustomerService |
+
+## Outdated Dependencies
+
+| Package | Current | Latest | Breaking | Recommended Action |
+|---------|---------|--------|----------|-------------------|
+| passport | 0.6.0 | 0.7.0 | Yes | Update with testing |
+| webpack | 4.46.0 | 5.89.0 | Yes | Plan major upgrade |
+| lodash | 4.17.20 | 4.17.21 | No | Update immediately |
+
+## Security Vulnerabilities
+
+| Package | Severity | CVE | Description | Fix |
+|---------|----------|-----|-------------|-----|
+| axios | High | CVE-2023-XXXXX | SSRF vulnerability | Update to 1.6.0+ |
+| semver | Moderate | CVE-2022-XXXXX | ReDoS vulnerability | Update to 7.5.2+ |
+
+## License Compliance
+
+| License | Count | Packages | Commercial Use |
+|---------|-------|----------|----------------|
+| MIT | 120 | express, lodash, ... | ✅ Allowed |
+| Apache-2.0 | 25 | typescript, prisma, ... | ✅ Allowed |
+| ISC | 8 | glob, rimraf, ... | ✅ Allowed |
+| BSD-3-Clause | 3 | source-map, ... | ✅ Allowed |
+
+## Recommendations
+
+1. **Update Critical**: axios, semver (security vulnerabilities)
+2. **Plan Upgrade**: passport, webpack (breaking changes)
+3. **Resolve Circular**: UserService ↔ OrderService
+4. **Review Large**: Consider tree-shaking lodash
+```
+
+---
+
 ## Complete Workflow Example
 
 ### Step 1: Run Analysis
+> **Note:** Only generate analysis files that are relevant to your project. Skip types that don't apply.
+
 ```
 Analyze project at: D:\Projects\my-ecommerce-app
 
-Generate all analysis documents:
+Generate applicable analysis documents (skip if not relevant):
 1. Architecture analysis → docs/analysis/architecture-analysis.md
 2. Data models analysis → docs/analysis/data-models-analysis.md
 3. Data flow analysis → docs/analysis/data-flow-analysis.md
-4. Infrastructure analysis → docs/analysis/infrastructure-analysis.md
-5. C4 model analysis → docs/analysis/c4-model-analysis.md
-6. DDD analysis → docs/analysis/ddd-analysis.md
+4. Flowchart analysis → docs/analysis/flowchart-analysis.md
+5. Sequence analysis → docs/analysis/sequence-analysis.md
+6. Use case analysis → docs/analysis/use-case-analysis.md
+7. State machine analysis → docs/analysis/state-machine-analysis.md
+8. Infrastructure analysis → docs/analysis/infrastructure-analysis.md
+9. C4 model analysis → docs/analysis/c4-model-analysis.md
+10. DDD analysis → docs/analysis/ddd-analysis.md
+11. Security analysis → docs/analysis/security-analysis.md
+12. API contract analysis → docs/analysis/api-contract-analysis.md
+13. Dependency analysis → docs/analysis/dependency-analysis.md
 ```
 
 ### Step 2: Review & Correct
@@ -1113,18 +2731,25 @@ Generate all analysis documents:
 - Verify accuracy
 - Add missing details
 - Correct any errors
+- Delete any analysis files that are mostly empty or not applicable
 
 ### Step 3: Generate Diagrams
 ```
-Use diagram standards from: D:\Standards\CLAUDE-DIAGRAMS-STANDARD-FORMAT.md
+Use diagram standards from: D:\Standards\PROMPT-DIAGRAM-FORMAT.md
 
 Generate diagrams from analysis:
 1. Architecture diagram from architecture-analysis.md
 2. ERD diagram from data-models-analysis.md
 3. Data flow diagram from data-flow-analysis.md
-4. Infrastructure diagram from infrastructure-analysis.md
-5. C4 diagrams from c4-model-analysis.md
-6. DDD context map from ddd-analysis.md
+4. Flowchart diagrams from flowchart-analysis.md
+5. Sequence diagrams from sequence-analysis.md
+6. Use case diagram from use-case-analysis.md
+7. State machine diagrams from state-machine-analysis.md
+8. Infrastructure diagram from infrastructure-analysis.md
+9. C4 diagrams from c4-model-analysis.md
+10. DDD context map from ddd-analysis.md
+11. Security architecture diagram from security-analysis.md
+12. Module dependency diagram from dependency-analysis.md
 
 Save all diagrams to: docs/diagrams/
 ```
