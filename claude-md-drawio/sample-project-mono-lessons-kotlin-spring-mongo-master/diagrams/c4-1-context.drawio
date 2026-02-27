@@ -1,0 +1,113 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="C4 Context" id="c4-context-diagram">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;System Context Diagram&lt;/b&gt;&lt;br&gt;Kotlin Spring MongoDB Demo System"
+          style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontColor=#333333;shadow=1;textShadow=1;"
+          parent="1" vertex="1">
+          <mxGeometry x="600" y="30" width="400" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Person: Developer -->
+        <mxCell id="person-developer" value="&lt;b&gt;Developer&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Runs and tests the demo&lt;br&gt;applications locally&lt;/font&gt;"
+          style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#08427B;strokeColor=#052E56;fontColor=#FFFFFF;labelPosition=center;align=center;spacingTop=-60;spacing=0;fontSize=11;shadow=1;textShadow=1;"
+          parent="1" vertex="1">
+          <mxGeometry x="200" y="200" width="80" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Person: API Consumer -->
+        <mxCell id="person-api-consumer" value="&lt;b&gt;API Consumer&lt;/b&gt;&lt;br&gt;[Person/System]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Calls REST APIs to&lt;br&gt;perform CRUD operations&lt;/font&gt;"
+          style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#08427B;strokeColor=#052E56;fontColor=#FFFFFF;labelPosition=center;align=center;spacingTop=-60;spacing=0;fontSize=11;shadow=1;textShadow=1;"
+          parent="1" vertex="1">
+          <mxGeometry x="200" y="450" width="80" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Person: Browser User -->
+        <mxCell id="person-browser-user" value="&lt;b&gt;Browser User&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Uses web UI for file&lt;br&gt;management (GridFS)&lt;/font&gt;"
+          style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#08427B;strokeColor=#052E56;fontColor=#FFFFFF;labelPosition=center;align=center;spacingTop=-60;spacing=0;fontSize=11;shadow=1;textShadow=1;"
+          parent="1" vertex="1">
+          <mxGeometry x="200" y="700" width="80" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Main System -->
+        <mxCell id="system-main" value="&lt;b&gt;Kotlin Spring MongoDB&lt;br&gt;Demo System&lt;/b&gt;&lt;br&gt;[Software System]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Multi-module educational application&lt;br&gt;demonstrating MongoDB access patterns:&lt;br&gt;Blocking, Reactive, and GridFS&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=#3C7FC0;strokeWidth=3;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;"
+          parent="1" vertex="1">
+          <mxGeometry x="600" y="350" width="400" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- External System: MongoDB -->
+        <mxCell id="system-mongodb" value="&lt;b&gt;MongoDB Server&lt;/b&gt;&lt;br&gt;[External System]&lt;br&gt;&lt;br&gt;&lt;font style='font-size:10px'&gt;Document database&lt;br&gt;running on localhost:27017&lt;br&gt;Stores documents and files&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#8A8A8A;strokeWidth=2;fontColor=#FFFFFF;verticalAlign=middle;fontSize=11;shadow=1;textShadow=1;"
+          parent="1" vertex="1">
+          <mxGeometry x="1200" y="380" width="200" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Edge: Developer to System -->
+        <mxCell id="rel-dev-sys" value="Uses [IDE/CLI]"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;"
+          parent="1" source="person-developer" target="system-main" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Edge: API Consumer to System -->
+        <mxCell id="rel-api-sys" value="Calls API [REST/HTTP]"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;"
+          parent="1" source="person-api-consumer" target="system-main" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Edge: Browser User to System -->
+        <mxCell id="rel-browser-sys" value="Uploads/Downloads files [HTTP]"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;shadow=1;textShadow=1;flowAnimation=1;endArrow=classic;endFill=1;"
+          parent="1" source="person-browser-user" target="system-main" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Edge: System to MongoDB (bidirectional) -->
+        <mxCell id="rel-sys-mongo" value="Reads/Writes data [MongoDB Protocol]"
+          style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;shadow=1;textShadow=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;"
+          parent="1" source="system-main" target="system-mongodb" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend" value="Legend"
+          style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#F5F5F5;strokeColor=#666666;strokeWidth=2;fontSize=12;shadow=1;textShadow=1;"
+          parent="1" vertex="1">
+          <mxGeometry x="1150" y="600" width="300" height="156" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-person" value="&lt;table&gt;&lt;tr&gt;&lt;td style='background:#08427B;width:20px;'&gt;&lt;/td&gt;&lt;td&gt; Person (User/Actor)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;shadow=1;textShadow=1;"
+          parent="legend" vertex="1">
+          <mxGeometry y="26" width="300" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-system" value="&lt;table&gt;&lt;tr&gt;&lt;td style='background:#438DD5;width:20px;'&gt;&lt;/td&gt;&lt;td&gt; Software System (Internal)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;shadow=1;textShadow=1;"
+          parent="legend" vertex="1">
+          <mxGeometry y="52" width="300" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-external" value="&lt;table&gt;&lt;tr&gt;&lt;td style='background:#999999;width:20px;'&gt;&lt;/td&gt;&lt;td&gt; External System&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;shadow=1;textShadow=1;"
+          parent="legend" vertex="1">
+          <mxGeometry y="78" width="300" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-rel" value="&lt;table&gt;&lt;tr&gt;&lt;td&gt;───▶&lt;/td&gt;&lt;td&gt; Uses / Depends On&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;shadow=1;textShadow=1;"
+          parent="legend" vertex="1">
+          <mxGeometry y="104" width="300" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-bidir" value="&lt;table&gt;&lt;tr&gt;&lt;td&gt;◀──▶&lt;/td&gt;&lt;td&gt; Bidirectional (Read/Write)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;shadow=1;textShadow=1;"
+          parent="legend" vertex="1">
+          <mxGeometry y="130" width="300" height="26" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
