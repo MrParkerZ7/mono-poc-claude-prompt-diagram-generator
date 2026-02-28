@@ -30,6 +30,8 @@ This document provides **two-step workflow templates** for generating accurate D
 > - Single-module project → Skip Dependency Analysis (internal modules)
 >
 > **Do not create empty or placeholder analysis files.** Only generate analysis for aspects that exist in the codebase.
+>
+> **IMPORTANT: README.md is ALWAYS required.** The `README.md` file serves as the main project summary and index for all analysis documents and diagrams. It must be created for every project regardless of which other analysis types apply.
 
 ---
 
@@ -54,6 +56,7 @@ This document provides **two-step workflow templates** for generating accurate D
 - [Generate Diagrams from Analysis](#step-2-generate-diagrams-from-analysis)
 
 ### Output Templates
+- [**README (Project Summary) - REQUIRED**](#readme-project-summary-output-template)
 - [Architecture Analysis Output Template](#architecture-analysis-output-template)
 - [Data Models Output Template](#data-models-output-template)
 - [Data Flow Output Template](#data-flow-output-template)
@@ -1446,6 +1449,164 @@ Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/ddd-context-map.drawio
 # Output Templates
 
 These templates show the expected structure for analysis output files.
+
+> **IMPORTANT:** The README.md file is **ALWAYS REQUIRED** as the main entry point and project summary. It must be created for every project.
+
+---
+
+## README (Project Summary) Output Template
+
+**This file is REQUIRED for every project analysis.**
+
+The README.md serves as:
+- Main entry point for the analysis documentation
+- Project overview with key metrics
+- Technology stack summary
+- Links to all analysis documents
+- Links to all diagram artifacts
+- Quick start guide
+
+**Output Path**: `[OUTPUT_PATH]/analysis/README.md`
+
+```markdown
+# Project Analysis: [Project Name]
+
+## Project Overview
+
+| Attribute | Value |
+|-----------|-------|
+| **Project Name** | [Name] |
+| **Project Type** | [Type: Web API, Monorepo, Microservices, etc.] |
+| **Primary Language** | [Language and version] |
+| **Framework** | [Main framework(s)] |
+| **Database** | [Database type(s) or "N/A"] |
+| **Build Tool** | [Build tool/package manager] |
+| **Architecture** | [Architecture pattern] |
+
+---
+
+## Technology Stack
+
+### Core Technologies
+
+| Category | Technology | Version | Purpose |
+|----------|------------|---------|---------|
+| Language | [Language] | [Version] | [Purpose] |
+| Framework | [Framework] | [Version] | [Purpose] |
+| Database | [Database] | [Version] | [Purpose] |
+| ... | ... | ... | ... |
+
+### Key Libraries/Dependencies
+
+| Library | Version | Purpose |
+|---------|---------|---------|
+| [Library] | [Version] | [Purpose] |
+| ... | ... | ... |
+
+---
+
+## Framework Patterns Demonstrated
+
+| Pattern | Implementation | Purpose |
+|---------|----------------|---------|
+| [Pattern Name] | [How implemented] | [Why used] |
+| ... | ... | ... |
+
+---
+
+## Business Target
+
+| Aspect | Description |
+|--------|-------------|
+| **Purpose** | [Main purpose of the application] |
+| **Domain** | [Business domain] |
+| **Use Case** | [Primary use cases] |
+| **Complexity** | [Simple/Medium/Complex] |
+
+---
+
+## Module/Package Summary
+
+| Module | Location | Type | Description |
+|--------|----------|------|-------------|
+| [Module Name] | [Path] | [Type] | [Description] |
+| ... | ... | ... | ... |
+
+---
+
+## Analysis Documents
+
+| Document | Description |
+|----------|-------------|
+| [architecture-analysis.md](./architecture-analysis.md) | System architecture, layers, components |
+| [data-models-analysis.md](./data-models-analysis.md) | Entity definitions, relationships |
+| [data-flow-analysis.md](./data-flow-analysis.md) | Data movement through system |
+| ... | ... |
+
+> **Note:** Only include links to analysis documents that were actually created.
+
+---
+
+## Diagram Artifacts
+
+| Diagram | Description |
+|---------|-------------|
+| [architecture-overview.drawio](../diagrams/architecture-overview.drawio) | High-level architecture |
+| [entity-erd.drawio](../diagrams/entity-erd.drawio) | Database relationships |
+| [c4-1-context.drawio](../diagrams/c4-1-context.drawio) | C4 Context diagram |
+| ... | ... |
+
+> **Note:** Only include links to diagrams that were actually created.
+
+---
+
+## Quick Start
+
+### Prerequisites
+- [Prerequisite 1]
+- [Prerequisite 2]
+
+### Installation/Setup
+\`\`\`bash
+# Commands to set up the project
+[command 1]
+[command 2]
+\`\`\`
+
+### Running the Application
+\`\`\`bash
+# Commands to run
+[command]
+\`\`\`
+
+---
+
+## Sample Code Snippets
+
+### [Feature/Pattern Name]
+\`\`\`[language]
+// Code example
+\`\`\`
+
+---
+
+## Configuration
+
+### [Config File Name]
+\`\`\`[format]
+# Configuration example
+\`\`\`
+
+---
+
+## Key Takeaways
+
+| Topic | Lesson |
+|-------|--------|
+| **[Topic 1]** | [Key insight or pattern] |
+| **[Topic 2]** | [Key insight or pattern] |
+| ... | ... |
+```
 
 ---
 

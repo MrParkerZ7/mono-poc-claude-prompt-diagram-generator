@@ -28,10 +28,19 @@ DrawIO uses XML format with specific style attributes to reference official shap
 > - No CI/CD pipeline → Skip DevOps diagrams
 >
 > **Do not create empty or placeholder diagrams.** Only generate diagrams for aspects that actually exist in the codebase or infrastructure.
+>
+> **IMPORTANT: Architecture Overview Diagram is ALWAYS required.** The `architecture-overview.drawio` file serves as the main visual representation of the project structure. It must be created for every project regardless of which other diagram types apply. This diagram should show:
+> - Overall system/project structure
+> - Main components/modules/packages
+> - Key relationships and dependencies
+> - Technology stack visualization
 
 ---
 
 ## Table of Contents
+
+### Required Diagrams
+- **Architecture Overview (`architecture-overview.drawio`)** - ALWAYS REQUIRED for every project
 
 ### Fundamentals
 - [File Structure](#file-structure)
