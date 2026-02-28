@@ -105,6 +105,47 @@ DrawIO files are XML-based with this basic structure:
 
 **For elements to move together when dragging a group container, child elements MUST have their `parent` attribute set to the container's ID.**
 
+### Default Group/Container Style (REQUIRED)
+
+**All group containers MUST use the swimlane style with the following mandatory attributes:**
+
+```xml
+<mxCell id="container-id" value="Container Name"
+  style="swimlane;startSize=0;strokeWidth=2;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#F5F5F5;strokeColor=#666666;fontSize=14;fontStyle=1;shadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="40" y="80" width="400" height="300" as="geometry"/>
+</mxCell>
+```
+
+**Mandatory Style Attributes:**
+| Attribute | Value | Description |
+|-----------|-------|-------------|
+| `startSize=0` | `0` | No header area - label floats on top of container |
+| `labelBorderColor=none` | `none` | Removes border around label text |
+| `textShadow=1` | `1` | Adds shadow behind label text for readability |
+| `labelBackgroundColor=default` | `default` | White background behind label text |
+
+**Why These Attributes:**
+- `startSize=0` - Allows content to use full container space without a reserved header area
+- `labelBorderColor=none` + `textShadow=1` + `labelBackgroundColor=default` - Creates a clean, readable label that floats over the container background with good contrast
+
+**Example with Children (proper parent-child relationship):**
+```xml
+<!-- Container -->
+<mxCell id="zone-users" value="Users Zone"
+  style="swimlane;startSize=0;strokeWidth=2;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#F5F5F5;strokeColor=#666666;fontSize=14;fontStyle=1;dashed=1;shadow=1;"
+  parent="1" vertex="1">
+  <mxGeometry x="40" y="80" width="200" height="120" as="geometry"/>
+</mxCell>
+
+<!-- Child with relative coordinates (relative to container's top-left corner) -->
+<mxCell id="user-finance" value="Finance User"
+  style="shape=umlActor;fillColor=#08427B;strokeColor=#052E56;fontColor=#FFFFFF;"
+  parent="zone-users" vertex="1">
+  <mxGeometry x="70" y="25" width="60" height="60" as="geometry"/>
+</mxCell>
+```
+
 ### How It Works
 - `parent="0"` - The root cell (id="0")
 - `parent="1"` - Direct child of the diagram root (top-level elements)
