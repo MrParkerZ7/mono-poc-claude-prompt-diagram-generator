@@ -64,6 +64,9 @@ DrawIO uses XML format with specific style attributes to reference official shap
 - [Data Workflow & ETL Shape References](#data-workflow--etl-shape-references) - Pipeline, Stream Processing
 - [Workflow & Process Diagram Shape References](#workflow--process-diagram-shape-references) - BPMN, Flowchart, State Machine
 - [Database ERD (Entity-Relationship Diagrams)](#database-erd-entity-relationship-diagrams) - Table structure, Relationships
+- [NoSQL / DynamoDB Data Model Diagrams](#nosql--dynamodb-data-model-diagrams) - Partition keys, Sort keys, TTL
+- [Conceptual ERD for NoSQL](#conceptual-erd-for-nosql-domain-based) - Domain-based grouping
+- [Project Structure Diagrams](#project-structure-diagrams) - Folder organization, Module hierarchy
 
 ### Lines, Arrows & Styling
 - [Lines and Edges (Connections)](#lines-and-edges-connections) - Edge styles, routing
@@ -1561,6 +1564,185 @@ Use ERD arrows to show logical relationships (application-enforced, not database
   vertex="1" parent="1">
   <mxGeometry x="320" y="520" width="200" height="104" as="geometry"/>
 </mxCell>
+```
+
+---
+
+## Project Structure Diagrams
+
+Project structure diagrams visualize the folder organization, module hierarchy, and codebase layout of a project. They use swimlane containers to group related directories and color-coding to distinguish between different technology types.
+
+### Purpose
+
+- Show overall codebase organization at a glance
+- Distinguish between language-specific modules (Kotlin, Python, TypeScript, etc.)
+- Highlight infrastructure and build configuration files
+- Display module counts and key components per section
+
+### Color Scheme by Technology
+
+| Technology Type | Fill Color | Stroke Color | Header Color | Use For |
+|----------------|------------|--------------|--------------|---------|
+| Primary Language (Kotlin/Java) | `#DAE8FC` | `#6C8EBF` | `#6C8EBF` | Main language modules |
+| Secondary Language (Python/JS) | `#FFF2CC` | `#D6B656` | `#D6B656` | Secondary language code |
+| Infrastructure (Terraform/Docker) | `#D5E8D4` | `#82B366` | `#82B366` | IaC and DevOps files |
+| Build/Config Files | `#F5F5F5` | `#666666` | `#666666` | Build configs, CI/CD |
+| Shared/Common Modules | `#E1D5E7` | `#9673A6` | `#9673A6` | Shared libraries |
+| Root/Overview | `#FFFFFF` | `#333333` | `#333333` | Root structure |
+
+### Section Container Style
+
+Use swimlane containers for major directory sections:
+
+```xml
+<!-- Kotlin Section Container -->
+<mxCell id="kotlin-section" value="📁 kotlin/ (26 modules)"
+  style="swimlane;startSize=30;strokeWidth=3;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;shadow=1;swimlaneFillColor=#DAE8FC;"
+  vertex="1" parent="1">
+  <mxGeometry x="40" y="80" width="320" height="500" as="geometry"/>
+</mxCell>
+
+<!-- Python Section Container -->
+<mxCell id="python-section" value="📁 python/ (35 modules)"
+  style="swimlane;startSize=30;strokeWidth=3;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;shadow=1;swimlaneFillColor=#FFF2CC;"
+  vertex="1" parent="1">
+  <mxGeometry x="380" y="80" width="320" height="500" as="geometry"/>
+</mxCell>
+
+<!-- Infrastructure Section Container -->
+<mxCell id="infra-section" value="📁 infrastructure/ (40+ files)"
+  style="swimlane;startSize=30;strokeWidth=3;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=14;fontStyle=1;shadow=1;swimlaneFillColor=#D5E8D4;"
+  vertex="1" parent="1">
+  <mxGeometry x="720" y="80" width="280" height="500" as="geometry"/>
+</mxCell>
+```
+
+### Subsection Container Style
+
+For nested directories within sections:
+
+```xml
+<!-- Subsection: aws modules -->
+<mxCell id="aws-subsection" value="aws/ (8 modules)"
+  style="swimlane;startSize=26;strokeWidth=2;fillColor=#FFFFFF;strokeColor=#6C8EBF;fontSize=12;fontStyle=1;swimlaneFillColor=#FFFFFF;"
+  vertex="1" parent="kotlin-section">
+  <mxGeometry x="10" y="40" width="300" height="140" as="geometry"/>
+</mxCell>
+
+<!-- Subsection: common modules -->
+<mxCell id="common-subsection" value="common/ (7 modules)"
+  style="swimlane;startSize=26;strokeWidth=2;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=12;fontStyle=1;swimlaneFillColor=#E1D5E7;"
+  vertex="1" parent="kotlin-section">
+  <mxGeometry x="10" y="190" width="300" height="120" as="geometry"/>
+</mxCell>
+```
+
+### Module/Folder Item Style
+
+Individual modules or folders within subsections:
+
+```xml
+<!-- Module item -->
+<mxCell id="mod-dynamo" value="📦 dynamo-db"
+  style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;"
+  vertex="1" parent="aws-subsection">
+  <mxGeometry y="26" width="300" height="22" as="geometry"/>
+</mxCell>
+
+<!-- File item -->
+<mxCell id="file-gradle" value="📄 build.gradle.kts"
+  style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=10;fontColor=#666666;"
+  vertex="1" parent="kotlin-section">
+  <mxGeometry y="470" width="300" height="20" as="geometry"/>
+</mxCell>
+```
+
+### Icon Conventions
+
+| Icon | Meaning | Usage |
+|------|---------|-------|
+| 📁 | Directory/Folder | Section headers, subsections |
+| 📦 | Module/Package | Individual modules |
+| 📄 | File | Individual files |
+| ⚙️ | Configuration | Config files |
+| 🔧 | Build Tool | Build scripts |
+
+### Project Structure Legend
+
+```xml
+<!-- Legend -->
+<mxCell id="legend" value="Legend"
+  style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#F5F5F5;strokeColor=#666666;strokeWidth=2;fontSize=12;shadow=1;"
+  vertex="1" parent="1">
+  <mxGeometry x="40" y="600" width="250" height="160" as="geometry"/>
+</mxCell>
+<mxCell id="leg1" value="■ Kotlin Modules"
+  style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontColor=#6C8EBF;fontSize=11;fontStyle=1;"
+  vertex="1" parent="legend">
+  <mxGeometry y="26" width="250" height="22" as="geometry"/>
+</mxCell>
+<mxCell id="leg2" value="■ Python Modules"
+  style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontColor=#D6B656;fontSize=11;fontStyle=1;"
+  vertex="1" parent="legend">
+  <mxGeometry y="48" width="250" height="22" as="geometry"/>
+</mxCell>
+<mxCell id="leg3" value="■ Infrastructure (Terraform)"
+  style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontColor=#82B366;fontSize=11;fontStyle=1;"
+  vertex="1" parent="legend">
+  <mxGeometry y="70" width="250" height="22" as="geometry"/>
+</mxCell>
+<mxCell id="leg4" value="■ Shared/Common"
+  style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontColor=#9673A6;fontSize=11;fontStyle=1;"
+  vertex="1" parent="legend">
+  <mxGeometry y="92" width="250" height="22" as="geometry"/>
+</mxCell>
+<mxCell id="leg5" value="■ Build/Config Files"
+  style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontColor=#666666;fontSize=11;fontStyle=1;"
+  vertex="1" parent="legend">
+  <mxGeometry y="114" width="250" height="22" as="geometry"/>
+</mxCell>
+<mxCell id="leg6" value="📁=Folder  📦=Module  📄=File"
+  style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontColor=#333333;fontSize=10;"
+  vertex="1" parent="legend">
+  <mxGeometry y="136" width="250" height="22" as="geometry"/>
+</mxCell>
+```
+
+### Layout Guidelines
+
+1. **Horizontal arrangement**: Place major sections (Kotlin, Python, Infrastructure) side by side
+2. **Vertical stacking**: Stack subsections vertically within each main section
+3. **Consistent widths**: Use consistent widths for sections (280-320px recommended)
+4. **Spacing**: Leave 20-40px gaps between sections
+5. **Module counts**: Always include module/file counts in section headers
+6. **Page size**: Use larger page dimensions (1600x1000 or larger) for complex projects
+
+### Complete Example Structure
+
+```
+┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│ 📁 kotlin/      │  │ 📁 python/      │  │ 📁 infrastructure│
+│ (26 modules)    │  │ (35 modules)    │  │ (40+ files)     │
+├─────────────────┤  ├─────────────────┤  ├─────────────────┤
+│ ┌─────────────┐ │  │ ┌─────────────┐ │  │ ┌─────────────┐ │
+│ │ aws/        │ │  │ │ common/     │ │  │ │ app/        │ │
+│ │ (8 modules) │ │  │ │ (11 mods)   │ │  │ │ (Terraform) │ │
+│ └─────────────┘ │  │ └─────────────┘ │  │ └─────────────┘ │
+│ ┌─────────────┐ │  │ ┌─────────────┐ │  │                 │
+│ │ common/     │ │  │ │ function/   │ │  │ 📄 main.tf     │
+│ │ (7 modules) │ │  │ │ (24 funcs)  │ │  │ 📄 lambda_*.tf │
+│ └─────────────┘ │  │ └─────────────┘ │  │                 │
+│ ┌─────────────┐ │  │ ┌─────────────┐ │  │                 │
+│ │ function/   │ │  │ │ layer/      │ │  │                 │
+│ │ (11 funcs)  │ │  │ │ (6 layers)  │ │  │                 │
+│ └─────────────┘ │  │ └─────────────┘ │  │                 │
+└─────────────────┘  └─────────────────┘  └─────────────────┘
+
+┌──────────────────────────────────────┐
+│ Legend                               │
+│ ■ Kotlin  ■ Python  ■ Infrastructure │
+│ 📁=Folder  📦=Module  📄=File        │
+└──────────────────────────────────────┘
 ```
 
 ---
