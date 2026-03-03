@@ -6,10 +6,10 @@
 ## Project Analysis & Diagram Generation
 
 ### Parameters (FILL THESE FIRST):
-- PROJECT_PATH: D:\Programing\GEC-SCF\
-- OUTPUT_PATH: D:\Programing\GEC-SCF\docs
-- PROMPT_PROJECT_ANALYSIS: D:\Programing\mono-sample-claude-project-specific-instruction\claude-md-drawio\_PROMPT\PROMPT-PROJECT-ANALYSIS.md
-- PROMPT_DIAGRAM_FORMAT: D:\Programing\mono-sample-claude-project-specific-instruction\claude-md-drawio\_PROMPT\PROMPT-DIAGRAM-FORMAT.md
+- PROJECT_PATH: ____________________
+- OUTPUT_PATH: ____________________
+- PROMPT_PROJECT_ANALYSIS: ____________________
+- PROMPT_DIAGRAM_FORMAT: ____________________
 
 ### Standards & Templates
 - Analysis Templates: [PROMPT_PROJECT_ANALYSIS]
