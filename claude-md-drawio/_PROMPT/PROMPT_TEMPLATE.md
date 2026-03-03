@@ -27,6 +27,8 @@ Skip any analysis/diagram type that doesn't apply to this project:
 - No cloud/IaC → Skip Infrastructure
 - No complex workflows → Skip Flowchart/State Machine
 - Simple app → Skip DDD, Security Analysis
+- No CI/CD pipeline → Skip CI/CD Pipeline Analysis
+- Simple tech stack → Skip Technology Stack Analysis
 Do not create empty files.
 
 ---
@@ -135,6 +137,26 @@ Generate structured markdown analysis files for applicable sections only.
 - Circular dependencies, vulnerabilities
 → Output: [OUTPUT_PATH]/analysis/dependency-analysis.md
 
+## 1.16 Technology Stack Analysis (if detailed tech review needed)
+- Language versions, runtimes, and compatibility
+- Framework configurations and key settings
+- Build tools, package managers, and scripts
+- Code quality tools (linting, formatting, type checking)
+- Coding conventions and naming standards
+- Development tools and IDE configuration
+- Testing framework setup
+→ Output: [OUTPUT_PATH]/analysis/technology-stack-analysis.md
+
+## 1.17 CI/CD Pipeline & Deployment Analysis (if CI/CD exists)
+- Pipeline platform and configuration files
+- Build stages and test automation
+- Artifact management and versioning
+- Deployment environments and strategies
+- Release management process
+- Pipeline security and access control
+- Monitoring and alerting setup
+→ Output: [OUTPUT_PATH]/analysis/cicd-pipeline-analysis.md
+
 ---
 
 # STEP 2: Generate Diagrams
@@ -187,6 +209,14 @@ Generate DrawIO diagrams from existing analysis files only.
 
 ## 2.14 Dependency Diagram (if dependency-analysis.md exists)
 → Output: [OUTPUT_PATH]/diagrams/module-dependencies.drawio
+
+## 2.15 Technology Stack Diagram (if technology-stack-analysis.md exists)
+→ Input: technology-stack-analysis.md
+→ Output: [OUTPUT_PATH]/diagrams/technology-stack.drawio
+
+## 2.16 CI/CD Pipeline Diagram (if cicd-pipeline-analysis.md exists)
+→ Input: cicd-pipeline-analysis.md
+→ Output: [OUTPUT_PATH]/diagrams/cicd-pipeline.drawio
 
 ---
 

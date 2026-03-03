@@ -53,6 +53,8 @@ This document provides **two-step workflow templates** for generating accurate D
 - [Security Analysis](#13-security-analysis-prompt)
 - [API Contract Analysis](#14-api-contract-analysis-prompt)
 - [Dependency Analysis](#15-dependency-analysis-prompt)
+- [Technology Stack Analysis](#16-technology-stack-analysis-prompt)
+- [CI/CD Pipeline & Deployment Analysis](#17-cicd-pipeline--deployment-analysis-prompt)
 
 ### Diagram Generation Prompts (Step 2)
 - [Generate Diagrams from Analysis](#step-2-generate-diagrams-from-analysis)
@@ -74,6 +76,8 @@ This document provides **two-step workflow templates** for generating accurate D
 - [Security Analysis Output Template](#security-analysis-output-template)
 - [API Contract Output Template](#api-contract-output-template)
 - [Dependency Analysis Output Template](#dependency-analysis-output-template)
+- [Technology Stack Output Template](#technology-stack-output-template)
+- [CI/CD Pipeline Output Template](#cicd-pipeline-output-template)
 
 ---
 
@@ -1234,6 +1238,190 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/dependency-analysis.md
 
 ---
 
+## 16. Technology Stack Analysis Prompt
+
+Use this to analyze the complete technology stack, framework configurations, coding standards, and tooling setup.
+
+```
+## Task: Technology Stack Analysis
+
+Analyze the project's complete technology ecosystem, configurations, and standards.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Document the entire technology stack and project standards:
+
+#### 1. Language & Runtime
+For each language used:
+| Language | Version | Runtime | Purpose |
+|----------|---------|---------|---------|
+| [Language] | [Version] | [Runtime/Engine] | [Primary use] |
+
+- Compiler/Interpreter settings
+- Language-specific configuration files
+- Version management (nvm, pyenv, sdkman, etc.)
+
+#### 2. Framework & Libraries
+For each major framework:
+- **Framework Name**: [Name]
+- **Version**: [Version]
+- **Configuration File**: [Path]
+- **Key Settings**: Important configurations
+- **Plugins/Extensions**: Active plugins
+
+Key library categories:
+| Category | Library | Version | Purpose |
+|----------|---------|---------|---------|
+| Web Framework | [lib] | [ver] | [purpose] |
+| ORM/Database | [lib] | [ver] | [purpose] |
+| Testing | [lib] | [ver] | [purpose] |
+| Utilities | [lib] | [ver] | [purpose] |
+
+#### 3. Build & Package Management
+- **Build Tool**: [Gradle/Maven/npm/etc.]
+- **Package Manager**: [npm/pip/etc.]
+- **Build Configuration**: Key build settings
+- **Scripts**: Available build commands
+- **Artifact Output**: Build output format and location
+
+#### 4. Code Quality & Standards
+- **Linting**: Tools and rules (ESLint, Pylint, ktlint)
+- **Formatting**: Auto-formatter configuration (Prettier, Black)
+- **Type Checking**: Static type tools (TypeScript, mypy)
+- **Pre-commit Hooks**: Hook configurations
+
+#### 5. Coding Conventions
+- **Naming Standards**:
+  | Element | Convention | Example |
+  |---------|------------|---------|
+  | Classes | PascalCase | UserService |
+  | Functions | camelCase/snake_case | getUserById |
+  | Constants | UPPER_SNAKE | MAX_RETRIES |
+  | Files | kebab-case | user-service.ts |
+- **Directory Structure**: Standard folder patterns
+- **Import Order**: Module import conventions
+- **Documentation**: Comment/docstring standards
+
+#### 6. Development Tools
+- **IDE Configuration**: .vscode, .idea settings
+- **Debug Configuration**: Debugger setup
+- **Hot Reload**: Development server settings
+- **Environment Variables**: .env file structure
+
+#### 7. Testing Framework
+- **Unit Testing**: Framework and patterns
+- **Integration Testing**: Setup and tools
+- **E2E Testing**: Framework and configuration
+- **Coverage**: Coverage tool and thresholds
+
+#### 8. Version Compatibility Matrix
+| Component | Min Version | Recommended | Max Version |
+|-----------|-------------|-------------|-------------|
+| [Component] | [Version] | [Version] | [Version] |
+
+### Output Format
+Follow the [Technology Stack Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/technology-stack-analysis.md
+```
+
+---
+
+## 17. CI/CD Pipeline & Deployment Analysis Prompt
+
+Use this to analyze build pipelines, deployment processes, and release management.
+
+```
+## Task: CI/CD Pipeline & Deployment Analysis
+
+Analyze the project's CI/CD pipelines, deployment strategies, and release processes.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Document all CI/CD and deployment configurations:
+
+#### 1. Pipeline Overview
+- **CI/CD Platform**: [Jenkins/GitHub Actions/GitLab CI/Azure DevOps]
+- **Configuration Files**: Pipeline definition locations
+- **Trigger Events**: What triggers pipelines
+- **Branch Strategy**: Branch-based pipeline rules
+
+#### 2. Build Pipeline
+For each build stage:
+| Stage | Description | Tools | Artifacts |
+|-------|-------------|-------|-----------|
+| Checkout | Clone repository | Git | Source code |
+| Dependencies | Install packages | npm/pip/gradle | node_modules |
+| Compile | Build application | tsc/javac/gcc | dist/ |
+| Test | Run test suites | Jest/pytest | reports |
+| Package | Create deployable | Docker/zip | image/artifact |
+
+#### 3. Test Automation
+- **Unit Tests**: How and when run
+- **Integration Tests**: Database/service tests
+- **E2E Tests**: Browser/API tests
+- **Security Scans**: SAST/DAST tools
+- **Quality Gates**: Required thresholds
+
+#### 4. Artifact Management
+- **Artifact Types**: Docker images, JARs, bundles
+- **Registry/Repository**: Where artifacts stored
+- **Versioning**: Artifact version strategy
+- **Retention**: Cleanup policies
+
+#### 5. Deployment Environments
+| Environment | Purpose | Deployment Trigger | Approval |
+|-------------|---------|-------------------|----------|
+| Development | Testing | Push to develop | Auto |
+| Staging | Pre-prod validation | Push to main | Auto |
+| Production | Live system | Release tag | Manual |
+
+#### 6. Deployment Strategy
+- **Strategy Type**: Rolling/Blue-Green/Canary
+- **Rollback Plan**: How to rollback
+- **Health Checks**: Deployment validation
+- **Smoke Tests**: Post-deploy verification
+
+#### 7. Infrastructure Deployment
+- **IaC Tool**: Terraform/CloudFormation/Pulumi
+- **State Management**: Remote state location
+- **Environment Parity**: How envs kept in sync
+- **Secret Injection**: How secrets deployed
+
+#### 8. Release Management
+- **Version Strategy**: Semantic versioning, date-based
+- **Changelog**: How changes documented
+- **Release Notes**: Generation process
+- **Notification**: Who gets notified
+
+#### 9. Pipeline Security
+- **Secret Management**: How secrets stored/used
+- **Access Control**: Who can deploy
+- **Audit Trail**: Deployment logging
+- **Compliance**: Required approvals
+
+#### 10. Monitoring & Alerting
+- **Deployment Monitoring**: Success/failure tracking
+- **Performance Baselines**: Metrics checked
+- **Alert Channels**: Notification targets
+- **Incident Response**: Failure procedures
+
+### Output Format
+Follow the [CI/CD Pipeline Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/cicd-pipeline-analysis.md
+```
+
+---
+
 # Step 2: Generate Diagrams from Analysis
 
 After creating the analysis `.md` files, use these prompts to generate diagrams.
@@ -1684,6 +1872,71 @@ Read and use: [YOUR_PROJECT_PATH]/docs/analysis/ddd-analysis.md
 
 ### Output
 Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/ddd-context-map.drawio
+```
+
+---
+
+## Generate Technology Stack Diagram
+
+```
+## Task: Generate Technology Stack Diagram
+
+Use diagram standards from: [CLAUDE_DIAGRAMS_STANDARD_FORMAT_PATH]
+
+### Input Analysis
+Read and use: [YOUR_PROJECT_PATH]/docs/analysis/technology-stack-analysis.md
+
+### Requirements
+1. Create a technology stack diagram based on the analysis
+2. Use layered view showing technology at each level:
+   - Client/Frontend tier
+   - API/Backend tier
+   - Data tier
+   - Infrastructure tier
+3. Group technologies by category using swimlanes
+4. Show version numbers for key components
+5. Color code by technology type:
+   - Languages: Blue (#DAE8FC)
+   - Frameworks: Green (#D5E8D4)
+   - Databases: Orange (#FFF2CC)
+   - DevOps/Tools: Gray (#F5F5F5)
+6. Include arrows showing dependencies between tiers
+7. Add legend for technology categories
+
+### Output
+Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/technology-stack.drawio
+```
+
+---
+
+## Generate CI/CD Pipeline Diagram
+
+```
+## Task: Generate CI/CD Pipeline Diagram
+
+Use diagram standards from: [CLAUDE_DIAGRAMS_STANDARD_FORMAT_PATH]
+
+### Input Analysis
+Read and use: [YOUR_PROJECT_PATH]/docs/analysis/cicd-pipeline-analysis.md
+
+### Requirements
+1. Create a CI/CD pipeline diagram based on the analysis
+2. Show pipeline stages left-to-right:
+   - Source → Build → Test → Deploy → Monitor
+3. Use swimlanes for different environments (Dev, Staging, Prod)
+4. Include trigger types (push, PR, schedule, manual)
+5. Show approval gates with decision diamonds
+6. Mark automated vs manual steps
+7. Color code by stage type:
+   - Build stages: Blue (#DAE8FC)
+   - Test stages: Yellow (#FFF2CC)
+   - Deploy stages: Green (#D5E8D4)
+   - Manual approval: Orange (#FFE6CC)
+8. Include artifact flow between stages
+9. Add legend for stage types and triggers
+
+### Output
+Save diagram to: [YOUR_PROJECT_PATH]/docs/diagrams/cicd-pipeline.drawio
 ```
 
 ---
@@ -3585,6 +3838,442 @@ X-API-Key: <api-key>
 
 ---
 
+## Technology Stack Output Template
+
+```markdown
+# Technology Stack Analysis: [Project Name]
+
+## Overview
+- **Project**: [Name]
+- **Analyzed**: [Date]
+- **Primary Language**: [Language]
+- **Architecture Type**: [Monolith/Microservices/Serverless]
+
+## 1. Languages & Runtimes
+
+| Language | Version | Runtime | Purpose | Config File |
+|----------|---------|---------|---------|-------------|
+| TypeScript | 5.2.0 | Node.js 20 | Backend services | tsconfig.json |
+| Python | 3.11 | CPython | Data processing | pyproject.toml |
+| Kotlin | 1.9.0 | JVM 17 | Android app | build.gradle.kts |
+
+### Version Management
+| Tool | Purpose | Config |
+|------|---------|--------|
+| nvm | Node.js version | .nvmrc |
+| pyenv | Python version | .python-version |
+
+## 2. Frameworks
+
+### Backend Framework
+| Attribute | Value |
+|-----------|-------|
+| **Framework** | Express.js |
+| **Version** | 4.18.2 |
+| **Config File** | app.config.ts |
+| **Key Middleware** | cors, helmet, morgan, compression |
+
+### Frontend Framework
+| Attribute | Value |
+|-----------|-------|
+| **Framework** | React |
+| **Version** | 18.2.0 |
+| **Build Tool** | Vite |
+| **State Management** | Redux Toolkit |
+
+## 3. Key Libraries
+
+### Production Dependencies
+| Category | Library | Version | Purpose |
+|----------|---------|---------|---------|
+| Web | express | 4.18.2 | HTTP server |
+| ORM | prisma | 5.6.0 | Database access |
+| Auth | passport | 0.7.0 | Authentication |
+| Validation | zod | 3.22.0 | Schema validation |
+| HTTP Client | axios | 1.6.0 | API calls |
+
+### Development Dependencies
+| Category | Library | Version | Purpose |
+|----------|---------|---------|---------|
+| Testing | jest | 29.7.0 | Unit testing |
+| Linting | eslint | 8.54.0 | Code linting |
+| Formatting | prettier | 3.1.0 | Code formatting |
+| Types | typescript | 5.2.0 | Type checking |
+
+## 4. Build & Package Management
+
+### Build Tools
+| Tool | Version | Purpose | Config File |
+|------|---------|---------|-------------|
+| npm | 10.2.0 | Package manager | package.json |
+| Vite | 5.0.0 | Frontend bundler | vite.config.ts |
+| tsc | 5.2.0 | TypeScript compiler | tsconfig.json |
+
+### Build Scripts
+```bash
+# Available scripts
+npm run build        # Production build
+npm run dev          # Development server
+npm run test         # Run tests
+npm run lint         # Run linting
+npm run format       # Format code
+```
+
+### Build Output
+| Output | Path | Format |
+|--------|------|--------|
+| Backend | dist/ | CommonJS |
+| Frontend | build/ | ESM bundle |
+| Docker | Dockerfile | Image |
+
+## 5. Code Quality & Standards
+
+### Linting
+| Tool | Config | Rules |
+|------|--------|-------|
+| ESLint | .eslintrc.js | airbnb-typescript, react-hooks |
+| Prettier | .prettierrc | printWidth: 100, singleQuote: true |
+
+### Type Checking
+| Tool | Strictness | Config |
+|------|------------|--------|
+| TypeScript | strict: true | tsconfig.json |
+
+### Pre-commit Hooks
+| Hook | Tool | Check |
+|------|------|-------|
+| pre-commit | husky + lint-staged | lint, format, test |
+| commit-msg | commitlint | conventional commits |
+
+## 6. Coding Conventions
+
+### Naming Standards
+| Element | Convention | Example |
+|---------|------------|---------|
+| Components | PascalCase | UserProfile.tsx |
+| Functions | camelCase | getUserById() |
+| Constants | UPPER_SNAKE | MAX_RETRY_COUNT |
+| Files | kebab-case | user-service.ts |
+| CSS Classes | BEM | .user-profile__avatar |
+
+### Directory Structure
+```
+src/
+├── components/      # React components
+├── hooks/          # Custom hooks
+├── services/       # Business logic
+├── repositories/   # Data access
+├── utils/          # Helper functions
+├── types/          # TypeScript types
+└── config/         # Configuration
+```
+
+### Import Order
+```typescript
+// 1. External packages
+import React from 'react';
+import { Router } from 'express';
+
+// 2. Internal modules (absolute paths)
+import { UserService } from '@/services/user';
+import { Button } from '@/components/ui';
+
+// 3. Relative imports
+import { helper } from './utils';
+import styles from './styles.module.css';
+```
+
+## 7. Development Tools
+
+### IDE Configuration
+| IDE | Config | Extensions |
+|-----|--------|------------|
+| VS Code | .vscode/settings.json | ESLint, Prettier, GitLens |
+| IntelliJ | .idea/ | Kotlin, Database Tools |
+
+### Development Server
+| Feature | Tool | Config |
+|---------|------|--------|
+| Hot Reload | Vite HMR | vite.config.ts |
+| API Proxy | Vite proxy | vite.config.ts |
+| Debug | VS Code debugger | launch.json |
+
+## 8. Testing Framework
+
+| Type | Framework | Config | Coverage Target |
+|------|-----------|--------|-----------------|
+| Unit | Jest | jest.config.js | 80% |
+| Integration | Supertest | jest.config.js | 70% |
+| E2E | Playwright | playwright.config.ts | Critical paths |
+| Component | Testing Library | jest.config.js | 75% |
+
+## 9. Version Compatibility Matrix
+
+| Component | Minimum | Recommended | Maximum |
+|-----------|---------|-------------|---------|
+| Node.js | 18.0.0 | 20.10.0 | 21.x |
+| npm | 9.0.0 | 10.2.0 | Latest |
+| TypeScript | 5.0.0 | 5.2.0 | 5.x |
+| React | 18.0.0 | 18.2.0 | 18.x |
+
+## 10. Upgrade Path
+
+| Component | Current | Target | Breaking Changes |
+|-----------|---------|--------|------------------|
+| Node.js | 18.x | 20.x | Minimal |
+| TypeScript | 4.9 | 5.x | Module resolution |
+| React | 17.x | 18.x | Concurrent mode |
+```
+
+---
+
+## CI/CD Pipeline Output Template
+
+```markdown
+# CI/CD Pipeline Analysis: [Project Name]
+
+## Overview
+- **Project**: [Name]
+- **CI/CD Platform**: [Platform]
+- **Analyzed**: [Date]
+- **Total Pipelines**: [Count]
+
+## 1. Pipeline Overview
+
+| Attribute | Value |
+|-----------|-------|
+| **Platform** | GitHub Actions |
+| **Config Location** | .github/workflows/ |
+| **Main Pipeline** | ci.yml, deploy.yml |
+| **Branch Strategy** | GitFlow |
+
+### Pipeline Files
+| File | Purpose | Triggers |
+|------|---------|----------|
+| ci.yml | Build & test | Push, PR |
+| deploy-staging.yml | Deploy to staging | Push to main |
+| deploy-prod.yml | Deploy to production | Release tag |
+| scheduled.yml | Scheduled jobs | Cron |
+
+## 2. Build Pipeline
+
+### Pipeline Stages
+```
+┌─────────┐   ┌──────────┐   ┌────────┐   ┌─────────┐   ┌────────┐
+│ Checkout│──▶│ Install  │──▶│ Build  │──▶│  Test   │──▶│Package │
+└─────────┘   └──────────┘   └────────┘   └─────────┘   └────────┘
+                                               │
+                                               ▼
+                                         ┌──────────┐
+                                         │ Reports  │
+                                         └──────────┘
+```
+
+### Stage Details
+| Stage | Duration | Tools | Artifacts |
+|-------|----------|-------|-----------|
+| Checkout | ~10s | actions/checkout@v4 | Source code |
+| Install | ~60s | npm ci | node_modules (cached) |
+| Build | ~120s | npm run build | dist/, build/ |
+| Test | ~180s | jest, playwright | coverage/, test-results/ |
+| Package | ~60s | docker build | Docker image |
+
+### Build Matrix
+| OS | Node Version | Purpose |
+|----|--------------|---------|
+| ubuntu-latest | 18.x, 20.x | CI testing |
+| windows-latest | 20.x | Windows compatibility |
+
+## 3. Test Automation
+
+### Test Stages
+| Stage | Type | Framework | Required |
+|-------|------|-----------|----------|
+| Unit Tests | unit | Jest | ✅ Yes |
+| Integration | integration | Supertest | ✅ Yes |
+| E2E Tests | e2e | Playwright | ⚠️ Main branch only |
+| Security Scan | security | Snyk | ✅ Yes |
+
+### Quality Gates
+| Check | Threshold | Blocking |
+|-------|-----------|----------|
+| Code coverage | ≥80% | Yes |
+| Test pass rate | 100% | Yes |
+| Lint errors | 0 | Yes |
+| Security vulnerabilities | 0 critical | Yes |
+
+### Test Reports
+| Report | Format | Storage |
+|--------|--------|---------|
+| Coverage | HTML, lcov | Codecov |
+| Test Results | JUnit XML | GitHub Actions |
+| E2E Screenshots | PNG | Artifacts |
+
+## 4. Artifact Management
+
+### Artifact Types
+| Type | Registry | Retention |
+|------|----------|-----------|
+| Docker Image | Docker Hub / ECR | 90 days |
+| npm Package | npm registry | Permanent |
+| Build Output | GitHub Artifacts | 30 days |
+
+### Versioning Strategy
+| Branch | Version Format | Example |
+|--------|----------------|---------|
+| main | {version}-{sha} | 1.2.3-abc1234 |
+| release | {version} | 1.2.3 |
+| feature | {branch}-{sha} | feature-xyz-abc1234 |
+
+### Docker Image Tags
+```
+myapp:latest          # Latest stable
+myapp:1.2.3          # Specific version
+myapp:main-abc1234   # Branch + commit
+myapp:pr-123         # Pull request
+```
+
+## 5. Deployment Environments
+
+| Environment | Purpose | URL | Deployment |
+|-------------|---------|-----|------------|
+| Development | Testing | dev.example.com | Auto on push |
+| Staging | Pre-production | staging.example.com | Auto on main |
+| Production | Live system | example.com | Manual approval |
+
+### Environment Configuration
+| Environment | Config Source | Secrets |
+|-------------|---------------|---------|
+| Development | .env.development | GitHub Secrets |
+| Staging | AWS Parameter Store | AWS Secrets Manager |
+| Production | AWS Parameter Store | AWS Secrets Manager |
+
+## 6. Deployment Strategy
+
+### Strategy: Blue-Green Deployment
+```
+                    ┌─────────────┐
+                    │ Load        │
+                    │ Balancer    │
+                    └──────┬──────┘
+                           │
+              ┌────────────┴────────────┐
+              │                         │
+        ┌─────▼─────┐            ┌─────▼─────┐
+        │   Blue    │            │   Green   │
+        │  (Live)   │            │  (New)    │
+        └───────────┘            └───────────┘
+```
+
+### Deployment Steps
+1. Deploy new version to inactive environment
+2. Run smoke tests
+3. Switch load balancer to new environment
+4. Monitor for errors
+5. Keep previous version for rollback
+
+### Rollback Procedure
+| Step | Action | Time |
+|------|--------|------|
+| 1 | Detect issue | Automated monitoring |
+| 2 | Switch LB to previous env | ~30 seconds |
+| 3 | Verify rollback | ~2 minutes |
+| 4 | Investigate issue | Post-incident |
+
+## 7. Infrastructure Deployment
+
+### IaC Configuration
+| Tool | Version | State Backend |
+|------|---------|---------------|
+| Terraform | 1.6.0 | S3 + DynamoDB |
+
+### Deployment Workflow
+```
+terraform init → terraform plan → Review → terraform apply
+```
+
+### Environment Parity
+| Resource | Dev | Staging | Prod |
+|----------|-----|---------|------|
+| Instances | 1 | 2 | 4 |
+| RDS | db.t3.micro | db.t3.small | db.r5.large |
+| Cache | None | t3.micro | r6g.large |
+
+## 8. Release Management
+
+### Version Strategy
+- **Format**: Semantic Versioning (MAJOR.MINOR.PATCH)
+- **Tagging**: Git tags trigger releases
+- **Changelog**: Auto-generated from commits
+
+### Release Process
+1. Create release branch from main
+2. Update version in package.json
+3. Generate changelog
+4. Create PR to main
+5. Merge and tag release
+6. GitHub Actions deploys to production
+
+### Release Checklist
+- [ ] All tests passing
+- [ ] Security scan clean
+- [ ] Changelog updated
+- [ ] Documentation updated
+- [ ] Stakeholders notified
+
+## 9. Pipeline Security
+
+### Secret Management
+| Secret Type | Storage | Rotation |
+|-------------|---------|----------|
+| API Keys | GitHub Secrets | 90 days |
+| AWS Credentials | OIDC | Per-request |
+| Database Passwords | AWS Secrets Manager | 30 days |
+
+### Access Control
+| Role | Permissions |
+|------|-------------|
+| Developer | Run CI, view logs |
+| Lead | Approve staging deploy |
+| DevOps | Approve production deploy |
+| Admin | Manage secrets, modify pipelines |
+
+### Security Checks
+| Check | Tool | Stage |
+|-------|------|-------|
+| Dependency scan | Dependabot | PR |
+| SAST | CodeQL | PR |
+| Secret scanning | GitGuardian | Push |
+| Container scan | Trivy | Build |
+
+## 10. Monitoring & Alerting
+
+### Pipeline Monitoring
+| Metric | Threshold | Alert Channel |
+|--------|-----------|---------------|
+| Build duration | >10 min | Slack |
+| Build failure | Any | Slack + Email |
+| Deploy failure | Any | PagerDuty |
+| Security vulnerability | Critical | PagerDuty |
+
+### Notification Channels
+| Event | Channel |
+|-------|---------|
+| PR checks | GitHub |
+| Build status | Slack #builds |
+| Deploy success | Slack #deploys |
+| Deploy failure | Slack + PagerDuty |
+
+### Dashboard
+| Dashboard | URL | Purpose |
+|-----------|-----|---------|
+| GitHub Actions | /actions | Pipeline status |
+| Grafana | /grafana | Metrics |
+| Datadog | /datadog | APM, logs |
+```
+
+---
+
 ## Complete Workflow Example
 
 ### Step 1: Run Analysis
@@ -3607,6 +4296,8 @@ Generate applicable analysis documents (skip if not relevant):
 11. Security analysis → docs/analysis/security-analysis.md
 12. API contract analysis → docs/analysis/api-contract-analysis.md
 13. Dependency analysis → docs/analysis/dependency-analysis.md
+14. Technology stack analysis → docs/analysis/technology-stack-analysis.md
+15. CI/CD pipeline analysis → docs/analysis/cicd-pipeline-analysis.md
 ```
 
 ### Step 2: Review & Correct

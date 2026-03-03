@@ -68,6 +68,8 @@ DrawIO uses XML format with specific style attributes to reference official shap
 - [Conceptual ERD for NoSQL](#conceptual-erd-for-nosql-domain-based) - Domain-based grouping
 - [Project Structure Diagrams](#project-structure-diagrams) - Folder organization, Module hierarchy
 - [Shared Libraries Diagrams](#shared-libraries-diagrams) - Library dependencies, Version matrix, Consumers
+- [Technology Stack Diagrams](#technology-stack-diagrams) - Layered technology view, Languages, Frameworks, Tools
+- [CI/CD Pipeline Diagrams](#cicd-pipeline-diagrams) - Pipeline stages, Environments, Deployment flow
 
 ### Lines, Arrows & Styling
 - [Lines and Edges (Connections)](#lines-and-edges-connections) - Edge styles, routing
