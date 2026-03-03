@@ -33,7 +33,7 @@
 
         <!-- Module 1: mongo-kt -->
         <mxCell id="module1-group" value="mongo-kt (Port 8080)"
-          style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontStyle=1;fontSize=12;shadow=1;textShadow=1;"
+          style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;shadow=1;"
           vertex="1" parent="1">
           <mxGeometry x="160" y="80" width="320" height="180" as="geometry"/>
         </mxCell>
@@ -70,7 +70,7 @@
 
         <!-- Module 2: mongo-reactive-kt -->
         <mxCell id="module2-group" value="mongo-reactive-kt (Port 8081)"
-          style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontStyle=1;fontSize=12;shadow=1;textShadow=1;"
+          style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;shadow=1;"
           vertex="1" parent="1">
           <mxGeometry x="160" y="280" width="320" height="180" as="geometry"/>
         </mxCell>
@@ -107,7 +107,7 @@
 
         <!-- Module 3: mongo-grid-fs-kt -->
         <mxCell id="module3-group" value="mongo-grid-fs-kt (Port 8082)"
-          style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontStyle=1;fontSize=12;shadow=1;textShadow=1;"
+          style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;shadow=1;"
           vertex="1" parent="1">
           <mxGeometry x="160" y="480" width="320" height="140" as="geometry"/>
         </mxCell>
@@ -213,7 +213,7 @@
 
         <!-- Arrow Legend -->
         <mxCell id="legend" value="Arrow Legend"
-          style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontStyle=1;fontSize=12;shadow=1;"
+          style="swimlane;startSize=0;strokeWidth=2;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1;shadow=1;"
           vertex="1" parent="1">
           <mxGeometry x="900" y="120" width="200" height="120" as="geometry"/>
         </mxCell>

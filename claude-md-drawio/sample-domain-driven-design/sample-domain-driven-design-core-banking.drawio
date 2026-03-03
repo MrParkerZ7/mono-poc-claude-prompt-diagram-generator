@@ -1,10 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram name="Core-Banking-DDD" id="core-banking-ddd-1">
-        <mxGraphModel dx="2623" dy="2137" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" math="0" shadow="0">
+        <mxGraphModel dx="938" dy="2014" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="external-systems" value="External Systems" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=4;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=14;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="external-systems" value="External Systems" style="swimlane;startSize=0;strokeWidth=4;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="40" width="400" height="280" as="geometry"/>
                 </mxCell>
                 <mxCell id="itmx" value="ITMX&#xa;(PromptPay)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;fontStyle=1;shadow=1;textShadow=1;" parent="external-systems" vertex="1">
@@ -31,7 +31,7 @@
                 <mxCell id="biometric" value="Biometric&#xa;Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=11;fontStyle=1;shadow=1;textShadow=1;" parent="external-systems" vertex="1">
                     <mxGeometry x="140" y="200" width="100" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="api-layer" value="API Gateway &amp; BFF Layer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=14;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="api-layer" value="API Gateway &amp; BFF Layer" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="480" y="40" width="600" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="api-gateway" value="API Gateway&#xa;(Kong/AWS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=11;fontStyle=1;shadow=1;textShadow=1;" parent="api-layer" vertex="1">
@@ -49,7 +49,7 @@
                 <mxCell id="internal-bff" value="Internal BFF&#xa;(Branch/Teller)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=11;fontStyle=1;shadow=1;textShadow=1;" parent="api-layer" vertex="1">
                     <mxGeometry x="460" y="35" width="100" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="bc-customer" value="Customer Management Context" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="bc-customer" value="Customer Management Context" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="360" width="280" height="280" as="geometry"/>
                 </mxCell>
                 <mxCell id="agg-customer" value="«Aggregate Root»&#xa;Customer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=10;fontStyle=1;shadow=1;textShadow=1;" parent="bc-customer" vertex="1">
@@ -76,7 +76,7 @@
                 <mxCell id="repo-customer" value="CustomerRepository" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;fontSize=9;shadow=1;textShadow=1;" parent="bc-customer" vertex="1">
                     <mxGeometry x="150" y="200" width="110" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="bc-account" value="Account Management Context" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="bc-account" value="Account Management Context" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="360" y="360" width="280" height="280" as="geometry"/>
                 </mxCell>
                 <mxCell id="agg-account" value="«Aggregate Root»&#xa;Account" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=10;fontStyle=1;shadow=1;textShadow=1;" parent="bc-account" vertex="1">
@@ -106,7 +106,7 @@
                 <mxCell id="repo-account" value="AccountRepository" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;fontSize=9;shadow=1;textShadow=1;" parent="bc-account" vertex="1">
                     <mxGeometry x="150" y="200" width="110" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="bc-transaction" value="Transaction Processing Context (Core)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="bc-transaction" value="Transaction Processing Context (Core)" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="680" y="360" width="360" height="280" as="geometry"/>
                 </mxCell>
                 <mxCell id="agg-transaction" value="«Aggregate Root»&#xa;Transaction" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=10;fontStyle=1;shadow=1;textShadow=1;" parent="bc-transaction" vertex="1">
@@ -148,7 +148,7 @@
                 <mxCell id="repo-journal" value="JournalRepository" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;fontSize=9;shadow=1;textShadow=1;" parent="bc-transaction" vertex="1">
                     <mxGeometry x="160" y="235" width="110" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="bc-payment" value="Payment Gateway Context" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="bc-payment" value="Payment Gateway Context" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1080" y="360" width="280" height="280" as="geometry"/>
                 </mxCell>
                 <mxCell id="agg-payment" value="«Aggregate Root»&#xa;Payment" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=10;fontStyle=1;shadow=1;textShadow=1;" parent="bc-payment" vertex="1">
@@ -175,7 +175,7 @@
                 <mxCell id="repo-payment" value="PaymentRepository" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;fontSize=9;shadow=1;textShadow=1;" parent="bc-payment" vertex="1">
                     <mxGeometry x="150" y="180" width="110" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="bc-fraud" value="Fraud Detection Context" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="bc-fraud" value="Fraud Detection Context" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="680" width="280" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="agg-fraud" value="«Aggregate Root»&#xa;FraudCase" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=10;fontStyle=1;shadow=1;textShadow=1;" parent="bc-fraud" vertex="1">
@@ -196,7 +196,7 @@
                 <mxCell id="event-fraud" value="Domain Events:&#xa;• FraudDetected&#xa;• TransactionBlocked&#xa;• AlertRaised" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1;fontSize=8;align=left;spacingLeft=5;shadow=1;textShadow=1;" parent="bc-fraud" vertex="1">
                     <mxGeometry x="20" y="170" width="110" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="bc-notification" value="Notification Context" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="bc-notification" value="Notification Context" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="360" y="680" width="280" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="agg-notification" value="«Aggregate Root»&#xa;Notification" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=10;fontStyle=1;shadow=1;textShadow=1;" parent="bc-notification" vertex="1">
@@ -217,7 +217,7 @@
                 <mxCell id="event-notification" value="Domain Events:&#xa;• NotificationSent&#xa;• NotificationFailed" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1;fontSize=8;align=left;spacingLeft=5;shadow=1;textShadow=1;" parent="bc-notification" vertex="1">
                     <mxGeometry x="20" y="170" width="110" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="bc-audit" value="Audit &amp; Compliance Context" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="bc-audit" value="Audit &amp; Compliance Context" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="680" y="680" width="280" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="agg-audit" value="«Aggregate Root»&#xa;AuditLog" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=10;fontStyle=1;shadow=1;textShadow=1;" parent="bc-audit" vertex="1">
@@ -238,7 +238,7 @@
                 <mxCell id="event-audit" value="Domain Events:&#xa;• AuditLogCreated&#xa;• SuspiciousActivity&#xa;• ReportGenerated" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1;fontSize=8;align=left;spacingLeft=5;shadow=1;textShadow=1;" parent="bc-audit" vertex="1">
                     <mxGeometry x="20" y="170" width="120" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="bc-recon" value="Reconciliation Context" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="bc-recon" value="Reconciliation Context" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1000" y="680" width="280" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="agg-recon" value="«Aggregate Root»&#xa;ReconciliationBatch" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;fontSize=10;fontStyle=1;shadow=1;textShadow=1;" parent="bc-recon" vertex="1">
@@ -259,7 +259,7 @@
                 <mxCell id="event-bus" value="Event Bus (Kafka / RabbitMQ)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=3;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
                     <mxGeometry x="480" y="170" width="600" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="shared-kernel" value="Shared Kernel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=11;fontStyle=1;dashed=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="shared-kernel" value="Shared Kernel" style="swimlane;startSize=0;strokeWidth=2;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;dashed=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1120" y="40" width="260" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="shared-money" value="Money" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=1;fontSize=9;shadow=1;textShadow=1;" parent="shared-kernel" vertex="1">
@@ -280,7 +280,7 @@
                 <mxCell id="shared-error" value="Error" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=1;fontSize=9;shadow=1;textShadow=1;" parent="shared-kernel" vertex="1">
                     <mxGeometry x="170" y="65" width="70" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="data-layer" value="Data Stores" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="data-layer" value="Data Stores" style="swimlane;startSize=0;strokeWidth=3;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="960" width="1240" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="db-customer" value="Customer DB&#xa;(PostgreSQL)" style="shape=cylinder3;strokeColor=#336791;fillColor=#E8F4F8;strokeWidth=2;fontSize=10;fontStyle=1;shadow=1;textShadow=1;" parent="data-layer" vertex="1">
@@ -436,7 +436,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="legend" value="Legend" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontSize=12;fontStyle=1;shadow=1;textShadow=1;" parent="1" vertex="1">
+                <mxCell id="legend" value="Legend" style="swimlane;startSize=0;strokeWidth=2;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#ffffff;strokeColor=#000000;fontSize=12;fontStyle=1;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="1420" y="160" width="580" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="legend-aggregate" value="Aggregate Root" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;shadow=1;textShadow=1;" parent="legend" vertex="1">

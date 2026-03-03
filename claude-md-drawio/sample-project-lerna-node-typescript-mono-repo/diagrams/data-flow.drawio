@@ -14,7 +14,7 @@
 
         <!-- Section 1: Function Export Flow -->
         <mxCell id="section-1" value="Function Export Flow"
-          style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=15;spacingTop=8;fontStyle=1;fontSize=14;shadow=1;"
+          style="swimlane;startSize=0;strokeWidth=2;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;shadow=1;"
           vertex="1" parent="1">
           <mxGeometry x="80" y="80" width="1200" height="280" as="geometry"/>
         </mxCell>
@@ -62,7 +62,7 @@
 
         <!-- Section 2: Build Pipeline Flow -->
         <mxCell id="section-2" value="Build Pipeline Flow"
-          style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=15;spacingTop=8;fontStyle=1;fontSize=14;shadow=1;"
+          style="swimlane;startSize=0;strokeWidth=2;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;shadow=1;"
           vertex="1" parent="1">
           <mxGeometry x="80" y="400" width="1200" height="200" as="geometry"/>
         </mxCell>
@@ -147,7 +147,7 @@
 
         <!-- Section 3: Compilation Order -->
         <mxCell id="section-3" value="Compilation Order (Lerna respects dependencies)"
-          style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=15;spacingTop=8;fontStyle=1;fontSize=14;shadow=1;"
+          style="swimlane;startSize=0;strokeWidth=2;labelBorderColor=none;textShadow=1;labelBackgroundColor=default;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1;shadow=1;"
           vertex="1" parent="1">
           <mxGeometry x="80" y="640" width="600" height="160" as="geometry"/>
         </mxCell>
