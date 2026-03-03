@@ -38,20 +38,21 @@ This document provides **two-step workflow templates** for generating accurate D
 ## Table of Contents
 
 ### Analysis Prompts (Step 1)
-- [Architecture Analysis](#1-architecture-analysis-prompt)
+- [Architecture Analysis (Service Level)](#1-architecture-analysis-prompt)
 - [Project Structure Analysis](#2-project-structure-analysis-prompt)
-- [Data Models / ERD Analysis](#3-data-models--erd-analysis-prompt)
-- [Data Flow Analysis](#4-data-flow-analysis-prompt)
-- [Flowchart / Process Analysis](#5-flowchart--process-analysis-prompt)
-- [Sequence Diagram Analysis](#6-sequence-diagram-analysis-prompt)
-- [Use Case Analysis](#7-use-case-analysis-prompt)
-- [State Machine Analysis](#8-state-machine-analysis-prompt)
-- [Infrastructure Analysis](#9-infrastructure-analysis-prompt)
-- [C4 Model Analysis](#10-c4-model-analysis-prompt)
-- [Domain-Driven Design Analysis](#11-domain-driven-design-analysis-prompt)
-- [Security Analysis](#12-security-analysis-prompt)
-- [API Contract Analysis](#13-api-contract-analysis-prompt)
-- [Dependency Analysis](#14-dependency-analysis-prompt)
+- [Shared Libraries Analysis](#3-shared-libraries-analysis-prompt)
+- [Data Models / ERD Analysis](#4-data-models--erd-analysis-prompt)
+- [Data Flow Analysis](#5-data-flow-analysis-prompt)
+- [Flowchart / Process Analysis](#6-flowchart--process-analysis-prompt)
+- [Sequence Diagram Analysis](#7-sequence-diagram-analysis-prompt)
+- [Use Case Analysis](#8-use-case-analysis-prompt)
+- [State Machine Analysis](#9-state-machine-analysis-prompt)
+- [Infrastructure Analysis](#10-infrastructure-analysis-prompt)
+- [C4 Model Analysis](#11-c4-model-analysis-prompt)
+- [Domain-Driven Design Analysis](#12-domain-driven-design-analysis-prompt)
+- [Security Analysis](#13-security-analysis-prompt)
+- [API Contract Analysis](#14-api-contract-analysis-prompt)
+- [Dependency Analysis](#15-dependency-analysis-prompt)
 
 ### Diagram Generation Prompts (Step 2)
 - [Generate Diagrams from Analysis](#step-2-generate-diagrams-from-analysis)
@@ -60,6 +61,7 @@ This document provides **two-step workflow templates** for generating accurate D
 - [**README (Project Summary) - REQUIRED**](#readme-project-summary-output-template)
 - [Architecture Analysis Output Template](#architecture-analysis-output-template)
 - [Project Structure Output Template](#project-structure-output-template)
+- [Shared Libraries Output Template](#shared-libraries-output-template)
 - [Data Models Output Template](#data-models-output-template)
 - [Data Flow Output Template](#data-flow-output-template)
 - [Flowchart Output Template](#flowchart-output-template)
@@ -81,59 +83,70 @@ This document provides **two-step workflow templates** for generating accurate D
 
 ## 1. Architecture Analysis Prompt
 
-Use this to analyze application architecture, layers, components, and integrations.
+Use this to analyze application architecture at the **service level and above**. This focuses on deployable services, their interactions, and system-wide concerns.
+
+> **Note:** This analysis should NOT include:
+> - Project folder structure (use [Project Structure Analysis](#2-project-structure-analysis-prompt))
+> - Shared libraries details (use [Shared Libraries Analysis](#3-shared-libraries-analysis-prompt))
+> - Internal module/class details (use [C4 Component Analysis](#11-c4-model-analysis-prompt) for Level 3)
 
 ```
-## Task: Architecture Analysis
+## Task: Architecture Analysis (Service Level)
 
-Analyze the project and generate a structured architecture analysis document.
+Analyze the project and generate a structured architecture analysis document focusing on service-level architecture.
 
 ### Project Path
 [YOUR_PROJECT_PATH]
 
 ### Analysis Requirements
 
-Examine the entire codebase and document:
+Examine the system at the service level and document:
 
 #### 1. Application Overview
 - Project name and description
 - Primary programming language(s)
-- Framework(s) and major libraries
-- Application type (Web API, CLI, Desktop, Mobile, etc.)
+- Framework(s) and versions
+- Application type (Monolith, Microservices, Serverless, etc.)
 
 #### 2. Architecture Pattern
-- Identified pattern (MVC, MVVM, Clean Architecture, Hexagonal, Layered, etc.)
-- Layer definitions and responsibilities
-- Dependency direction
+- Identified pattern (Microservices, Modular Monolith, Event-Driven, etc.)
+- Service communication patterns (REST, gRPC, Message Queue)
+- Deployment model (containers, serverless, VMs)
 
-#### 3. Entry Points
-- API endpoints (REST, GraphQL, gRPC)
-- UI entry points (pages, screens)
-- CLI commands
-- Background jobs/workers
-- Event handlers
+#### 3. Services / Deployable Units
+For each service/deployable unit:
+- **Name**: Service identifier
+- **Type**: API, Worker, Scheduler, Gateway, etc.
+- **Technology**: Framework and runtime
+- **Port/Endpoint**: How it's accessed
+- **Purpose**: What this service does
+- **Dependencies**: Other services it calls
 
-#### 4. Components & Modules
-For each major component/module:
-- Name and purpose
-- Dependencies (what it uses)
-- Dependents (what uses it)
-- Key classes/functions
+#### 4. Entry Points (System Level)
+- API Gateway / Load Balancer
+- Public endpoints
+- Internal service endpoints
+- Message queue consumers
+- Scheduled job triggers
 
 #### 5. External Integrations
-- Third-party APIs (with endpoints if visible)
-- SDKs and external services
-- Authentication providers
-- Payment gateways
-- Email/SMS services
-- Cloud services
+- Third-party APIs and services
+- Cloud managed services (databases, queues, storage)
+- Authentication providers (OAuth, SSO)
+- Payment/notification services
 
-#### 6. Cross-Cutting Concerns
+#### 6. Infrastructure Services
+- Databases (type, purpose)
+- Message brokers (ActiveMQ, RabbitMQ, Kafka)
+- Cache systems (Redis, Memcached)
+- File storage (S3, Azure Blob)
+
+#### 7. Cross-Cutting Concerns
 - Authentication & Authorization mechanism
-- Logging strategy
-- Error handling approach
-- Caching strategy
+- Service discovery
+- Logging and monitoring
 - Configuration management
+- Health checks
 
 ### Output Format
 Follow the [Architecture Analysis Output Template] structure.
@@ -205,7 +218,73 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/project-structure-analysis.md
 
 ---
 
-## 3. Data Models / ERD Analysis Prompt
+## 3. Shared Libraries Analysis Prompt
+
+Use this to analyze shared/common libraries, reusable modules, and cross-cutting utilities used across services.
+
+> **Note:** This is separate from Architecture Analysis (which focuses on services) and Project Structure (which focuses on folder organization).
+
+```
+## Task: Shared Libraries Analysis
+
+Analyze shared libraries and reusable modules in the project.
+
+### Project Path
+[YOUR_PROJECT_PATH]
+
+### Analysis Requirements
+
+Examine all shared/common libraries and document:
+
+#### 1. Overview
+- Total number of shared libraries
+- Primary programming language(s)
+- Packaging format (JAR, npm package, Python wheel, etc.)
+- Versioning strategy
+
+#### 2. Shared Libraries
+For EACH shared library/module:
+- **Name**: Library/module name
+- **Path**: Location in repository
+- **Purpose**: What this library provides
+- **Technology**: Language, framework
+- **Version**: Current version
+- **Consumers**: Which services use this library
+
+#### 3. Library Categories
+Group libraries by purpose:
+- **Core/Common**: Base utilities, helpers
+- **Data Access**: Repository patterns, ORM utilities
+- **Security**: Auth utilities, encryption
+- **Integration**: API clients, SDK wrappers
+- **Infrastructure**: Logging, monitoring, caching utilities
+
+#### 4. Dependencies
+For each library:
+- **External Dependencies**: Third-party packages used
+- **Internal Dependencies**: Other shared libraries it depends on
+- **Dependency Direction**: Library dependency graph
+
+#### 5. Interfaces & Contracts
+- Public APIs exposed by each library
+- Configuration requirements
+- Extension points
+
+#### 6. Build & Distribution
+- How libraries are built
+- How they are published/distributed
+- Version management
+
+### Output Format
+Follow the [Shared Libraries Output Template] structure.
+
+### Output Path
+Save to: [YOUR_PROJECT_PATH]/docs/analysis/shared-libraries-analysis.md
+```
+
+---
+
+## 4. Data Models / ERD Analysis Prompt
 
 Use this to analyze entities, relationships, and database schema.
 
@@ -272,7 +351,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/data-models-analysis.md
 
 ---
 
-## 3. Data Flow Analysis Prompt
+## 5. Data Flow Analysis Prompt
 
 Use this to analyze how data moves through the system.
 
@@ -340,7 +419,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/data-flow-analysis.md
 
 ---
 
-## 4. Flowchart / Process Analysis Prompt
+## 6. Flowchart / Process Analysis Prompt
 
 Use this to analyze business processes, workflows, and decision logic.
 
@@ -416,7 +495,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/flowchart-analysis.md
 
 ---
 
-## 5. Sequence Diagram Analysis Prompt
+## 7. Sequence Diagram Analysis Prompt
 
 Use this to analyze method call sequences, API interactions, and component communications.
 
@@ -489,7 +568,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/sequence-analysis.md
 
 ---
 
-## 6. Use Case Analysis Prompt
+## 8. Use Case Analysis Prompt
 
 Use this to analyze user stories, actor interactions, and system requirements.
 
@@ -564,7 +643,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/use-case-analysis.md
 
 ---
 
-## 7. State Machine Analysis Prompt
+## 9. State Machine Analysis Prompt
 
 Use this to analyze entity states, transitions, and lifecycle management.
 
@@ -649,7 +728,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/state-machine-analysis.md
 
 ---
 
-## 8. Infrastructure Analysis Prompt
+## 10. Infrastructure Analysis Prompt
 
 Use this to analyze cloud resources, networking, and deployment.
 
@@ -722,7 +801,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/infrastructure-analysis.md
 
 ---
 
-## 9. C4 Model Analysis Prompt
+## 11. C4 Model Analysis Prompt
 
 Use this for C4 Model (Context, Container, Component) analysis.
 
@@ -798,7 +877,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/c4-model-analysis.md
 
 ---
 
-## 10. Domain-Driven Design Analysis Prompt
+## 12. Domain-Driven Design Analysis Prompt
 
 Use this for DDD analysis including bounded contexts, aggregates, and domain events.
 
@@ -876,7 +955,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/ddd-analysis.md
 
 ---
 
-## 11. Security Analysis Prompt
+## 13. Security Analysis Prompt
 
 Use this to analyze security architecture, threat models, and access controls.
 
@@ -960,7 +1039,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/security-analysis.md
 
 ---
 
-## 12. API Contract Analysis Prompt
+## 14. API Contract Analysis Prompt
 
 Use this to analyze API specifications, versioning, and endpoint documentation.
 
@@ -1060,7 +1139,7 @@ Save to: [YOUR_PROJECT_PATH]/docs/analysis/api-contract-analysis.md
 
 ---
 
-## 13. Dependency Analysis Prompt
+## 15. Dependency Analysis Prompt
 
 Use this to analyze package dependencies, module coupling, and dependency health.
 
@@ -2156,6 +2235,232 @@ Handler/Controller → Service → Repository → Database
 | `src/features/` | Feature modules | Y modules |
 | `src/shared/` | Shared utilities | Z modules |
 | `config/` | Configuration | N files |
+```
+
+---
+
+## Shared Libraries Output Template
+
+```markdown
+# Shared Libraries Analysis: [Project Name]
+
+## 1. Overview
+
+| Attribute | Value |
+|-----------|-------|
+| **Total Shared Libraries** | [Count] |
+| **Primary Language** | [Language] |
+| **Package Manager** | [npm/Maven/Gradle/etc.] |
+| **Distribution Method** | [Local/Private Registry/Maven Central] |
+
+## 2. Library Inventory
+
+### 2.1 Core Libraries
+
+| Library Name | Version | Purpose | Consumers |
+|--------------|---------|---------|-----------|
+| `common-utils` | 1.0.0 | Utility functions | All services |
+| `auth-core` | 2.1.0 | Authentication | API Gateway, Services |
+| `data-models` | 1.5.0 | Shared DTOs/Entities | All services |
+
+### 2.2 Infrastructure Libraries
+
+| Library Name | Version | Purpose | Consumers |
+|--------------|---------|---------|-----------|
+| `logging-lib` | 1.0.0 | Centralized logging | All services |
+| `config-lib` | 1.2.0 | Configuration management | All services |
+| `metrics-lib` | 1.0.0 | Observability | All services |
+
+### 2.3 Domain Libraries
+
+| Library Name | Version | Purpose | Consumers |
+|--------------|---------|---------|-----------|
+| `domain-events` | 1.0.0 | Event definitions | Event producers/consumers |
+| `validation-lib` | 1.1.0 | Business validation rules | Services with validation |
+
+## 3. Library Details
+
+### 3.1 [Library Name]: common-utils
+
+**Purpose**: [Core utility functions shared across all services]
+
+**Module Structure**:
+```
+common-utils/
+├── src/
+│   ├── string/           # String manipulation utilities
+│   ├── date/             # Date/time utilities
+│   ├── collection/       # Collection helpers
+│   ├── crypto/           # Encryption/hashing utilities
+│   └── validation/       # Input validation
+├── test/
+└── package.json / pom.xml
+```
+
+**Key Exports**:
+| Export | Type | Description |
+|--------|------|-------------|
+| `StringUtils` | Class | String manipulation methods |
+| `DateUtils` | Class | Date formatting and parsing |
+| `HashUtils` | Class | Hashing functions (MD5, SHA) |
+| `Validator` | Class | Common validation rules |
+
+**Dependencies**:
+| Dependency | Version | Purpose |
+|------------|---------|---------|
+| lodash | 4.17.x | Utility functions |
+| moment | 2.29.x | Date handling |
+
+**Consumers**:
+- All microservices
+- Batch jobs
+- CLI tools
+
+---
+
+### 3.2 [Library Name]: auth-core
+
+**Purpose**: [Authentication and authorization core functionality]
+
+**Module Structure**:
+```
+auth-core/
+├── src/
+│   ├── token/            # JWT token handling
+│   ├── session/          # Session management
+│   ├── permission/       # Permission checking
+│   └── middleware/       # Auth middleware
+├── test/
+└── package.json / pom.xml
+```
+
+**Key Exports**:
+| Export | Type | Description |
+|--------|------|-------------|
+| `TokenService` | Class | JWT creation/validation |
+| `AuthMiddleware` | Function | Express/Spring middleware |
+| `PermissionChecker` | Class | Role-based access control |
+| `SessionManager` | Class | Session handling |
+
+**Configuration**:
+| Config Key | Type | Description |
+|------------|------|-------------|
+| `JWT_SECRET` | string | Token signing secret |
+| `TOKEN_EXPIRY` | number | Token expiration (seconds) |
+| `REFRESH_EXPIRY` | number | Refresh token expiration |
+
+**Consumers**:
+- API Gateway
+- User Service
+- Admin Service
+
+---
+
+## 4. Dependency Graph
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Application Services                  │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐              │
+│  │ Service A│  │ Service B│  │ Service C│              │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘              │
+│       │             │             │                     │
+│       └─────────────┼─────────────┘                     │
+│                     ▼                                   │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │              Domain Libraries                    │   │
+│  │  ┌────────────┐  ┌────────────┐                 │   │
+│  │  │domain-events│ │validation  │                 │   │
+│  │  └─────┬──────┘  └─────┬──────┘                 │   │
+│  └────────┼───────────────┼────────────────────────┘   │
+│           │               │                             │
+│           └───────┬───────┘                             │
+│                   ▼                                     │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │              Core Libraries                      │   │
+│  │  ┌────────────┐  ┌────────────┐  ┌───────────┐  │   │
+│  │  │common-utils│  │ auth-core  │  │data-models│  │   │
+│  │  └─────┬──────┘  └─────┬──────┘  └─────┬─────┘  │   │
+│  └────────┼───────────────┼───────────────┼────────┘   │
+│           │               │               │             │
+│           └───────────────┼───────────────┘             │
+│                           ▼                             │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │           Infrastructure Libraries               │   │
+│  │  ┌──────────┐  ┌──────────┐  ┌─────────────┐    │   │
+│  │  │logging-lib│ │config-lib│  │ metrics-lib │    │   │
+│  │  └──────────┘  └──────────┘  └─────────────┘    │   │
+│  └─────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
+```
+
+## 5. Version Matrix
+
+| Library | Service A | Service B | Service C | Gateway |
+|---------|-----------|-----------|-----------|---------|
+| common-utils | 1.0.0 | 1.0.0 | 1.0.0 | 1.0.0 |
+| auth-core | 2.1.0 | 2.1.0 | - | 2.1.0 |
+| data-models | 1.5.0 | 1.5.0 | 1.5.0 | 1.5.0 |
+| logging-lib | 1.0.0 | 1.0.0 | 1.0.0 | 1.0.0 |
+
+## 6. Publishing & Distribution
+
+### 6.1 Build Process
+```
+Library Source → Build → Test → Package → Publish → Registry
+```
+
+### 6.2 Registry Configuration
+| Attribute | Value |
+|-----------|-------|
+| Registry Type | [npm private / Nexus / Artifactory] |
+| Registry URL | [URL] |
+| Scope | [@company/*] |
+
+### 6.3 Versioning Strategy
+- **Strategy**: [Semantic Versioning]
+- **Breaking Changes**: Major version bump
+- **New Features**: Minor version bump
+- **Bug Fixes**: Patch version bump
+
+## 7. Usage Patterns
+
+### 7.1 Installation
+```bash
+# npm
+npm install @company/common-utils
+
+# Maven
+<dependency>
+  <groupId>com.company</groupId>
+  <artifactId>common-utils</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
+### 7.2 Import Patterns
+```typescript
+// TypeScript/JavaScript
+import { StringUtils, DateUtils } from '@company/common-utils';
+
+// Java
+import com.company.common.StringUtils;
+```
+
+## 8. Maintenance Guidelines
+
+### 8.1 Update Process
+1. Update library source
+2. Run tests
+3. Bump version
+4. Publish to registry
+5. Update consumers
+
+### 8.2 Deprecation Policy
+- Mark deprecated in code
+- Update changelog
+- Allow 2 major versions before removal
+- Notify consuming teams
 ```
 
 ---

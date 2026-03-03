@@ -67,6 +67,7 @@ DrawIO uses XML format with specific style attributes to reference official shap
 - [NoSQL / DynamoDB Data Model Diagrams](#nosql--dynamodb-data-model-diagrams) - Partition keys, Sort keys, TTL
 - [Conceptual ERD for NoSQL](#conceptual-erd-for-nosql-domain-based) - Domain-based grouping
 - [Project Structure Diagrams](#project-structure-diagrams) - Folder organization, Module hierarchy
+- [Shared Libraries Diagrams](#shared-libraries-diagrams) - Library dependencies, Version matrix, Consumers
 
 ### Lines, Arrows & Styling
 - [Lines and Edges (Connections)](#lines-and-edges-connections) - Edge styles, routing
@@ -1742,6 +1743,269 @@ Individual modules or folders within subsections:
 │ Legend                               │
 │ ■ Kotlin  ■ Python  ■ Infrastructure │
 │ 📁=Folder  📦=Module  📄=File        │
+└──────────────────────────────────────┘
+```
+
+---
+
+## Shared Libraries Diagrams
+
+Shared libraries diagrams visualize the reusable components, their dependencies, version matrix, and consumer services. These diagrams help teams understand which services depend on which libraries and track version compatibility.
+
+### Purpose
+
+- Show library inventory and categorization (Core, Infrastructure, Domain)
+- Visualize dependency hierarchy between libraries
+- Display version matrix across consuming services
+- Identify shared code patterns and reuse opportunities
+
+### Diagram File Naming
+
+| Diagram Type | Filename | Description |
+|--------------|----------|-------------|
+| Library Overview | `shared-libraries-overview.drawio` | All libraries with categories |
+| Dependency Graph | `shared-libraries-dependencies.drawio` | Library dependency hierarchy |
+| Version Matrix | `shared-libraries-versions.drawio` | Version compatibility matrix |
+
+### Color Scheme by Library Type
+
+| Library Type | Fill Color | Stroke Color | Use For |
+|--------------|------------|--------------|---------|
+| Core Libraries | `#DAE8FC` | `#6C8EBF` | Essential utilities, common functions |
+| Infrastructure Libraries | `#D5E8D4` | `#82B366` | Logging, config, metrics |
+| Domain Libraries | `#FFF2CC` | `#D6B656` | Business logic, domain events |
+| External Dependencies | `#F5F5F5` | `#666666` | Third-party packages |
+| Consuming Services | `#E1D5E7` | `#9673A6` | Services using the libraries |
+
+### Library Container Style
+
+Use swimlane containers for library categories:
+
+```xml
+<!-- Core Libraries Container -->
+<mxCell id="core-libs" value="Core Libraries"
+  style="swimlane;startSize=30;strokeWidth=3;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;shadow=1;swimlaneFillColor=#DAE8FC;"
+  vertex="1" parent="1">
+  <mxGeometry x="40" y="100" width="300" height="300" as="geometry"/>
+</mxCell>
+
+<!-- Infrastructure Libraries Container -->
+<mxCell id="infra-libs" value="Infrastructure Libraries"
+  style="swimlane;startSize=30;strokeWidth=3;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=14;fontStyle=1;shadow=1;swimlaneFillColor=#D5E8D4;"
+  vertex="1" parent="1">
+  <mxGeometry x="360" y="100" width="300" height="300" as="geometry"/>
+</mxCell>
+
+<!-- Domain Libraries Container -->
+<mxCell id="domain-libs" value="Domain Libraries"
+  style="swimlane;startSize=30;strokeWidth=3;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;shadow=1;swimlaneFillColor=#FFF2CC;"
+  vertex="1" parent="1">
+  <mxGeometry x="680" y="100" width="300" height="300" as="geometry"/>
+</mxCell>
+```
+
+### Library Item Style
+
+Individual libraries within containers:
+
+```xml
+<!-- Library card with version -->
+<mxCell id="lib-common-utils" value="&lt;b&gt;common-utils&lt;/b&gt;&#xa;v1.0.0&#xa;&#xa;String, Date, Crypto utilities"
+  style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6C8EBF;strokeWidth=2;verticalAlign=top;fontSize=10;shadow=1;"
+  vertex="1" parent="core-libs">
+  <mxGeometry x="20" y="40" width="120" height="80" as="geometry"/>
+</mxCell>
+
+<!-- Library with consumer count badge -->
+<mxCell id="lib-auth-core" value="&lt;b&gt;auth-core&lt;/b&gt;&#xa;v2.1.0&#xa;&#xa;JWT, Sessions, RBAC&#xa;[5 consumers]"
+  style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6C8EBF;strokeWidth=2;verticalAlign=top;fontSize=10;shadow=1;"
+  vertex="1" parent="core-libs">
+  <mxGeometry x="160" y="40" width="120" height="80" as="geometry"/>
+</mxCell>
+```
+
+### Dependency Arrow Style
+
+Show dependencies between libraries:
+
+```xml
+<!-- Library dependency arrow -->
+<mxCell id="dep-auth-common"
+  style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6C8EBF;strokeWidth=2;endArrow=classic;endFill=1;dashed=1;"
+  edge="1" parent="1" source="lib-auth-core" target="lib-common-utils">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+
+<!-- Service to library dependency -->
+<mxCell id="svc-lib-dep"
+  style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9673A6;strokeWidth=2;endArrow=classic;endFill=1;"
+  edge="1" parent="1" source="service-a" target="lib-common-utils">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+```
+
+### Version Matrix Table Style
+
+For showing version compatibility across services:
+
+```xml
+<!-- Version Matrix Header -->
+<mxCell id="vm-header" value="Version Matrix"
+  style="swimlane;startSize=30;strokeWidth=2;fillColor=#F5F5F5;strokeColor=#333333;fontSize=14;fontStyle=1;shadow=1;"
+  vertex="1" parent="1">
+  <mxGeometry x="40" y="450" width="600" height="200" as="geometry"/>
+</mxCell>
+
+<!-- Table structure using HTML -->
+<mxCell id="vm-table" value="&lt;table border='1' cellspacing='0' cellpadding='4'&gt;
+&lt;tr style='background:#E1D5E7;font-weight:bold'&gt;
+&lt;td&gt;Library&lt;/td&gt;&lt;td&gt;Service A&lt;/td&gt;&lt;td&gt;Service B&lt;/td&gt;&lt;td&gt;Gateway&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;common-utils&lt;/td&gt;&lt;td&gt;1.0.0&lt;/td&gt;&lt;td&gt;1.0.0&lt;/td&gt;&lt;td&gt;1.0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;auth-core&lt;/td&gt;&lt;td&gt;2.1.0&lt;/td&gt;&lt;td&gt;2.0.0&lt;/td&gt;&lt;td&gt;2.1.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;logging-lib&lt;/td&gt;&lt;td&gt;1.0.0&lt;/td&gt;&lt;td&gt;1.0.0&lt;/td&gt;&lt;td&gt;1.0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=11;"
+  vertex="1" parent="vm-header">
+  <mxGeometry x="10" y="35" width="580" height="150" as="geometry"/>
+</mxCell>
+```
+
+### Consumers Container Style
+
+Show which services consume which libraries:
+
+```xml
+<!-- Consumers Section -->
+<mxCell id="consumers" value="Consuming Services"
+  style="swimlane;startSize=30;strokeWidth=3;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=14;fontStyle=1;shadow=1;swimlaneFillColor=#E1D5E7;"
+  vertex="1" parent="1">
+  <mxGeometry x="40" y="420" width="940" height="150" as="geometry"/>
+</mxCell>
+
+<!-- Service consuming libraries -->
+<mxCell id="svc-user" value="&lt;b&gt;User Service&lt;/b&gt;&#xa;&#xa;Uses: common-utils, auth-core,&#xa;logging-lib, data-models"
+  style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673A6;strokeWidth=2;verticalAlign=top;fontSize=10;shadow=1;"
+  vertex="1" parent="consumers">
+  <mxGeometry x="20" y="40" width="180" height="90" as="geometry"/>
+</mxCell>
+```
+
+### Dependency Hierarchy Layout
+
+Visual representation of library layers:
+
+```xml
+<!-- Layer indicators -->
+<mxCell id="layer-label-1" value="Application Layer"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=2;fontColor=#666666;"
+  vertex="1" parent="1">
+  <mxGeometry x="10" y="60" width="120" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="layer-label-2" value="Domain Layer"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=2;fontColor=#666666;"
+  vertex="1" parent="1">
+  <mxGeometry x="10" y="200" width="120" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="layer-label-3" value="Core Layer"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=2;fontColor=#666666;"
+  vertex="1" parent="1">
+  <mxGeometry x="10" y="340" width="120" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="layer-label-4" value="Infrastructure Layer"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=2;fontColor=#666666;"
+  vertex="1" parent="1">
+  <mxGeometry x="10" y="480" width="120" height="20" as="geometry"/>
+</mxCell>
+```
+
+### Shared Libraries Legend
+
+```xml
+<!-- Legend -->
+<mxCell id="lib-legend" value="Legend"
+  style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#F5F5F5;strokeColor=#666666;strokeWidth=2;fontSize=12;shadow=1;"
+  vertex="1" parent="1">
+  <mxGeometry x="40" y="700" width="300" height="130" as="geometry"/>
+</mxCell>
+<mxCell id="lib-leg1" value="&lt;table&gt;&lt;tr&gt;&lt;td style='background:#DAE8FC;width:20px;'&gt;&lt;/td&gt;&lt;td&gt; Core Libraries&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;"
+  vertex="1" parent="lib-legend">
+  <mxGeometry y="26" width="300" height="26" as="geometry"/>
+</mxCell>
+<mxCell id="lib-leg2" value="&lt;table&gt;&lt;tr&gt;&lt;td style='background:#D5E8D4;width:20px;'&gt;&lt;/td&gt;&lt;td&gt; Infrastructure Libraries&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;"
+  vertex="1" parent="lib-legend">
+  <mxGeometry y="52" width="300" height="26" as="geometry"/>
+</mxCell>
+<mxCell id="lib-leg3" value="&lt;table&gt;&lt;tr&gt;&lt;td style='background:#FFF2CC;width:20px;'&gt;&lt;/td&gt;&lt;td&gt; Domain Libraries&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;"
+  vertex="1" parent="lib-legend">
+  <mxGeometry y="78" width="300" height="26" as="geometry"/>
+</mxCell>
+<mxCell id="lib-leg4" value="&lt;table&gt;&lt;tr&gt;&lt;td&gt;- - -▶&lt;/td&gt;&lt;td&gt; Library Dependency&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=11;"
+  vertex="1" parent="lib-legend">
+  <mxGeometry y="104" width="300" height="26" as="geometry"/>
+</mxCell>
+```
+
+### Layout Guidelines
+
+1. **Layer-based arrangement**: Place libraries in horizontal layers from top to bottom (Application → Domain → Core → Infrastructure)
+2. **Dependencies flow downward**: Libraries at higher layers depend on libraries at lower layers
+3. **Consumer grouping**: Group consuming services separately from library definitions
+4. **Version visibility**: Always show version numbers on library cards
+5. **Consumer counts**: Include consumer counts when useful for impact analysis
+6. **Page size**: Use 1600x1000 or larger for complex library ecosystems
+
+### Complete Example Structure
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   Consuming Services                     │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐              │
+│  │ Service A│  │ Service B│  │ Gateway  │              │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘              │
+└───────┼─────────────┼─────────────┼─────────────────────┘
+        │             │             │
+        └─────────────┼─────────────┘
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│                   Domain Libraries                       │
+│  ┌────────────┐  ┌────────────┐                        │
+│  │domain-events│ │validation  │                        │
+│  │   v1.0.0   │  │   v1.1.0   │                        │
+│  └─────┬──────┘  └─────┬──────┘                        │
+└────────┼───────────────┼────────────────────────────────┘
+         │               │
+         └───────┬───────┘
+                 ▼
+┌─────────────────────────────────────────────────────────┐
+│                    Core Libraries                        │
+│  ┌────────────┐  ┌────────────┐  ┌───────────┐         │
+│  │common-utils│  │ auth-core  │  │data-models│         │
+│  │   v1.0.0   │  │   v2.1.0   │  │  v1.5.0   │         │
+│  └─────┬──────┘  └─────┬──────┘  └─────┬─────┘         │
+└────────┼───────────────┼───────────────┼────────────────┘
+         │               │               │
+         └───────────────┼───────────────┘
+                         ▼
+┌─────────────────────────────────────────────────────────┐
+│               Infrastructure Libraries                   │
+│  ┌──────────┐  ┌──────────┐  ┌─────────────┐           │
+│  │logging-lib│ │config-lib│  │ metrics-lib │           │
+│  │  v1.0.0  │  │  v1.2.0  │  │   v1.0.0    │           │
+│  └──────────┘  └──────────┘  └─────────────┘           │
+└─────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────┐
+│ Legend                               │
+│ ■ Core  ■ Domain  ■ Infrastructure  │
+│ ---▶ Library dependency             │
 └──────────────────────────────────────┘
 ```
 

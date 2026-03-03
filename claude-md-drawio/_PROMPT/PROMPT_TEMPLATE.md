@@ -6,10 +6,10 @@
 ## Project Analysis & Diagram Generation
 
 ### Parameters (FILL THESE FIRST):
-- PROJECT_PATH: _______________
-- OUTPUT_PATH: _______________
-- PROMPT_PROJECT_ANALYSIS: _______________
-- PROMPT_DIAGRAM_FORMAT: _______________
+- PROJECT_PATH: D:\Programing\GEC-SCF\
+- OUTPUT_PATH: D:\Programing\GEC-SCF\
+- PROMPT_PROJECT_ANALYSIS: D:\Programing\mono-sample-claude-project-specific-instruction\claude-md-drawio\_PROMPT\PROMPT-PROJECT-ANALYSIS.md
+- PROMPT_DIAGRAM_FORMAT: D:\Programing\mono-sample-claude-project-specific-instruction\claude-md-drawio\_PROMPT\PROMPT-DIAGRAM-FORMAT.md
 
 ### Standards & Templates
 - Analysis Templates: [PROMPT_PROJECT_ANALYSIS]
@@ -164,3 +164,4 @@ Generate DrawIO diagrams from existing analysis files only.
 2. STEP 2: Generate .drawio diagrams (only for existing analysis)
 3. Include mandatory arrow legends in all diagrams
 ```
+
