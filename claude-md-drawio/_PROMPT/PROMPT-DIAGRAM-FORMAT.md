@@ -75,6 +75,7 @@ DrawIO uses XML format with specific style attributes to reference official shap
 - [Lines and Edges (Connections)](#lines-and-edges-connections) - Edge styles, routing
 - [Arrow Color Standards (Protocol-Based)](#arrow-color-standards-protocol-based) - HTTP, Database, Cache, Queue colors
 - [CRITICAL: Mandatory Arrow Legend Requirements](#critical-mandatory-arrow-legend-requirements) - **Required legends for meaningful arrows**
+- [Component Legend (Infrastructure/Network/Architecture)](#component-legend-infrastructurenetworkarchitecture-diagrams) - Subnet types, service categories
 - [Arrows (Edge Endpoints)](#arrows-edge-endpoints) - Arrow types, selection guide
 - [Frames and Containers](#frames-and-containers) - Grouping, styling
 - [Waypoints and Edge Control Points](#waypoints-and-edge-control-points)
@@ -2441,6 +2442,168 @@ Before finalizing any diagram, verify:
 | ☐ | Legend is positioned outside main diagram content |
 | ☐ | Text labels clearly describe arrow meaning |
 | ☐ | Arrow samples match exact styles used in diagram |
+| ☐ | Component Legend included for infrastructure/network diagrams |
+
+---
+
+## Component Legend (Infrastructure/Network/Architecture Diagrams)
+
+**For infrastructure, network security, and architecture diagrams, include a Component Legend alongside the Arrow Legend to explain the color coding of different component categories.**
+
+### When Component Legend is Required
+
+A Component Legend is **RECOMMENDED** when:
+- Using **subnet color coding** (public, compute, data subnets)
+- Using **service category colors** (compute, networking, database, security, messaging)
+- Creating **multi-cloud or multi-AZ** architecture diagrams
+- Building **network security** diagrams with zone-based coloring
+
+### Component Color Standards
+
+#### Subnet Types (Container Fill Colors)
+
+| Subnet Type | Fill Color | Stroke Color | Font Color | Description |
+|-------------|------------|--------------|------------|-------------|
+| Public Subnet | `#F0F7E6` | `#7AA116` | `#3D7317` | Internet-facing (IGW, ALB, NAT GW) |
+| Compute/App Subnet | `#EDF4FA` | `#147EBA` | `#0D5594` | Application layer (ECS, EC2, Lambda, App Service) |
+| Data Subnet | `#F5F0FA` | `#9673A6` | `#6B4C8A` | Database/Storage layer (RDS, DynamoDB, S3, Redis) |
+| Integration Subnet | `#FFF8F0` | `#D6B656` | `#B8860B` | Integration services (API Gateway, Service Bus) |
+
+#### AWS Service Categories (Icon Fill Colors)
+
+| Category | Fill Color | Example Services |
+|----------|------------|------------------|
+| Compute | `#ED7100` | EC2, ECS, Fargate, Lambda, Batch |
+| Networking | `#8C4FFF` | VPC, ALB, NLB, API Gateway, Route 53, CloudFront |
+| Database | `#C925D1` | RDS, DynamoDB, ElastiCache, Aurora, Redshift |
+| Storage | `#7AA116` | S3, EBS, EFS, Glacier |
+| Security | `#DD344C` | IAM, Cognito, KMS, WAF, Secrets Manager |
+| Messaging | `#E7157B` | SQS, SNS, EventBridge, Step Functions |
+| Monitoring | `#E7157B` | CloudWatch, X-Ray |
+| General | `#232F3E` | Users, Client |
+
+#### Azure Service Categories
+
+| Category | Icon Style | Example Services |
+|----------|------------|------------------|
+| Compute | Azure blue SVG | VM, App Service, Functions, AKS, Container Instances |
+| Networking | Azure blue SVG | VNet, Load Balancer, Application Gateway, Front Door, Firewall |
+| Database | Azure blue SVG | SQL Database, Cosmos DB, Redis Cache |
+| Storage | Azure blue SVG | Storage Account, Blob Storage, Data Lake |
+| Security | Azure blue SVG | Key Vault, Azure AD, Managed Identity |
+| Integration | Azure blue SVG | Service Bus, Logic Apps, Event Grid, API Management |
+
+### Component Legend Template
+
+```xml
+<!-- ================================================================ -->
+<!-- COMPONENT LEGEND - Required for infrastructure/architecture diagrams -->
+<!-- ================================================================ -->
+<mxCell id="component-legend" value="Component Legend"
+  style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;fontStyle=1;fontSize=12;shadow=1;"
+  vertex="1" parent="1">
+  <mxGeometry x="460" y="820" width="380" height="230" as="geometry"/>
+</mxCell>
+
+<!-- Subnet Types Section -->
+<mxCell id="legend-subnet-title" value="Subnet Types"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#666666;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="845" width="100" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="legend-public-subnet" value="█  Public (Internet-facing)"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#7AA116;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="865" width="180" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="legend-compute-subnet" value="█  Compute/App (Application layer)"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#147EBA;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="885" width="200" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="legend-data-subnet" value="█  Data (Database/Storage layer)"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#9673A6;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="905" width="200" height="20" as="geometry"/>
+</mxCell>
+
+<!-- Service Categories Section -->
+<mxCell id="legend-service-title" value="Service Categories"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#666666;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="935" width="120" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="legend-compute-svc" value="█  Compute (EC2, ECS, Lambda, VM)"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#ED7100;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="955" width="220" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="legend-network-svc" value="█  Networking (ALB, API GW, VPN)"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#8C4FFF;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="975" width="200" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="legend-database-svc" value="█  Database (RDS, DynamoDB, Redis)"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#C925D1;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="995" width="220" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="legend-security-svc" value="█  Security (IAM, Cognito, Key Vault)"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#DD344C;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="1015" width="220" height="20" as="geometry"/>
+</mxCell>
+
+<mxCell id="legend-messaging-svc" value="█  Messaging (SQS, SNS, Service Bus)"
+  style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#E7157B;"
+  vertex="1" parent="1">
+  <mxGeometry x="475" y="1035" width="220" height="20" as="geometry"/>
+</mxCell>
+```
+
+### Combined Legend Layout (Arrow + Component)
+
+For infrastructure diagrams, place both legends side by side at the bottom:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           DIAGRAM CONTENT                                    │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────┐  ┌─────────────────────────────┐
+│ Arrow Legend                │  │ Component Legend            │
+│                             │  │                             │
+│ ───▶  HTTP/HTTPS Request   │  │ Subnet Types                │
+│ ◀──▶  Database (SQL)       │  │ █ Public (Internet-facing)  │
+│ ◀──▶  Cache (Redis)        │  │ █ Compute (App layer)       │
+│ ◀──▶  Storage (S3/Blob)    │  │ █ Data (DB/Storage)         │
+│ ───▶  Message Queue        │  │                             │
+│ - - ▶  VPN/IPSec           │  │ Service Categories          │
+│ - - ▶  Replication         │  │ █ Compute (EC2, Lambda)     │
+│                             │  │ █ Networking (ALB, VPN)     │
+│                             │  │ █ Database (RDS, Redis)     │
+│                             │  │ █ Security (IAM, KMS)       │
+│                             │  │ █ Messaging (SQS, SNS)      │
+└─────────────────────────────┘  └─────────────────────────────┘
+```
+
+### Component Legend Checklist
+
+| Check | Description |
+|-------|-------------|
+| ☐ | Subnet types explained with color squares |
+| ☐ | Service categories match AWS/Azure color standards |
+| ☐ | Legend positioned alongside Arrow Legend |
+| ☐ | All subnet colors used in diagram are documented |
+| ☐ | Service category colors match icons used |
 
 ---
 
@@ -3084,6 +3247,7 @@ Control where edges connect to shapes:
 - Indicate public vs private subnets
 - Show internet gateways and NAT gateways
 - **Include Arrow Legend** for protocol colors (HTTP, DB, Cache, Queue)
+- **Include Component Legend** for subnet types (public, compute, data) and service categories
 
 **Kubernetes:**
 - Show namespace boundaries
@@ -3097,6 +3261,7 @@ Control where edges connect to shapes:
 - Indicate VPN/tunnel connections with dashed lines
 - Group by network zones (DMZ, Internal, External)
 - **Include Arrow Legend** for internal vs external traffic, VPN, management flows
+- **Include Component Legend** for zone types and security boundaries
 
 **Software Architecture:**
 - Use layers (Presentation, Business, Data)
@@ -3142,3 +3307,4 @@ Control where edges connect to shapes:
 27. **Position logically** - Arrange components following left-to-right or top-to-bottom flow
 28. **Be consistent** - Use same icon size, spacing, and style throughout the diagram
 29. **ALWAYS include Arrow Legend at root level** - When using meaningful arrow colors/styles (protocols, ER relationships, internal/external traffic), include a legend section explaining each arrow type. Legend MUST have `parent="1"`, never inside groups.
+30. **Include Component Legend for infrastructure diagrams** - For cloud architecture, network, and security diagrams, add a Component Legend alongside Arrow Legend explaining subnet types (public, compute, data) and service categories (compute, networking, database, security, messaging).
