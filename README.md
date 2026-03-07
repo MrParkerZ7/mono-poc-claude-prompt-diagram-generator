@@ -25,8 +25,7 @@ mono-sample-claude-project-specific-instruction/
 │   └── PROMPT_TEMPLATE_DOCS.md    # Documentation prompt
 │
 ├── format-group-icon-space-size-standard/  # Formatting Style Guides
-│   ├── PROMPT_STYLE.md                     # Universal spacing, sizing, arrow rules
-│   ├── PROMPT_OBJECT_FORMAT.md             # Object format reference
+│   ├── PROMPT_OBJECT_FORMAT.md             # Universal spacing, sizing, arrow rules
 │   └── sample-*.drawio                     # Format-compliant samples
 │
 ├── poc-architecture/              # Cloud Architecture Samples
@@ -89,7 +88,7 @@ mono-sample-claude-project-specific-instruction/
 - All elements must have connections (no orphans)
 
 ### Universal Diagram Support
-`PROMPT_STYLE.md` supports all diagram types:
+`PROMPT_OBJECT_FORMAT.md` supports all diagram types:
 - Cloud Architecture (AWS, Azure, GCP, Kubernetes)
 - C4 Model (Context, Container, Component)
 - Sequence Diagrams
