@@ -22,8 +22,9 @@ mono-sample-claude-project-specific-instruction/
 │   ├── PROMPT_TEMPLATE.md         # Quick-start template
 │   └── PROMPT_TEMPLATE_DOCS.md    # Documentation generation
 │
-├── format-group-icon-space-size standard/  # Formatting Style Guides
-│   ├── PROMPT_STYLE.md                     # Spacing, sizing, grid rules
+├── format-group-icon-space-size-standard/  # Formatting Style Guides
+│   ├── PROMPT_STYLE.md                     # Universal spacing, sizing, arrow rules
+│   ├── PROMPT_OBJECT_FORMAT.md             # Object format reference
 │   └── sample-*.drawio                     # Format-compliant examples
 │
 ├── poc-{diagram-type}/            # Diagram Type Samples
@@ -41,7 +42,7 @@ mono-sample-claude-project-specific-instruction/
 |------|---------|
 | `_PROMPT/PROMPT-DIAGRAM-FORMAT.md` | Main DrawIO standards - shapes, styles, colors, arrows |
 | `_PROMPT/PROMPT-PROJECT-ANALYSIS.md` | Analysis workflow and output templates |
-| `format-group-icon-space-size standard/PROMPT_STYLE.md` | Spacing and sizing rules |
+| `format-group-icon-space-size-standard/PROMPT_STYLE.md` | Universal spacing, sizing, arrow rules (all diagram types) |
 
 ## Working with This Repository
 
@@ -61,7 +62,7 @@ mono-sample-claude-project-specific-instruction/
 
 ### Format Standards (MANDATORY)
 
-All diagrams must follow these rules from `format-group-icon-space-size standard/PROMPT_STYLE.md`:
+All diagrams must follow these rules from `format-group-icon-space-size-standard/PROMPT_STYLE.md`:
 
 | Rule | Requirement |
 |------|-------------|
@@ -69,7 +70,9 @@ All diagrams must follow these rules from `format-group-icon-space-size standard
 | Icon size | 60x60px minimum |
 | Stroke width | 2px standard |
 | Shadows | `shadow=1;textShadow=1` on all elements |
-| Legend | Required for all meaningful arrow styles |
+| Arrow Legend | MANDATORY when using multiple arrow styles |
+| Component Legend | MANDATORY for all architecture diagrams |
+| Connections | All elements must have arrows (no orphans) |
 
 ### Color Scheme
 

@@ -24,8 +24,9 @@ mono-sample-claude-project-specific-instruction/
 │   ├── PROMPT_TEMPLATE.md         # Quick-start prompt
 │   └── PROMPT_TEMPLATE_DOCS.md    # Documentation prompt
 │
-├── format-group-icon-space-size standard/  # Formatting Style Guides
-│   ├── PROMPT_STYLE.md                     # Spacing & sizing rules
+├── format-group-icon-space-size-standard/  # Formatting Style Guides
+│   ├── PROMPT_STYLE.md                     # Universal spacing, sizing, arrow rules
+│   ├── PROMPT_OBJECT_FORMAT.md             # Object format reference
 │   └── sample-*.drawio                     # Format-compliant samples
 │
 ├── poc-architecture/              # Cloud Architecture Samples
@@ -76,7 +77,7 @@ mono-sample-claude-project-specific-instruction/
 
 ### Consistent Styling
 - Protocol-based arrow colors (HTTP, Database, Queue, etc.)
-- Mandatory legend requirements
+- Arrow Legend and Component Legend (MANDATORY)
 - Grid-aligned positioning (10px grid)
 - Shadow and text shadow standards
 
@@ -85,6 +86,17 @@ mono-sample-claude-project-specific-instruction/
 - Container positions: multiples of 10px
 - Stroke width: 2px standard
 - Required attributes: `shadow=1;textShadow=1`
+- All elements must have connections (no orphans)
+
+### Universal Diagram Support
+`PROMPT_STYLE.md` supports all diagram types:
+- Cloud Architecture (AWS, Azure, GCP, Kubernetes)
+- C4 Model (Context, Container, Component)
+- Sequence Diagrams
+- ERD (Entity-Relationship)
+- Data Flow / ETL
+- Flowchart / BPMN
+- State Machine
 
 ## Sample Projects
 
