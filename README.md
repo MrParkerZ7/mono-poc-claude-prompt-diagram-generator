@@ -1,108 +1,109 @@
-# CLAUDE.md Project-Specific Instructions Samples
+# DrawIO Architecture Diagram Generation with Claude
 
-A mono-repo containing sample `CLAUDE.md` files for different use cases with Claude Code.
+A collection of prompt templates, style guides, and sample diagrams for generating professional DrawIO architecture diagrams using Claude Code.
 
-## What is CLAUDE.md?
+## Overview
 
-`CLAUDE.md` is a project-specific instruction file that Claude Code automatically loads when working in a directory. It allows you to:
+This repository provides everything needed to generate consistent, professional-quality architecture diagrams:
 
-- Define coding standards and conventions
-- Provide domain-specific knowledge
-- Set up shape/style references for diagram generation
-- Configure project-specific workflows
+- **Prompt Templates** - Ready-to-use prompts for diagram generation and project analysis
+- **Style Guides** - Formatting standards for spacing, sizing, and visual consistency
+- **Sample Diagrams** - Real-world examples across different diagram types
+- **Project Analysis Examples** - Complete analysis-to-diagram workflows
 
-## Projects
-
-| Project | Description | Status |
-|---------|-------------|--------|
-| [claude-md-drawio](./claude-md-drawio/) | DrawIO architecture diagram generation | Active |
-| [claude-md-excel](./claude-md-excel/) | Excel/spreadsheet generation | Planned |
-
-## File Structure
+## Repository Structure
 
 ```
 mono-sample-claude-project-specific-instruction/
-├── README.md
-├── .gitignore
+├── CLAUDE.md                      # Project instructions for Claude Code
+├── README.md                      # This file
 │
-├── claude-md-drawio/
-│   ├── CLAUDE-DIAGRAMS-STANDARD-FORMAT.md    # Main standards file (93KB)
-│   ├── PROMPT_TEMPLATE.md                    # Ready-to-use prompt template
-│   ├── README.md
-│   │
-│   ├── sample-architecture/                   # Cloud & infrastructure diagrams
-│   │   ├── README.md
-│   │   ├── sample-architecture-aws-ecs.drawio/.png
-│   │   ├── sample-architecture-azure-webapp.drawio/.png
-│   │   ├── sample-architecture-aws-portal-k8s-insurance.drawio/.png
-│   │   └── sample-architecture-insurance-cobroker-portal-k8s-onprem.drawio/.png
-│   │
-│   ├── sample-c4-model/                       # C4 Model architecture
-│   │   ├── README.md
-│   │   └── sample-c4-model-core-banking.drawio/.png
-│   │
-│   ├── sample-domain-driven-design/           # DDD diagrams
-│   │   ├── README.md
-│   │   └── sample-domain-driven-design-core-banking.drawio/.png
-│   │
-│   ├── sample-entity-erd/                     # Database ERD
-│   │   ├── README.md
-│   │   └── sample-entity-property-agent-database.drawio/.png
-│   │
-│   ├── sample-sequence/                       # Sequence diagrams
-│   │   ├── README.md
-│   │   └── sample-sequence-payment-flow.drawio/.png
-│   │
-│   └── sample-autoclickkey-workflow/          # Application workflow
-│       ├── README.md
-│       └── data-workflow-diagram.drawio
+├── _PROMPT/                       # Prompt Templates
+│   ├── PROMPT-DIAGRAM-FORMAT.md   # DrawIO shape/style reference (158KB)
+│   ├── PROMPT-PROJECT-ANALYSIS.md # Project analysis templates
+│   ├── PROMPT_TEMPLATE.md         # Quick-start prompt
+│   └── PROMPT_TEMPLATE_DOCS.md    # Documentation prompt
 │
-└── claude-md-excel/                           # Excel generation (planned)
-    └── ...
+├── format-architect/              # Formatting Style Guides
+│   ├── PROMPT_STYLE.md            # Spacing & sizing rules
+│   └── sample-*.drawio            # Format-compliant samples
+│
+├── poc-architecture/              # Cloud Architecture Samples
+├── poc-c4-model/                  # C4 Model Samples
+├── poc-datalake/                  # Data Lake/Warehouse Samples
+├── poc-domain-driven-design/      # DDD Bounded Context Samples
+├── poc-entity-erd/                # Database ERD Samples
+├── poc-sequence/                  # Sequence Diagram Samples
+│
+└── poc-project-*/                 # Full Project Analysis Examples
+    ├── analysis/                  # Analysis documents
+    └── diagrams/                  # Generated diagrams
 ```
 
-## Sample Diagrams
+## Diagram Types
 
-| Category | Folder | Samples |
-|----------|--------|---------|
-| Cloud Architecture | [sample-architecture/](./claude-md-drawio/sample-architecture/) | AWS ECS, Azure WebApp, AWS+K8s Hybrid, On-Prem K8s |
-| C4 Model | [sample-c4-model/](./claude-md-drawio/sample-c4-model/) | Core Banking (Context, Container, Component) |
-| Domain-Driven Design | [sample-domain-driven-design/](./claude-md-drawio/sample-domain-driven-design/) | Core Banking bounded contexts |
-| Database ERD | [sample-entity-erd/](./claude-md-drawio/sample-entity-erd/) | Property Agent (PostgreSQL, MongoDB, Redis, ES) |
-| Sequence Diagram | [sample-sequence/](./claude-md-drawio/sample-sequence/) | Payment Flow |
-| Application Workflow | [sample-autoclickkey-workflow/](./claude-md-drawio/sample-autoclickkey-workflow/) | [AutoClickKey](https://github.com/MrParkerZ7/app-auto-key-click-x-claude) Data Flow |
+| Type | Folder | Description |
+|------|--------|-------------|
+| Cloud Architecture | `poc-architecture/` | AWS, Azure, GCP, Kubernetes, Hybrid |
+| C4 Model | `poc-c4-model/` | Context, Container, Component diagrams |
+| Data Lake/Warehouse | `poc-datalake/` | ETL pipelines, data flow, analytics |
+| Domain-Driven Design | `poc-domain-driven-design/` | Bounded contexts, aggregates |
+| Entity ERD | `poc-entity-erd/` | Database schemas, relationships |
+| Sequence Diagrams | `poc-sequence/` | API flows, interactions |
 
-## Preview
+## Quick Start
 
-![AWS ECS Architecture](./claude-md-drawio/sample-architecture/sample-architecture-aws-ecs.png)
+### Option 1: Use Prompt Templates
 
-![C4 Model Core Banking](./claude-md-drawio/sample-c4-model/sample-c4-model-core-banking.png)
-
-## Usage
-
-**Option 1: Copy to your project (auto-load)**
-1. Copy `CLAUDE-DIAGRAMS-STANDARD-FORMAT.md` to your project root as `CLAUDE.md`
-2. Claude Code will automatically load the instructions
-3. Ask Claude to create diagrams
-
-**Option 2: Use prompt template (no copy needed)**
-1. Use the prompt from `claude-md-drawio/PROMPT_TEMPLATE.md`
+1. Copy the prompt from `_PROMPT/PROMPT_TEMPLATE.md`
 2. Replace `[YOUR_PROJECT_PATH]` with your project path
 3. Paste into Claude Code
 
-## How CLAUDE.md Works
+### Option 2: Copy CLAUDE.md to Your Project
 
-```
-your-project/
-├── CLAUDE.md          # Auto-loaded by Claude Code
-├── src/
-│   └── CLAUDE.md      # Also loaded when working in src/
-└── ...
-```
+1. Copy `_PROMPT/PROMPT-DIAGRAM-FORMAT.md` to your project as `CLAUDE.md`
+2. Claude Code will auto-load the instructions
+3. Ask Claude to analyze and create diagrams
 
-- Claude Code reads `CLAUDE.md` from project root automatically
-- Subdirectory `CLAUDE.md` files are loaded when working in those directories
-- All instructions are available in Claude's context without manual file reads
+## Key Features
+
+### Comprehensive Shape Library
+- AWS, Azure, GCP service icons
+- Kubernetes resources
+- Database types (SQL, NoSQL, Cache)
+- C4 Model elements
+- Network & infrastructure components
+
+### Consistent Styling
+- Protocol-based arrow colors (HTTP, Database, Queue, etc.)
+- Mandatory legend requirements
+- Grid-aligned positioning (10px grid)
+- Shadow and text shadow standards
+
+### Format Standards
+- Icon size: 60x60px minimum
+- Container positions: multiples of 10px
+- Stroke width: 2px standard
+- Required attributes: `shadow=1;textShadow=1`
+
+## Sample Projects
+
+| Project | Tech Stack | Diagrams |
+|---------|------------|----------|
+| AWS Terraform Lambda | Python, Terraform, AWS | Infrastructure, C4, Sequence |
+| Lerna Node Monorepo | TypeScript, Node.js | Architecture, Dependencies |
+| Kotlin Spring MongoDB | Kotlin, Spring, MongoDB | API, Domain Model, ERD |
+
+## Color Scheme Reference
+
+| Category | Fill | Stroke |
+|----------|------|--------|
+| Compute (AWS Lambda/ECS) | `#FFF4E6` | `#ED7100` |
+| Database | `#FAE6FC` | `#C925D1` |
+| Storage | `#E9F3E6` | `#7AA116` |
+| Messaging | `#FCE8F3` | `#E7157B` |
+| Security | `#FCE8EB` | `#DD344C` |
+| Networking | `#E6F2FA` | `#8C4FFF` |
 
 ## License
 

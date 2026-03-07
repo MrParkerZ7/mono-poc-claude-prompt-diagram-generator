@@ -2,84 +2,98 @@
 
 ## Project Overview
 
-This is a mono-repo containing sample `CLAUDE.md` files and prompt templates for different use cases with Claude Code. The primary focus is generating professional diagrams (DrawIO) and documentation.
+This repository is a **prompt engineering toolkit** for generating professional DrawIO architecture diagrams with Claude Code. It contains:
+
+- Comprehensive diagram format standards (shapes, styles, colors)
+- Reusable prompt templates for project analysis
+- Style guides for consistent formatting
+- Sample diagrams as references
 
 ## Repository Structure
 
 ```
 mono-sample-claude-project-specific-instruction/
-├── CLAUDE.md                    # This file
-├── README.md                    # Project documentation
-├── claude-md-drawio/            # DrawIO diagram generation
-│   ├── CLAUDE-DIAGRAMS-STANDARD-FORMAT.md  # Shape/style references
-│   ├── PROMPT_TEMPLATE.md       # Ready-to-use prompt template
-│   ├── _PROMPT/                 # Detailed prompt templates
-│   │   ├── PROMPT-DIAGRAM-FORMAT.md       # Diagram format standards
-│   │   └── PROMPT-PROJECT-ANALYSIS.md     # Analysis prompt templates
-│   └── sample-*/                # Sample projects with diagrams
-└── claude-md-excel/             # Excel generation (planned)
+├── CLAUDE.md                      # This file
+├── README.md                      # Project documentation
+│
+├── _PROMPT/                       # Core Prompt Templates
+│   ├── PROMPT-DIAGRAM-FORMAT.md   # Main DrawIO standards (shapes, colors, arrows)
+│   ├── PROMPT-PROJECT-ANALYSIS.md # Project analysis workflow
+│   ├── PROMPT_TEMPLATE.md         # Quick-start template
+│   └── PROMPT_TEMPLATE_DOCS.md    # Documentation generation
+│
+├── format-architect/              # Formatting Style Guides
+│   ├── PROMPT_STYLE.md            # Spacing, sizing, grid rules
+│   └── sample-*.drawio            # Format-compliant examples
+│
+├── poc-{diagram-type}/            # Diagram Type Samples
+│   ├── README.md                  # Type-specific instructions
+│   └── sample-*.drawio            # Sample diagrams
+│
+└── poc-project-{name}/            # Full Project Examples
+    ├── analysis/                  # Analysis documents
+    └── diagrams/                  # Generated diagrams
 ```
 
 ## Key Files
 
 | File | Purpose |
 |------|---------|
-| `claude-md-drawio/CLAUDE-DIAGRAMS-STANDARD-FORMAT.md` | Main DrawIO standards (shapes, styles, colors) |
-| `claude-md-drawio/_PROMPT/PROMPT-DIAGRAM-FORMAT.md` | Detailed diagram format guidelines |
-| `claude-md-drawio/_PROMPT/PROMPT-PROJECT-ANALYSIS.md` | Analysis and output templates |
-| `claude-md-drawio/PROMPT_TEMPLATE.md` | Quick-start prompt template |
+| `_PROMPT/PROMPT-DIAGRAM-FORMAT.md` | Main DrawIO standards - shapes, styles, colors, arrows |
+| `_PROMPT/PROMPT-PROJECT-ANALYSIS.md` | Analysis workflow and output templates |
+| `format-architect/PROMPT_STYLE.md` | Spacing and sizing rules |
 
 ## Working with This Repository
 
-### Adding New Sample Projects
+### Adding New Diagram Samples
 
-1. Create folder: `claude-md-drawio/sample-project-{name}/`
-2. Add analysis files in `analysis/` subfolder:
-   - `architecture-analysis.md`
-   - `project-structure-analysis.md` (for monorepos)
-   - Other analysis types as needed
-3. Add diagrams in `diagrams/` subfolder:
-   - `architecture-overview.drawio` (REQUIRED)
-   - Other diagram types as needed
-4. Export PNG versions for preview
+1. **For diagram type samples:** Add to `poc-{type}/` folder
+2. **For full project examples:** Create `poc-project-{name}/` with `analysis/` and `diagrams/` subfolders
 
-### Diagram Standards
+### Diagram Naming Convention
 
-- All diagrams must follow `CLAUDE-DIAGRAMS-STANDARD-FORMAT.md`
-- Use consistent color schemes per technology type
-- Include legends for all arrow types used
-- Use swimlane containers for grouping
+| Type | Pattern | Example |
+|------|---------|---------|
+| Architecture | `sample-architecture-{name}.drawio` | `sample-architecture-aws-ecs.drawio` |
+| C4 Model | `sample-c4-model-{name}.drawio` | `sample-c4-model-core-banking.drawio` |
+| ERD | `sample-entity-{name}.drawio` | `sample-entity-property-agent.drawio` |
+| Sequence | `sample-sequence-{name}.drawio` | `sample-sequence-payment-flow.drawio` |
 
-### Color Scheme Reference
+### Format Standards (MANDATORY)
 
-| Technology | Fill | Stroke |
-|------------|------|--------|
-| Kotlin/Java | `#DAE8FC` | `#6C8EBF` |
-| Python | `#FFF2CC` | `#D6B656` |
-| Infrastructure | `#D5E8D4` | `#82B366` |
-| Shared/Common | `#E1D5E7` | `#9673A6` |
-| Build/Config | `#F5F5F5` | `#666666` |
+All diagrams must follow these rules from `format-architect/PROMPT_STYLE.md`:
 
-## Naming Conventions
+| Rule | Requirement |
+|------|-------------|
+| Grid | 10px (all positions/sizes must end with 0) |
+| Icon size | 60x60px minimum |
+| Stroke width | 2px standard |
+| Shadows | `shadow=1;textShadow=1` on all elements |
+| Legend | Required for all meaningful arrow styles |
 
-| Element | Convention | Example |
-|---------|------------|---------|
-| Sample folders | `sample-{type}-{name}` | `sample-project-kotlin-spring` |
-| Analysis files | `{type}-analysis.md` | `architecture-analysis.md` |
-| Diagram files | `{type}.drawio` | `architecture-overview.drawio` |
-| Prompt files | `PROMPT-{TYPE}.md` | `PROMPT-PROJECT-ANALYSIS.md` |
+### Color Scheme
+
+| Category | Fill | Stroke |
+|----------|------|--------|
+| Compute | `#FFF4E6` | `#ED7100` |
+| Database | `#FAE6FC` | `#C925D1` |
+| Storage | `#E9F3E6` | `#7AA116` |
+| Messaging | `#FCE8F3` | `#E7157B` |
+| Security | `#FCE8EB` | `#DD344C` |
 
 ## Git Commit Guidelines
 
-- Use clear, descriptive commit messages
 - Start with action verb: Add, Update, Fix, Remove
-- Reference diagram type or analysis type in commits
-- Co-author with Claude when applicable
+- Reference diagram type in commits
+- Co-author with Claude when applicable:
+  ```
+  Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
+  ```
 
 ## Updating Prompt Templates
 
 When updating `_PROMPT/` files:
 1. Update Table of Contents if adding sections
-2. Maintain consistent heading numbering
+2. Maintain consistent heading structure
 3. Include XML examples for new diagram types
-4. Add entries to both analysis and diagram generation sections
+4. Test with sample diagram generation
