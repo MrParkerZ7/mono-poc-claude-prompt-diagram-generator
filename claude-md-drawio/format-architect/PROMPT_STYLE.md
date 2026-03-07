@@ -9,6 +9,19 @@ This document defines **minimum spacing rules** for infrastructure architecture 
 - Grid size: `10px` (1 block)
 - All spacing values are **minimums**
 
+### Grid Snap Rule (MANDATORY)
+
+**All group container positions and sizes MUST end with `0` (multiples of 10px)**
+
+| Property | Rule | Valid Examples | Invalid Examples |
+|----------|------|----------------|------------------|
+| Position X | Must end with 0 | `10`, `20`, `100`, `250` | `15`, `23`, `108`, `255` |
+| Position Y | Must end with 0 | `10`, `20`, `100`, `250` | `15`, `23`, `108`, `255` |
+| Width | Must end with 0 | `60`, `100`, `200`, `450` | `65`, `98`, `215`, `448` |
+| Height | Must end with 0 | `60`, `100`, `200`, `450` | `65`, `98`, `215`, `448` |
+
+**Why:** Ensures all containers snap to the 10px grid for consistent alignment and clean visual appearance.
+
 ## Minimum Spacing Rules
 
 ### Containers
