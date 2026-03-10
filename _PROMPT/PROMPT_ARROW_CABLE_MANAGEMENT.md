@@ -4,7 +4,15 @@
 
 Arrow routing standard inspired by **electric wire cable management** in high-rise buildings and industrial infrastructure. Instead of letting arrows auto-route freely (causing overlaps, diagonal crossings, and visual clutter), this guide organizes all arrows into **cable channels** — shared corridors with defined join/split points.
 
-This guide works with `edgeStyle=orthogonalEdgeStyle` (90-degree routing only) and adds:
+This guide works with `edgeStyle=orthogonalEdgeStyle` (90-degree routing only) and provides two levels of routing control:
+
+**Level 1 — Entry/Exit Point Routing** (preferred, simpler):
+- **16-point connection grid** — explicit exit/entry points on element boundaries
+- **Fan-out/fan-in separation** — spread arrows across boundary using quarter-points
+- **Direction-based rules** — perpendicular face pairs for diagonal connections
+- **Cross-container offsets** — offset points to avoid overlap at container boundaries
+
+**Level 2 — Waypoint Cable Management** (for complex diagrams):
 - **Cable trays** — shared horizontal/vertical corridors
 - **Join/split points** — where arrows enter/leave a trunk line
 - **Zero-overlap guarantee** — no two wire segments ever share the same line
@@ -15,8 +23,9 @@ Complements:
 - `PROMPT_OBJECT_FORMAT.md` — element sizing, spacing, arrow color rules
 - `PROMPT_LAYOUT_PATTERN.md` — layout patterns, nesting margins
 
-Reference diagram:
+Reference diagrams:
 - `format-object-layout-standard/sample-architecture-banking.drawio`
+- `format-object-layout-standard/sample-traning-arrow-pattern.drawio` (training dataset with proposition/pattern pairs)
 
 ---
 
@@ -53,6 +62,191 @@ Reference diagram:
 | `jumpStyle` | `arc` | Arc jump where wires cross |
 | `jumpSize` | `10` | 10px arc radius at crossings |
 | Waypoints | `<Array as="points">` | Explicit intermediate routing points |
+
+---
+
+## CRITICAL: Entry/Exit Point Routing
+
+> **Before using waypoints, first control arrow paths with `exitX`, `exitY`, `entryX`, `entryY` on edges.**
+
+Entry/exit points define WHERE an arrow leaves its source and WHERE it enters its target, using the element's **16-point connection grid**. This is the primary technique for clean arrow routing — simpler and more maintainable than waypoints.
+
+### The 16-Point Connection Grid
+
+Every node with the standard `points=[[...]]` style has 16 connection points:
+
+```
+        (0,0)  (0.25,0) (0.5,0) (0.75,0)  (1,0)
+          ┌────────┬────────┬────────┬────────┐
+ (0,0.25) │        │        │        │        │ (1,0.25)
+          ├────────┤        │        ├────────┤
+  (0,0.5) │        │   ICON CENTER   │        │ (1,0.5)
+          ├────────┤        │        ├────────┤
+ (0,0.75) │        │        │        │        │ (1,0.75)
+          └────────┴────────┴────────┴────────┘
+        (0,1)  (0.25,1) (0.5,1) (0.75,1)  (1,1)
+```
+
+### Edge Style with Entry/Exit Points
+
+```xml
+<mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;"
+  edge="1" parent="..." source="..." target="...">
+  <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+```
+
+| Property | Description |
+|----------|-------------|
+| `exitX`, `exitY` | Point on source boundary where arrow leaves (0-1 range) |
+| `entryX`, `entryY` | Point on target boundary where arrow arrives (0-1 range) |
+| `exitDx`, `exitDy` | Always `0` (no pixel offset) |
+| `entryDx`, `entryDy` | Always `0` (no pixel offset) |
+
+### Direction-Based Entry/Exit Rules
+
+| Flow Direction | Exit Point | Entry Point | Notes |
+|----------------|------------|-------------|-------|
+| Left → Right (direct) | `exitX=1;exitY=0.5` | `entryX=0;entryY=0.5` | Default, often auto-routes correctly |
+| Right → Left | `exitX=0;exitY=0.5` | `entryX=1;entryY=0.5` | Reverse of above |
+| Top → Bottom | `exitX=0.5;exitY=1` | `entryX=0.5;entryY=0` | Vertical downward flow |
+| Bottom → Top | `exitX=0.5;exitY=0` | `entryX=0.5;entryY=1` | Vertical upward flow |
+| Diagonal ↘ (down-right) | `exitX=0.5;exitY=1` | `entryX=0;entryY=0.5` | Exit bottom, enter left face |
+| Diagonal ↙ (down-left) | `exitX=0.5;exitY=1` | `entryX=1;entryY=0.5` | Exit bottom, enter right face |
+| Diagonal ↗ (up-right) | `exitX=0.5;exitY=0` | `entryX=0;entryY=0.5` | Exit top, enter left face |
+| Diagonal ↖ (up-left) | `exitX=0.5;exitY=0` | `entryX=1;entryY=0.5` | Exit top, enter right face |
+
+**Key principle:** For diagonal connections, use **perpendicular face pairs** — exit from the face closest to the target's general direction, enter from the face facing back toward the source.
+
+### Fan-Out Rules (1 Source → Multiple Targets)
+
+When multiple arrows leave the same source, **spread exit points** across the source boundary to prevent overlap:
+
+```
+[Source] ──→ Target A (top)       exitX=1;exitY=0.25  (right face, upper quarter)
+         ──→ Target B (middle)    (no exit — auto-routes center)
+         ──→ Target C (bottom)    exitX=1;exitY=0.75  (right face, lower quarter)
+```
+
+| # of Outgoing | Exit Points Used |
+|----------------|-----------------|
+| 2 arrows right | `(1, 0.25)` and `(1, 0.75)` |
+| 3 arrows right | `(1, 0.25)`, `(1, 0.5)` auto, `(1, 0.75)` |
+| 2 arrows down | `(0.25, 1)` and `(0.75, 1)` |
+| 3 arrows down | `(0.25, 1)`, `(0.5, 1)` auto, `(0.75, 1)` |
+| Mixed directions | Use different faces: right `(1, 0.5)`, bottom `(0.5, 1)`, top `(0.5, 0)` |
+
+**The middle/direct-path target** can use auto-routing (no explicit exit/entry). Only the offset targets need explicit points.
+
+### Fan-In Rules (Multiple Sources → 1 Target)
+
+When multiple arrows enter the same target, **spread entry points** across the target boundary:
+
+```
+Source A (left)  ──→ [Target]     entryX=0;entryY=0.25  (left face, upper quarter)
+Source B (left)  ──→              entryX=0;entryY=0.75  (left face, lower quarter)
+Source C (above) ──→              entryX=0.5;entryY=0   (top face, center)
+```
+
+| Scenario | Entry Point Strategy |
+|----------|---------------------|
+| 2 arrows from same side | Use `0.25` and `0.75` on that face |
+| 3 arrows from same side | Use `0.25`, `0.5`, `0.75` on that face |
+| Arrows from different sides | Each uses center of its own face (`0.5`) |
+| Cross-lane + direct | Direct at `(0, 0.5)`, cross-lane at `(0, 0.25)` |
+
+### Cross-Container Routing
+
+When arrows cross container (group) boundaries, use **offset entry/exit points** to avoid overlapping with intra-container arrows:
+
+```xml
+<!-- Arrow crossing from VPC-A into VPC-B (cross-container) -->
+<mxCell style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.75;" .../>
+                                                          ↑
+                                        offset from 0.5 to 0.75 to avoid overlap
+                                        with direct arrow entering at 0.5
+```
+
+| Cross-Container Scenario | Entry/Exit Strategy |
+|--------------------------|---------------------|
+| Sibling containers (same level) | Entry at `0.25` or `0.75` to offset from direct arrows |
+| Parent → child container | Exit parent bottom `(0.5, 1)`, enter child top `(0.5, 0)` |
+| Cross-region (dashed red) | Same rules, but use `dashed=1;strokeColor=#FF0000` on edge |
+| Through Transit Gateway/hub | Hub exit face = toward target account's direction |
+
+### Cycle Routing (A → B → C → D → A)
+
+For square/diamond cycle layouts, use perpendicular face pairs to keep arrows clean:
+
+```
+        [A top]
+       ↗       ↘
+   [D left]   [B right]        Clockwise: A→B→C→D→A
+       ↖       ↙
+        [C bottom]
+```
+
+| Segment | Exit | Entry |
+|---------|------|-------|
+| A → B (top → right) | auto | auto |
+| B → C (right → bottom) | `exitX=0.5;exitY=1` | `entryX=1;entryY=0.5` |
+| C → D (bottom → left) | auto | auto |
+| D → A (left → top) | `exitX=0.5;exitY=0` | `entryX=0;entryY=0.5` |
+
+**Principle:** Alternate between auto-routed segments and explicitly routed segments. The perpendicular-face exits/entries prevent the orthogonal router from creating overlapping L-shapes.
+
+### When NOT to Use Explicit Entry/Exit
+
+Auto-routing is sufficient (no `exitX`/`entryX` needed) for:
+
+| Scenario | Why Auto-Routing Works |
+|----------|----------------------|
+| Direct horizontal (same row) | Router picks left/right faces automatically |
+| Direct vertical (same column) | Router picks top/bottom faces automatically |
+| Simple bidirectional (2 aligned nodes) | Router separates the two arrows automatically |
+| Middle target in symmetric fan-out | Direct path needs no override |
+| Simple fan-in from one side | Router distributes entry points automatically |
+
+### Connection Points Usage Frequency
+
+From training data analysis, the most effective connection points:
+
+| Point | Coordinates | Primary Use Case |
+|-------|-------------|-----------------|
+| Right-center | `(1, 0.5)` | Default L→R exit; diagonal entry from right |
+| Left-center | `(0, 0.5)` | Default L→R entry; most common explicit entry |
+| Top-center | `(0.5, 0)` | Upward exit; downward entry |
+| Bottom-center | `(0.5, 1)` | Downward exit in cycles/diagonals |
+| Right-upper | `(1, 0.25)` | Fan-out exit for upward-bound target |
+| Right-lower | `(1, 0.75)` | Fan-out exit for downward-bound target |
+| Left-upper | `(0, 0.25)` | Fan-in entry, offset from center; cross-lane entry |
+| Left-lower | `(0, 0.75)` | Cross-container entry, offset from center |
+| Top-left | `(0.25, 0)` | Entry from above, offset to avoid overlap |
+| Top-right | `(0.75, 0)` | Entry from above, opposite offset |
+
+**Rarely used:** Corner points `(0,0)`, `(1,0)`, `(0,1)`, `(1,1)` — these create awkward 45° approach angles with orthogonal routing.
+
+### Entry/Exit + Waypoints Combined
+
+For complex routing, combine entry/exit points with waypoints. Entry/exit controls WHERE the arrow connects; waypoints control the PATH in between:
+
+```xml
+<!-- Fan-out with cable channel: exit upper-right, route through vertical channel -->
+<mxCell style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.25;entryX=0;entryY=0.5;"
+  edge="1" parent="..." source="hub" target="target1">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="140" y="220"/>
+      <mxPoint x="140" y="60"/>
+    </Array>
+  </mxGeometry>
+</mxCell>
+```
+
+**Priority order:**
+1. Try direction-based entry/exit only (simplest)
+2. Add fan-out/fan-in offset points if overlap occurs
+3. Add waypoints only when entry/exit alone cannot prevent overlap
 
 ---
 
@@ -778,6 +972,20 @@ When two wires cross perpendicularly (horizontal meets vertical), `jumpStyle=arc
 
 ## Validation Checklist
 
+### Entry/Exit Point Checks
+
+| Check | Rule |
+|-------|------|
+| ☐ | Fan-out arrows use spread exit points (`0.25`, `0.5`, `0.75`) — no two arrows exit same point |
+| ☐ | Fan-in arrows use spread entry points (`0.25`, `0.5`, `0.75`) — no two arrows enter same point |
+| ☐ | Diagonal arrows use perpendicular face pairs (e.g., exit bottom → enter left) |
+| ☐ | Cross-container arrows use offset entry points (`0.25` or `0.75`) to avoid overlap with direct arrows |
+| ☐ | Cycle arrows alternate auto-routed and explicitly routed segments |
+| ☐ | Corner points `(0,0)`, `(1,0)`, `(0,1)`, `(1,1)` are NOT used (they cause awkward routing) |
+| ☐ | Direct horizontal/vertical arrows use auto-routing (no unnecessary entry/exit overrides) |
+
+### Waypoint Cable Management Checks
+
 | Check | Rule |
 |-------|------|
 | ☐ | All edges use `edgeStyle=orthogonalEdgeStyle;rounded=0` |
@@ -801,15 +1009,24 @@ When two wires cross perpendicularly (horizontal meets vertical), `jumpStyle=arc
 ## Quick Reference
 
 ```
-Edge style:          edgeStyle=orthogonalEdgeStyle;rounded=0
-Jump arcs:           jumpStyle=arc;jumpSize=10
-Parallel offset:     10px (all directions, must be x10 grid)
-Max waypoints:       2-4 per arrow
-Trunk placement:     Left side (inbound), Right side (outbound)
-Riser placement:     Midpoint between elements in intermediate layer
-Riser entry band:    ABOVE the gap (inside upper layer empty space)
-Distribution band:   IN the gap between layers
-Fan-out rule:        ±10px offset per additional wire from same element
-Zero-overlap:        MANDATORY — every segment must have unique lane
-Position calc:       Sum all parent x/y + element x/y + size/2
+LEVEL 1 — Entry/Exit Points (try first):
+  Fan-out exit:      Spread across face: (1,0.25), (1,0.5), (1,0.75)
+  Fan-in entry:      Spread across face: (0,0.25), (0,0.5), (0,0.75)
+  Diagonal routing:  Perpendicular face pairs (exit bottom → enter left)
+  Cross-container:   Offset entry to 0.25 or 0.75 to avoid overlap
+  Cycle routing:     Alternate auto + explicit (exit 0.5,1 → enter 1,0.5)
+  Skip if:           Direct horizontal/vertical, simple bidirectional
+
+LEVEL 2 — Waypoint Cable Management (complex diagrams):
+  Edge style:        edgeStyle=orthogonalEdgeStyle;rounded=0
+  Jump arcs:         jumpStyle=arc;jumpSize=10
+  Parallel offset:   10px (all directions, must be x10 grid)
+  Max waypoints:     2-4 per arrow
+  Trunk placement:   Left side (inbound), Right side (outbound)
+  Riser placement:   Midpoint between elements in intermediate layer
+  Riser entry band:  ABOVE the gap (inside upper layer empty space)
+  Distribution band: IN the gap between layers
+  Fan-out rule:      ±10px offset per additional wire from same element
+  Zero-overlap:      MANDATORY — every segment must have unique lane
+  Position calc:     Sum all parent x/y + element x/y + size/2
 ```
